@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.29 on 2018-08-03 15:35:07.
+ * Generated for Laravel 5.6.29 on 2018-08-03 16:34:33.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -12624,49 +12624,9 @@ namespace App\Facades {
          *
          * @static 
          */ 
-        public static function searchOriginalSimilarity($query, $thresholdCovers = 30, $thresholdCovered = 30, $referencedParaId = null)
-        {
-            return \App\EGWK\Reader::searchOriginalSimilarity($query, $thresholdCovers, $thresholdCovered, $referencedParaId);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function merge($query)
-        {
-            return \App\EGWK\Reader::merge($query);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */ 
         public static function searchTranslation($query)
         {
             return \App\EGWK\Reader::searchTranslation($query);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function similarParagraph($paraID)
-        {
-            return \App\EGWK\Reader::similarParagraph($paraID);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function similarParagraphStandard($paraID)
-        {
-            return \App\EGWK\Reader::similarParagraphStandard($paraID);
         }
         
         /**
@@ -12795,6 +12755,44 @@ namespace App\Facades {
         public static function score($type, $slug, $no, $verse = null)
         {
             return \App\EGWK\Hymnal::score($type, $slug, $no, $verse);
+        }
+         
+    }
+ 
+}
+
+namespace App\Facades\Reader { 
+
+    class SearchSimilar {
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function original($query, $thresholdCovers = null, $thresholdCovered = null, $referenceParaId = null)
+        {
+            return \App\EGWK\Reader\SearchSimilar::original($query, $thresholdCovers, $thresholdCovered, $referenceParaId);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function similarParagraph($paraID)
+        {
+            return \App\EGWK\Reader\SearchSimilar::similarParagraph($paraID);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function similarParagraphStandard($paraID)
+        {
+            return \App\EGWK\Reader\SearchSimilar::similarParagraphStandard($paraID);
         }
          
     }
@@ -15245,6 +15243,8 @@ namespace  {
     class View extends \Illuminate\Support\Facades\View {}
 
     class Reader extends \App\Facades\Reader {}
+
+    class SearchSimilar extends \App\Facades\Reader\SearchSimilar {}
 
     class SabbathSchool extends \App\Facades\SabbathSchool {}
 
