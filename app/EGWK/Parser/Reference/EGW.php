@@ -35,11 +35,11 @@ class EGW extends Reference
 
     public function getCSVParagraphs()
     {
-        $csv = "";
+        $data = [];
         foreach ($this->getParagraphs() as $paragraph) {
-            $csv .= implode("\t", $paragraph) . "\n";
+            $data[] = $paragraph;
         }
-        return $csv;
+        return str_putcsv($data);
     }
 
     public function filter()
