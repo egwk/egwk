@@ -145,7 +145,7 @@ class Reader
             ->orderBy('puborder', 'asc');
     }
 
-    protected function commonFilter($table, $lang = null, $publisher = null, $year = null, $no = null)
+    public function commonFilter($table, $lang = null, $publisher = null, $year = null, $no = null)
     {
         !empty($lang) and $table->where('lang', $lang);
         !empty($publisher) and $table->where('publisher', $publisher);

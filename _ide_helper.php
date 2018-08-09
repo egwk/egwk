@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.29 on 2018-08-03 16:34:33.
+ * Generated for Laravel 5.6.29 on 2018-08-08 14:32:37.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -12783,6 +12783,16 @@ namespace App\Facades\Reader {
         public static function similarParagraph($paraID)
         {
             return \App\EGWK\Reader\SearchSimilar::similarParagraph($paraID);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function similarParagraphWithContent($paraID)
+        {
+            return \App\EGWK\Reader\SearchSimilar::similarParagraphWithContent($paraID);
         }
         
         /**

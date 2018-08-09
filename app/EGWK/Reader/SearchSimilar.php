@@ -7,6 +7,7 @@ use App\Models\Tables\CacheSearch,
     App\Models\Tables\SimilarParagraph,
     App\Models\Tables\SimilarParagraph1,
     App\Models\Tables\SimilarParagraph2;
+use App\Models\Tables\Original;
 
 class SearchSimilar
 {
@@ -24,12 +25,14 @@ class SearchSimilar
 
         do {
             $merged[$index]['self'] = $this->getFirstRecord($result, $referenceParaId);
-            foreach ($this->getSimilarsResult($result, $merged[$index]['self']) as $similarItem) {
-                if ($similarItem->w2 >= $thresholdCovers && $similarItem->w1 >= $thresholdCovered) {
-                    $merged[$index]['similars'][] = $this->getSimilars($result, $similarItem);
-                    $result = $result->filter(function ($resultItem, $key) use ($similarItem) {
-                        return $resultItem->para_id != $similarItem->para_id2;
-                    });
+            if ($result->count() > 0) {
+                foreach ($this->getSimilarParagraphs($result, $merged[$index]['self']) as $similarItem) {
+                    if ($similarItem->w2 >= $thresholdCovers && $similarItem->w1 >= $thresholdCovered) {
+                        $merged[$index]['similars'][] = $this->buildSimilarRecord($result, $similarItem);
+                        $result = $result->filter(function ($resultItem, $key) use ($similarItem) {
+                            return $resultItem->para_id != $similarItem->para_id2;
+                        });
+                    }
                 }
             }
             $index++;
@@ -37,7 +40,7 @@ class SearchSimilar
         return collect($merged);
     }
 
-    protected function getSimilars($result, $similarItem)
+    protected function buildSimilarRecord($result, $similarItem)
     {
         return [
             'paragraph' => $result->filter(function ($resultItem, $key) use ($similarItem) {
@@ -50,7 +53,7 @@ class SearchSimilar
         ];
     }
 
-    protected function getSimilarsResult($result, $first)
+    protected function getSimilarParagraphs($result, $first)
     {
         return collect($this->similarParagraph($first->para_id))
             ->whereIn('para_id2', $result->pluck('para_id'))
@@ -88,6 +91,25 @@ class SearchSimilar
     {
         $paraIDexpr = \Foolz\SphinxQL\SphinxQL::expr('="' . trim($paraID) . '"'); // Also: '="^' . trim($paraID) . '$";mode=extended'
         return collect(SimilarParagraph1::search($paraIDexpr)->get()->merge(SimilarParagraph2::search($paraIDexpr)->get()));
+    }
+
+    public function similarParagraphWithContent($paraID, $threshold)
+    {
+        $tmp = [];
+        foreach ($this->similarParagraph($paraID) as $paragraph) {
+            $covers = $paragraph->w2;
+            if ($threshold <= $covers) {
+                $similarParagraph = Original::where('para_id', $paragraph->para_id2)->first();
+                if (!empty($similarParagraph)) {
+                    $tmp[] = [
+                        'paragraph' => $similarParagraph,
+                        'covered' => $paragraph->w1,
+                        'covers' => $covers,
+                    ];
+                }
+            }
+        }
+        return collect($tmp)->sortBy('covered', SORT_REGULAR, true);
     }
 
     public function similarParagraphStandard($paraID)

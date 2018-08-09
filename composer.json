@@ -1,7 +1,19 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "egwk/egwk",
+    "description": "Ellen Gould White Library",
+    "keywords": [
+        "religion",
+        "laravel",
+        "bootstrap",
+        "fontawesome",
+        "jesus",
+        "christian",
+        "adventist",
+        "bible",
+        "faith",
+        "ellen",
+        "white"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -15,7 +27,11 @@
         "laravel/scout": "^4.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
-        "predis/predis": "^1.1"
+        "phpoffice/phppresentation": "^0.9.0",
+        "phpoffice/phpspreadsheet": "^1.4",
+        "phpoffice/phpword": "^0.15.0",
+        "predis/predis": "^1.1",
+        "tecnickcom/tcpdf": "^6.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",

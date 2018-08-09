@@ -41,13 +41,15 @@ class Original extends Model
     ];
     protected $guarded = [];
 
-    public function toSearchableArray()
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getPureContentAttribute()
     {
-        $array = $this->toArray();
-
-        // Customize array...
-
-        return $array;
+        return html_entity_decode(strip_tags($this->content), ENT_QUOTES | ENT_HTML5);
     }
 
     public function chapter()
@@ -68,7 +70,7 @@ class Original extends Model
     public function book_chapter()
     {
         return $this->belongsTo('App\Models\Tables\Original', 'parent_1', 'para_id')
-                        ->where('element_type', 'IN', ['h3', 'h2']);
+            ->where('element_type', 'IN', ['h3', 'h2']);
     }
 
     public function publication()
@@ -85,20 +87,20 @@ class Original extends Model
     public function chapters()
     {
         return $this
-                        ->hasMany('App\Models\Tables\Original', 'parent_2', 'para_id')
-                        ->where('element_type', 'h3');
+            ->hasMany('App\Models\Tables\Original', 'parent_2', 'para_id')
+            ->where('element_type', 'h3');
     }
 
     public function book_chapters()
     {
         return $this->hasMany('App\Models\Tables\Original', 'parent_1', 'para_id')
-                        ->whereIn('element_type', ['h2', 'h3']);
+            ->whereIn('element_type', ['h2', 'h3']);
     }
 
     public function sections()
     {
         return $this->hasMany('App\Models\Tables\Original', 'parent_1', 'para_id')
-                        ->where('element_type', 'h2');
+            ->where('element_type', 'h2');
     }
 
     public function translations()
