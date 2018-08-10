@@ -48,9 +48,9 @@ class CompileBook extends Translation
                     $lang,
                     $preferredPublisher
                 );
-                $similars[] = $similarParagraph;
+                $similars[] = (object) $similarParagraph;
             }
-            $compilation[] = [
+            $compilation[] = (object) [
                 'paragraph' => $paragraph,
                 'similars' => $similars,
             ];

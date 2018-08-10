@@ -2,90 +2,91 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Tables\Publication;
 use Facades\App\EGWK\Translation\CompileBook;
-use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
-class exportDocx extends Command
+class exportDocx extends Export
 {
-
-    const COLLECTION_PREFIX = 'collection:';
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'export:docx {books*} {--l|language=hu} {--t|threshold=70} {--m|multitranslation} {--p|publisher=}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
+    protected $signature = 'export:docx' . self::SIGNATURE_SUFFFIX;
     protected $description = 'Exports book as Ms Word .docx';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected function setupPhpWord($book, $collection)
     {
-        parent::__construct();
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $properties = $phpWord->getDocInfo();
+        $properties->setCreator('EGWK');
+        $properties->setCompany('Ellen Gould White Könyvtár');
+        $properties->setTitle($book);
+        $properties->setDescription($book);
+        $collection and $properties->setCategory($collection);
+        $properties->setCreated(time());
+        $properties->setModified(time());
+        $properties->setSubject('Auto-translation parallel view');
+        $properties->setKeywords('');
+        return $phpWord;
+    }
+
+
+    protected function convertText($content)
+    {
+        return html_entity_decode(strip_tags($content), ENT_QUOTES | ENT_HTML5);
+    }
+
+    protected function refCode($content)
+    {
+        return "{{$content}}";
     }
 
     /**
-     * Get list of books
-     *
-     * @return array
-     */
-    protected function getBookList($books)
-    {
-        $first = reset($books);
-        if (starts_with($first, self::COLLECTION_PREFIX)) {
-            $collection = trim(str_replace(self::COLLECTION_PREFIX, '', $first));
-            $tmp = Publication::query();
-            if ('all' !== $collection) {
-                $tmp->where('primary_collection_text_id', $collection);
-            }
-            $books = $tmp
-                ->get(['book_code'])
-                ->pluck('book_code')
-                ->toArray();
-        }
-        return $books;
-    }
-
-    /**
-     * Execute the console command.
+     * Export
      *
      * @return mixed
      */
-    public function handle()
+    protected function export($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
     {
-        $books = $this->getBookList($this->argument('books'));
-        $threshold = $this->option('threshold');
-        $language = $this->option('language');
-        $multiTranslation = $this->option('multitranslation');
 
-        $this->info('Attempting compilation of ' . implode(', ',  $books));
-        foreach ($books as $book) {
-            $this->info("Compiling $book...");
+        $folder = Storage::path('compilations/docx' . ($collection ? "/$collection" : ''));
+        @mkdir($folder);
 
-            \Storage::put(
-                "compilations/$book.json",
-                json_encode(
-                    CompileBook::translate(
-                        $book,
-                        $threshold,
-                        $multiTranslation,
-                        $language
-                    ),
-                    JSON_PRETTY_PRINT
-                )
-            );
+        $phpWord = $this->setupPhpWord($book, $collection);
+        $table = $phpWord->addSection()->addTable();
 
-            $this->comment("$book done.");
+        foreach (CompileBook::translate(
+            $book,
+            $threshold,
+            $multiTranslation,
+            $language
+        ) as $paragraph) {
+            $table->addRow();
+            $cell = $table->addCell(5000);
+            $content = $this->convertText($paragraph->paragraph->content) .
+                ' ' .
+                $this->refCode($paragraph->paragraph->refcode_short);
+            $cell->addText($content);
+            $cell = $table->addCell(5000);
+            foreach ($paragraph->similars as $similar) {
+                foreach ($similar->translations as $translation) {
+                    $content = $this->convertText($translation->content) .
+                        ' ' .
+                        $this->refCode($similar->paragraph->refcode_short);
+                    $cell->addText($content);
+                    $textrun = $cell->addTextRun();
+                    $textrun->addText(
+                        $similar->covers . '% ',
+                        [
+                            'bold' => true,
+                            'size' => 7.5
+                        ]);
+                    $textrun->addText('/ ' . $similar->covered . '% ', ['size' => 7.5]);
+                    $textrun->addText('(' . $translation->para_id . ') ', ['size' => 7.5]);
+                    $textrun->addText($translation->lang . '/' . $translation->publisher . '/' . $translation->year, ['size' => 7.5]);
+
+                    $cell->addTextBreak();
+                }
+            }
         }
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $objWriter->save("$folder/$book.docx");
     }
 }
