@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c75a6fee4bd073ade835ffa97c52af6",
+    "content-hash": "1a28fa0fd899374fb5af901c452c9142",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1769,6 +1769,55 @@
                 "mathematics"
             ],
             "time": "2018-07-31T08:38:40+00:00"
+        },
+        {
+            "name": "maxakawizard/phpmorphy",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MAXakaWIZARD/phpmorphy.git",
+                "reference": "79f1bd01a23b1af2749b14cb191e2e5952ecd789"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MAXakaWIZARD/phpmorphy/zipball/79f1bd01a23b1af2749b14cb191e2e5952ecd789",
+                "reference": "79f1bd01a23b1af2749b14cb191e2e5952ecd789",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kamaev Vladimir",
+                    "email": "heromantor@users.sourceforge.net"
+                },
+                {
+                    "name": "Max Grigorian",
+                    "email": "maxakawizard@gmail.com",
+                    "homepage": "http://wizardcat.com"
+                }
+            ],
+            "description": "phpMorphy - morphological analyzer library for Russian, English and German languages",
+            "homepage": "https://github.com/MAXakaWIZARD/phpmorphy",
+            "keywords": [
+                "phpmorphy"
+            ],
+            "time": "2016-04-14T23:11:56+00:00"
         },
         {
             "name": "monolog/monolog",
