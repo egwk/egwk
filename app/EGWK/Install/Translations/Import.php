@@ -12,7 +12,7 @@ use App\EGWK\Install\Exception\TranslationsException;
 class Import
 {
 
-    use \App\EGWK\Install\Writings\Tools\ProcessLog;
+    use \App\EGWK\Tools\ProcessLog;
 
     /**
      * Default publisher code

@@ -1,15 +1,17 @@
 <?php
 
-namespace App\EGWK\Install\Writings\Export;
+namespace App\EGWK\Install\Writings\Store;
 
 use App\EGWK\Install\Writings\Filter;
+use App\EGWK\Install\Writings\Store;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * File
  *
  * @author Peter
  */
-abstract class File extends Export
+abstract class File extends Store
 {
 
     /**
@@ -19,6 +21,11 @@ abstract class File extends Export
     protected $outputFile = "";
 
     /**
+     * @var bool
+     */
+    protected $reset = true;
+
+    /**
      * Class constructor
      *
      * @access public
@@ -26,10 +33,43 @@ abstract class File extends Export
      * @param string Output file name
      * @return void
      */
-    public function __construct(Filter $filter, $outputFile = "./data")
+    public function __construct(Filter $filter, $outputFile = "./data", $reset = true)
     {
         parent::__construct($filter);
-        $this->initOutputFile($outputFile);
+        $this->reset = $reset;
+        $this->outputFile = $outputFile;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function begin()
+    {
+        $this->initOutputFile($this->outputFile);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function end()
+    {
+        // Nothing to do
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function before()
+    {
+        // Nothing to do
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function after()
+    {
+        // Nothing to do
     }
 
     /**
@@ -69,7 +109,7 @@ abstract class File extends Export
      */
     protected function resetOutputFile($modifier = "")
     {
-        $this->writeOutputFileBase('', $modifier);
+        Storage::delete($this->outputFile);
     }
 
     /**
@@ -82,21 +122,10 @@ abstract class File extends Export
      */
     protected function writeOutputFile($data, $modifier = "")
     {
-        $this->writeOutputFileBase($data, $modifier, FILE_APPEND);
+        file_put_contents(Storage::path($this->addFileNameModifier($this->outputFile, $modifier)), $data, FILE_APPEND);
+        // Note: Storage::append resets the file in vain
+        // Storage::append($this->addFileNameModifier($this->outputFile, $modifier), $data);
     }
 
-    /**
-     * Base function for file writing
-     *
-     * @access protected
-     * @param string $data Data
-     * @param string $modifier File name modifier
-     * @param int $flags Flags [see: file_put_contents()]
-     * @return void
-     */
-    protected function writeOutputFileBase($data, $modifier = "", int $flags = 0)
-    {
-        file_put_contents($this->addFileNameModifier($this->outputFile, $modifier), $data, $flags);
-    }
 
 }

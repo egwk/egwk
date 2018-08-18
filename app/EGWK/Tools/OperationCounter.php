@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EGWK\Install\Writings\Tools;
+namespace App\EGWK\Tools;
 
 /**
  * Adds limitable operation step counter to a class

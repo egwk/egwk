@@ -41,8 +41,7 @@ class ImportTranslations extends Command
     {
         $lang = $this->option('language');
         $metadataService = new Translations\Metadata($lang);
-        // $insertService = new Translations\Store\File();
-        $insertService = new Translations\Store\Database();
+        $insertService = new Translations\Store\Database(); // Alternatively: new Translations\Store\File();
         $dataType = Translations\DataFile\Excel\Filtered::class;
         echo "$lang, $dataType";
         (new Translations\Import($metadataService, $insertService, $lang, $dataType))->translations();

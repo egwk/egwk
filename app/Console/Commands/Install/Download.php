@@ -13,7 +13,7 @@ class Download extends Command
      *
      * @var string
      */
-    protected $signature = 'download:writings';
+    protected $signature = 'download:writings {--s|skipto=}';
 
     /**
      * The console command description.
@@ -39,22 +39,27 @@ class Download extends Command
      */
     public function handle()
     {
-        //Setting up EGWWritings API
+        $skipto = $this->option('skipto');
+
+        // Setting up EGWWritings API
         $apiConsumer = new Writings\APIConsumer();
         $tokenStore = new Writings\APIConsumer\TokenStore\Redis();
         $request = new Writings\APIConsumer\Request($apiConsumer, $tokenStore);
         $iterator = new Writings\APIConsumer\Iterator($request);
 
-        //Defining target file
-        $outputFile = storage_path('egwwritings.csv');
+        // Defining target file
+        $outputFile = 'writings/egwwritings.csv';
 
-        //Setting up text processing
+        // Setting up text processing
         $morphy = new Writings\Morphy(storage_path('data/phpmorphy/en'));
         $filter = new Writings\Filter($morphy);
-        $export = new Writings\Export\CsvDump($filter, $outputFile);
+        // $store = new Writings\Store\File\CsvDump($filter, $outputFile, null == $skipto);
+        $store = new Writings\Store\Database($filter);
 
-        //Start download!
-        (new Writings\Download($iterator, $export))->writings();
+        // Start download!
+        $downloader = new Writings\Download($iterator, $store);
+        null !== $skipto and $downloader->setSkipTo($skipto);
+        $downloader->writings();
     }
 
 }

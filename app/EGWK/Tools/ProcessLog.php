@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EGWK\Install\Writings\Tools;
+namespace App\EGWK\Tools;
 
 /**
  * Process Log trait

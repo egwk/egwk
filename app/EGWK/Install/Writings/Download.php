@@ -4,7 +4,7 @@ namespace App\EGWK\Install\Writings;
 
 /**
  * Process writings
- * Exports paragraphs by iterating through
+ * Downloads paragraphs by iterating through
  *      folders
  *          -> books
  *              -> TOCs
@@ -16,39 +16,64 @@ namespace App\EGWK\Install\Writings;
 class Download
 {
 
-    use \App\EGWK\Install\Writings\Tools\OperationCounter;
-    use \App\EGWK\Install\Writings\Tools\ProcessLog;
+    use \App\EGWK\Tools\OperationCounter;
+    use \App\EGWK\Tools\ProcessLog;
 
     /**
      *
-     * @var Export\ExportInterface $export 
+     * @var Store $store
      */
-    protected $export = null;
+    protected $store = null;
 
     /**
      *
-     * @var APIConsumer\Iterator $iterator 
+     * @var APIConsumer\Iterator $iterator
      */
     protected $iterator = null;
 
     /**
+     * Skip books until this book code is reached.
+     *
+     * @var string
+     */
+    protected $skipTo = null;
+
+    /**
+     * @var string Skip data to a specific paragraph ID
+     */
+    protected $skipToParaID = null;
+
+    /**
      * Class constructor
-     *  
+     *
      * @access public
      * @param \App\EGWK\Install\Writings\APIConsumer\Iterator $iterator
-     * @param \App\EGWK\Install\Writings\Export\Export $export
+     * @param \App\EGWK\Install\Writings\Store $store
      * @return void
      */
-    public function __construct(APIConsumer\Iterator $iterator, Export\Export $export)
+    public function __construct(APIConsumer\Iterator $iterator, Store $store)
     {
-        $this->export = $export;
+        $this->store = $store;
         $this->iterator = $iterator;
         $this->initCounter(0); // set positive value for testing 
     }
 
     /**
-     * Process chapter, export paragraphs
-     *  
+     * @param $code Book code or paragraph ID
+     */
+    public function setSkipTo($code)
+    {
+        $this->skipTo = trim($code);
+        if (preg_match('/^[0-9]+\.[0-9]+$/', $this->skipTo)) {
+            // Note: using paragraph-level skip is ignorant of parents!
+            $this->skipToParaID = $this->skipTo;
+            $this->skipTo = preg_replace('/^([0-9]+)\.[0-9]+$/', '$1', $this->skipTo);
+        }
+    }
+
+    /**
+     * Process chapter, store paragraphs
+     *
      * @access protected
      * @param \stdClass $tocEntry
      * @return void
@@ -57,13 +82,16 @@ class Download
     {
         $this->logProc([$tocEntry->para_id, $tocEntry->title], 3);
         list($bookId, $idElement) = explode('.', $tocEntry->para_id, 2);
-        foreach ($this->iterator->chapter($bookId, $idElement) as $paragraph)
-        {
+        foreach ($this->iterator->chapter($bookId, $idElement) as $paragraph) {
+            if (null !== $this->skipToParaID && $paragraph->para_id !== $this->skipToParaID) {
+                continue;
+            } elseif (null !== $this->skipToParaID) {
+                $this->skipToParaID = null;
+            }
             $this->logTick();
-            $this->export->export($paragraph);
+            $this->store->store($paragraph);
             $this->stepCounter();
-            if ($this->getOperationTermSignal())
-            {
+            if ($this->getOperationTermSignal()) {
                 break;
             }
         }
@@ -71,8 +99,8 @@ class Download
     }
 
     /**
-     * Process Table of Contents, export chapters
-     *  
+     * Process Table of Contents, store chapters
+     *
      * @access protected
      * @param \stdClass $book
      * @return void
@@ -80,19 +108,17 @@ class Download
     protected function toc(\stdClass $book)
     {
         $this->logProc([$book->code, $book->title], 1);
-        foreach ($this->iterator->toc($book->book_id) as $tocEntry)
-        {
+        foreach ($this->iterator->toc($book->book_id) as $tocEntry) {
             $this->chapter($tocEntry);
-            if ($this->getOperationTermSignal())
-            {
+            if ($this->getOperationTermSignal()) {
                 break;
             }
         }
     }
 
     /**
-     * Process books, export Table of Contents
-     *  
+     * Process books, store Table of Contents
+     *
      * @access protected
      * @param \stdClass $folder
      * @return void
@@ -100,32 +126,39 @@ class Download
     protected function books(\stdClass $folder)
     {
         $this->logProc([$folder->folder_id, $folder->name], 0, "-");
-        foreach ($this->iterator->books($folder->folder_id) as $book)
-        {
+        foreach ($this->iterator->books($folder->folder_id) as $book) {
+
+            if (!empty($this->skipTo)) {
+                if (null !== $this->skipTo && $book->book_id != $this->skipTo && $book->code !== $this->skipTo) {
+                    continue;
+                } elseif (null !== $this->skipTo) {
+                    $this->skipTo = null;
+                }
+            }
+
             $this->toc($book);
-            if ($this->getOperationTermSignal())
-            {
+            if ($this->getOperationTermSignal()) {
                 break;
             }
         }
     }
 
     /**
-     * Process writings folders, export books.
-     *  
+     * Process writings folders, store books.
+     *
      * @access public
      * @return void
      */
     public function writings()
     {
-        foreach ($this->iterator->writings() as $folder)
-        {
+        $this->store->begin();
+        foreach ($this->iterator->writings() as $folder) {
             $this->books($folder);
-            if ($this->getOperationTermSignal())
-            {
+            if ($this->getOperationTermSignal()) {
                 break;
             }
         }
+        $this->store->end();
     }
 
 }
