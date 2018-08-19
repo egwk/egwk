@@ -3,6 +3,8 @@
 namespace App\EGWK\Install\Writings\APIConsumer;
 
 use App\EGWK\Install\Writings\APIConsumer\Request;
+use GuzzleHttp\Exception\ServerException;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Iterator
@@ -16,6 +18,11 @@ class Iterator
      * Default value for folder filter (Config::install.skip_folder)
      */
     const SKIP_FOLDER_LIST = [];
+
+    /**
+     * Request retry limit
+     */
+    const RETRY_LIMIT = 5;
 
     /**
      * Default language(Config::install.language)
@@ -48,10 +55,8 @@ class Iterator
     public function writings()
     {
         $language = config('install.language', self::LANGUAGE);
-        foreach ($this->request->get("/content/languages/$language/folders/") as $topFolder)
-        {
-            if (config('install.top_folder', 'EGW Writings') == $topFolder->name)
-            {
+        foreach ($this->request->get("/content/languages/$language/folders/") as $topFolder) {
+            if (config('install.top_folder', 'EGW Writings') == $topFolder->name) {
                 yield from $this->writingsChildren($topFolder->children);
             }
         }
@@ -66,15 +71,11 @@ class Iterator
      */
     protected function writingsChildren($children)
     {
-        foreach ($children as $folder)
-        {
-            if (!in_array($folder->name, config('install.skip_folder', self::SKIP_FOLDER_LIST)))
-            {
-                if (!empty($folder->children))
-                {
+        foreach ($children as $folder) {
+            if (!in_array($folder->name, config('install.skip_folder', self::SKIP_FOLDER_LIST))) {
+                if (!empty($folder->children)) {
                     yield from $this->writingsChildren($folder->children);
-                } else
-                {
+                } else {
                     yield $folder;
                 }
             }
@@ -91,8 +92,7 @@ class Iterator
      */
     public function chapter($bookId, $chapterId)
     {
-        foreach ($this->iterate("/content/books/$bookId/chapter/$chapterId/") as $paragraph)
-        {
+        foreach ($this->iterate("/content/books/$bookId/chapter/$chapterId/") as $paragraph) {
             yield $paragraph;
         }
     }
@@ -106,8 +106,7 @@ class Iterator
      */
     public function toc($bookId)
     {
-        foreach ($this->iterate("/content/books/$bookId/toc/") as $entry)
-        {
+        foreach ($this->iterate("/content/books/$bookId/toc/") as $entry) {
             yield $entry;
         }
     }
@@ -122,8 +121,7 @@ class Iterator
      */
     public function paragraphs($bookId, $idElement)
     {
-        foreach ($this->iterate("/content/books/$bookId/content/$idElement/") as $paragraph)
-        {
+        foreach ($this->iterate("/content/books/$bookId/content/$idElement/") as $paragraph) {
             yield $paragraph;
         }
     }
@@ -138,8 +136,7 @@ class Iterator
     public function books($folder = null)
     {
         $byFolder = null === $folder ? '' : "by_folder/$folder/";
-        foreach ($this->iterate('/content/books/' . $byFolder) as $book)
-        {
+        foreach ($this->iterate('/content/books/' . $byFolder) as $book) {
             yield $book;
         }
     }
@@ -155,15 +152,12 @@ class Iterator
     protected function resultPages($parentItem, string $nextField)
     {
         $hasNext = false;
-        do
-        {
-            foreach ($parentItem->results as $item)
-            {
+        do {
+            foreach ($parentItem->results as $item) {
                 yield $item;
             }
             $hasNext = $parentItem->{$nextField} !== null;
-            if ($hasNext)
-            {
+            if ($hasNext) {
                 $parentItem = $this->request->getAPIConsumer()->request('GET', $parentItem->{$nextField});
             }
         } while ($hasNext);
@@ -178,8 +172,7 @@ class Iterator
      */
     protected function resultItems(array $items)
     {
-        foreach ($items as $item)
-        {
+        foreach ($items as $item) {
             yield $item;
         }
     }
@@ -195,14 +188,21 @@ class Iterator
      */
     protected function iterate(string $command, $parameters = [], $nextField = "next")
     {
-        $items = $this->request->get($command, $parameters);
-        if (null !== $items)
-        {
-            if (!isset($items->results))
-            {
+
+        $success = false;
+        for ($counter = 0; $counter < self::RETRY_LIMIT && !$success; $counter++) {
+            try {
+                $items = $this->request->get($command, $parameters);
+                $success = true;
+            } catch (ServerException $e) {
+                sleep(2);
+                Log::warning($e->getMessage());
+            }
+        }
+        if (null !== $items) {
+            if (!isset($items->results)) {
                 yield from $this->resultItems($items);
-            } else
-            {
+            } else {
                 yield from $this->resultPages($items, $nextField);
             }
         }
