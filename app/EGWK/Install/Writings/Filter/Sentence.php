@@ -24,7 +24,7 @@ class Sentence
 
     /**
      *
-     * @var Filter Filter 
+     * @var Filter Filter
      */
     protected $filter;
 
@@ -78,8 +78,7 @@ class Sentence
     public function __call($methodName, $args)
     {
         $sentences = array_get($args, 0);
-        if (is_callable([$this->filter, $methodName]) && is_array($sentences))
-        {
+        if (is_callable([$this->filter, $methodName]) && is_array($sentences)) {
             return array_map([$this->filter, $methodName], $sentences);
         }
     }
@@ -95,12 +94,10 @@ class Sentence
     public function sentenceFlow($sentences, array $flow): array
     {
         $result = [];
-        foreach ($sentences as $text)
-        {
-            $result[] = $this->filter->flow($text, array_map(function($transformation)
-                    {
-                        return $transformation;
-                    }, $flow));
+        foreach ($sentences as $text) {
+            $result[] = $this->filter->flow($text, array_map(function ($transformation) {
+                return $transformation;
+            }, $flow));
         }
         return $result;
     }
@@ -114,22 +111,22 @@ class Sentence
      */
     protected function sentencePreFilters(string $text): string
     {
-        return preg_replace(// quote marks and parentheses
-                '/[“"\[\]”\(\)]*/'
-                , ''
-                , preg_replace(// spaces
-                        '/\ \ +/'
-                        , ' '
-                        , str_replace(// horizontal ellipsis
-                                ['[...]', '...']
-                                , ' '
-                                , preg_replace(// single capital letters with a dot
-                                        '/(\s[A-Z])\./'
-                                        , '$1' . self::TEMP_SEPARATOR
-                                        , $text
-                                )
-                        )
+        return mb_ereg_replace(// quote marks and parentheses
+            '[“"\[\]”\(\)]*'
+            , ''
+            , preg_replace(// spaces
+                '/\ \ +/'
+                , ' '
+                , str_replace(// horizontal ellipsis
+                    ['[...]', '...']
+                    , ' '
+                    , preg_replace(// single capital letters with a dot
+                        '/(\s[A-Z])\./'
+                        , '$1' . self::TEMP_SEPARATOR
+                        , $text
+                    )
                 )
+            )
         );
     }
 
@@ -142,8 +139,7 @@ class Sentence
      */
     protected function sentencePostFilters(array $sentences): array
     {
-        return array_map(function($e)
-        {
+        return array_map(function ($e) {
             return trim(str_replace(self::TEMP_SEPARATOR, '.', $e));
         }, $sentences);
     }

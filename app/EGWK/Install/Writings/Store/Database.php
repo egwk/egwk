@@ -23,7 +23,8 @@ class Database extends Store
     /**
      * Table name without prefix
      */
-    const WORK_TABLE = 'original_work';
+    const WORK_TABLE_PARAGRAPHS = 'original_work';
+    const WORK_TABLE_SENTENCES = 'original_sentence_work';
 
     /**
      * @var array Word list
@@ -45,6 +46,11 @@ class Database extends Store
     protected $table = null;
 
     /**
+     * @var \Illuminate\Database\Query\Builder Table object
+     */
+    protected $tableSentences = null;
+
+    /**
      * @var int Insert Counter
      */
     protected $insertCounter = 0;
@@ -59,7 +65,8 @@ class Database extends Store
     public function __construct(Filter $filter)
     {
         parent::__construct($filter);
-        $this->table = \DB::table(self::WORK_TABLE);
+        $this->table = \DB::table(self::WORK_TABLE_PARAGRAPHS);
+        $this->tableSentences = \DB::table(self::WORK_TABLE_SENTENCES);
         $this->begin();
     }
 
@@ -71,7 +78,6 @@ class Database extends Store
      */
     public function begin()
     {
-        // "TRUNCATE TABLE " . $this->table;
         // $this->table->truncate();
         \DB::beginTransaction();
     }
@@ -130,7 +136,19 @@ class Database extends Store
      */
     protected function storeSentence($paragraph, $sentence, $sentenceWordList, $index)
     {
-        // TODO: Implement storeSentence() method.
+        try {
+            $this->tableSentences->insert([
+                'para_id' => $paragraph->para_id,
+                'index' => $index,
+                'content' => $sentence,
+                'stemmed_wordlist' => $sentenceWordList,
+            ]);
+        } catch (\PDOException $e) {
+            $message = $e->getMessage();
+            if (!str_contains($message, 'Duplicate entry')) {
+                Log::error($message);
+            }
+        }
     }
 
     /**
@@ -139,16 +157,16 @@ class Database extends Store
      * @param string $words
      * @return void
      */
-    protected function storeParagraph($paragraph, $sentences, $words)
+    protected function storeParagraph($paragraph, $sentences, $parents, $words)
     {
         $paragraphArray = (array)$paragraph;
         unset($paragraphArray['translations']);
         try {
-            $this->table->insert(array_merge($paragraphArray, ['stemmed_wordlist' => $words]));
+            $this->table->insert(array_merge($paragraphArray, ['stemmed_wordlist' => $words], array_combine(['parent_1', 'parent_2', 'parent_3', 'parent_4', 'parent_5', 'parent_6'], $parents)));
         } catch (\PDOException $e) {
             $message = $e->getMessage();
             if (!str_contains($message, 'Duplicate entry')) {
-                Log::error();
+                Log::error($message);
             }
         }
     }

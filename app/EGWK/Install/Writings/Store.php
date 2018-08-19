@@ -244,7 +244,7 @@ abstract class Store
      * @param string $words
      * @return void
      */
-    protected abstract function storeParagraph($paragraph, $sentences, $words);
+    protected abstract function storeParagraph($paragraph, $sentences, $parents, $words);
 
     /**
      * Stores a single paragraph
@@ -268,13 +268,13 @@ abstract class Store
         $sentenceWordLists = $this->sentenceWordLists($sentences);
         foreach ($sentences as $k => $sentence) {
             $sentenceWordList = array_get($sentenceWordLists, $k, "");
-            $this->storeSentence($paragraph, $sentence, $sentenceWordList, $k);
+            $this->storeSentence($paragraph, $sentence, $sentenceWordList, $k + 1);
         }
 
         $this->updateElementLevel($paragraph->element_type);
         $this->clearParents($this->parents, $this->getCurrentLevel());
 
-        $this->storeParagraph($paragraph, $sentences, $words);
+        $this->storeParagraph($paragraph, $sentences, $this->parents, $words);
 
         $this->addParent($paragraph->para_id);
 

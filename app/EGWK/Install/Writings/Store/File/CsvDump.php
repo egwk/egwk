@@ -71,9 +71,9 @@ class CsvDump extends File
     /**
      * @inheritdoc
      */
-    protected function storeParagraph($paragraph, $sentences, $words)
+    protected function storeParagraph($paragraph, $sentences, $parents, $words)
     {
-        $csvRow = $this->createCsv("|", "@\n", $paragraph, $this->parents, $words);
+        $csvRow = $this->createCsv("|", "@\n", $paragraph, $parents, $words);
         $this->writeOutputFile($csvRow, self::MODIFIER_PARAGRAPHS);
     }
 
