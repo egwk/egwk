@@ -2,7 +2,6 @@
 
 namespace App\EGWK\Install\Writings\APIConsumer;
 
-use App\EGWK\Install\Writings\APIConsumer\Request;
 use GuzzleHttp\Exception\ServerException;
 use Illuminate\Support\Facades\Log;
 
@@ -22,7 +21,12 @@ class Iterator
     /**
      * Request retry limit
      */
-    const RETRY_LIMIT = 5;
+    const RETRY_LIMIT = 10;
+
+    /**
+     * Sleep before retrying request
+     */
+    const SLEEP_BEFORE_RETRY = 5;
 
     /**
      * Default language(Config::install.language)
@@ -50,7 +54,7 @@ class Iterator
      * Requests and iterates through folders
      *
      * @access public
-     * @return StdClass JSON node
+     * @return \stdClass JSON node
      */
     public function writings()
     {
@@ -184,7 +188,7 @@ class Iterator
      * @param string $command Command
      * @param array $parameters Parameters
      * @param string $nextField Next field
-     * @return StdClass JSON item
+     * @return \stdClass JSON item
      */
     protected function iterate(string $command, $parameters = [], $nextField = "next")
     {
@@ -195,7 +199,7 @@ class Iterator
                 $items = $this->request->get($command, $parameters);
                 $success = true;
             } catch (ServerException $e) {
-                sleep(2);
+                sleep(self::SLEEP_BEFORE_RETRY);
                 Log::warning($e->getMessage());
             }
         }
@@ -206,7 +210,7 @@ class Iterator
                 yield from $this->resultPages($items, $nextField);
             }
         }
-        return [];
+        return (object)[];
     }
 
 }
