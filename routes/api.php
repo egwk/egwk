@@ -90,36 +90,43 @@ Route::group(['prefix' => 'reader',], function () use ($perPage) {
             ->paginate($perPage);
     });
 
-    Route::get('/search', function (Request $request) use ($perPage) {
-        $query = $request->__get('query');
-        return Reader::searchOriginal($query)
-            ->paginate($perPage);
+//
+// Reader / Search
+//
+    Route::group(['prefix' => 'search',], function () use ($perPage) {
+        Route::get('/', function (Request $request) use ($perPage) {
+            $query = $request->__get('query');
+            return Reader::searchOriginal($query)
+                ->paginate($perPage);
+        });
+
+        Route::get('/translation', function (Request $request) use ($perPage) {
+            $query = $request->__get('query');
+            return Reader::searchTranslation($query)
+                ->paginate($perPage);
+        });
+
+        Route::get('/similarity/{para_id}', function ($paraID) use ($perPage) {
+            return SearchSimilar::similarParagraph($paraID)
+                ->paginate($perPage);
+            // return SearchSimilar::similarParagraphStandard($paraID); // @todo: check which is better
+        });
+
+        Route::get('/cluster', function (Request $request) use ($perPage) {
+            $query = $request->__get('query');
+
+            $cover = $request->__get('cover');
+            $covers = null == $cover ? $request->__get('covers') : $cover;
+            $covered = null == $cover ? $request->__get('covered') : $cover;
+
+            $reference = $request->__get('reference');
+
+            return SearchSimilar::original($query, $covers, $covered, $reference)
+                ->paginate($perPage);
+        });
+
     });
 
-    Route::get('/search/similarity', function (Request $request) use ($perPage) {
-        $query = $request->__get('query');
-
-        $cover = $request->__get('cover');
-        $covers = null == $cover ? $request->__get('covers') : $cover;
-        $covered = null == $cover ? $request->__get('covered') : $cover;
-
-        $reference = $request->__get('reference');
-
-        return SearchSimilar::original($query, $covers, $covered, $reference)
-            ->paginate($perPage);
-    });
-
-    Route::get('/trsearch', function (Request $request) use ($perPage) {
-        $query = $request->__get('query');
-        return Reader::searchTranslation($query)
-            ->paginate($perPage);
-    });
-
-    Route::get('/similarity/{para_id}', function ($paraID) use ($perPage) {
-        return Reader::similarParagraph($paraID)
-            ->paginate($perPage);
-//    return Reader::similarParagraphStandard($paraID); // @todo: check which is better
-    });
 
 //
 // Reader / ZIP

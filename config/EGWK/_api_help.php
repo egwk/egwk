@@ -10,9 +10,13 @@
 
 return [
     'name' => 'EGWK API',
-    'version' => '1.4.1',
+    'version' => '1.5',
     'notes' => 'Always use the first translation (translations[0]) for the official / most important translation.',
     'changelog' => [
+        '1.5' => [
+            'date' => '2018-08-09',
+            'note' => 'Added search result clustering, routes updated',
+        ],
         '1.4.1' => [
             'date' => '2018-02-27',
             'note' => 'Added sample Romanian language books (SC, TA). Language codecan be added to /books, eg. /books/ro lists Romanian language books.',
