@@ -198,7 +198,7 @@ class Iterator
             try {
                 $items = $this->request->get($command, $parameters);
                 $success = true;
-            } catch (ServerException $e) {
+            } catch (\Exception $e) {
                 sleep(self::SLEEP_BEFORE_RETRY);
                 Log::warning($e->getMessage());
             }
