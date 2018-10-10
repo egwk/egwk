@@ -41,6 +41,7 @@ class APIConsumer
     public function request($verb, $url, $parameters = [])
     {
         $response = $this->client->request($verb, $url, $parameters);
+        // \Log::debug("$url?" . http_build_query(array_get($parameters, 'query')));
         if (200 == $response->getStatusCode() && in_array('application/json', $response->getHeader('content-type')))
         {
             return json_decode($response->getBody());

@@ -14,11 +14,6 @@ class Iterator
 {
 
     /**
-     * Default value for folder filter (Config::install.skip_folder)
-     */
-    const SKIP_FOLDER_LIST = [];
-
-    /**
      * Request retry limit
      */
     const RETRY_LIMIT = 10;
@@ -32,6 +27,31 @@ class Iterator
      * Default language(Config::install.language)
      */
     const LANGUAGE = 'en';
+
+    /**
+     * Folders skip / enable key
+     */
+    const LIST_TOP_FOLDERS = 'top';
+
+    /**
+     * Folders skip / enable key
+     */
+    const LIST_FOLDERS = 'folders';
+
+    /**
+     * Book titles skip / enable key
+     */
+    const LIST_TITLES = 'titles';
+
+    /**
+     * Book codes skip / enable key
+     */
+    const LIST_CODES = 'codes';
+
+    /**
+     * Suthors skip / enable key
+     */
+    const LIST_AUTHORS = 'authors';
 
     /**
      * @var Request Request object
@@ -51,6 +71,29 @@ class Iterator
     }
 
     /**
+     * Is item enabled solely?
+     *
+     * @access protected
+     * @return boolean
+     */
+    protected function isEnabled($name, $list)
+    {
+        $listArray = config('install.enable.' . $list, []);
+        return empty($listArray) || in_array($name, $listArray);
+    }
+
+    /**
+     * Is the item to be skipped?
+     *
+     * @access protected
+     * @return boolean
+     */
+    protected function isSkipped($name, $list)
+    {
+        return in_array($name, config('install.skip.' . $list, []));
+    }
+
+    /**
      * Requests and iterates through folders
      *
      * @access public
@@ -60,7 +103,7 @@ class Iterator
     {
         $language = config('install.language', self::LANGUAGE);
         foreach ($this->request->get("/content/languages/$language/folders/") as $topFolder) {
-            if (config('install.top_folder', 'EGW Writings') == $topFolder->name) {
+            if ($this->isEnabled($topFolder->name, self::LIST_TOP_FOLDERS)) {
                 yield from $this->writingsChildren($topFolder->children);
             }
         }
@@ -76,7 +119,11 @@ class Iterator
     protected function writingsChildren($children)
     {
         foreach ($children as $folder) {
-            if (!in_array($folder->name, config('install.skip_folder', self::SKIP_FOLDER_LIST))) {
+            if (
+                !$this->isSkipped($folder->name, self::LIST_FOLDERS)
+                &&
+                $this->isEnabled($folder->name, self::LIST_FOLDERS)
+            ) {
                 if (!empty($folder->children)) {
                     yield from $this->writingsChildren($folder->children);
                 } else {
@@ -141,7 +188,21 @@ class Iterator
     {
         $byFolder = null === $folder ? '' : "by_folder/$folder/";
         foreach ($this->iterate('/content/books/' . $byFolder) as $book) {
-            yield $book;
+            if (
+                !$this->isSkipped($book->code, self::LIST_CODES)
+                &&
+                $this->isEnabled($book->code, self::LIST_CODES)
+                &&
+                !$this->isSkipped($book->title, self::LIST_TITLES)
+                &&
+                $this->isEnabled($book->title, self::LIST_TITLES)
+                &&
+                !$this->isSkipped($book->author, self::LIST_AUTHORS)
+                &&
+                $this->isEnabled($book->author, self::LIST_AUTHORS)
+            ) {
+                yield $book;
+            }
         }
     }
 

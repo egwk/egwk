@@ -13,7 +13,7 @@ class Download extends Command
      *
      * @var string
      */
-    protected $signature = 'download:writings {--s|skipto=}';
+    protected $signature = 'download:writings {--s|skipto=} {--t|titleonly}';
 
     /**
      * The console command description.
@@ -40,6 +40,7 @@ class Download extends Command
     public function handle()
     {
         $skipto = $this->option('skipto');
+        $bookTitlesOnly = $this->option('titleonly');
 
         // Setting up EGWWritings API
         $apiConsumer = new Writings\APIConsumer();
@@ -59,6 +60,7 @@ class Download extends Command
         // Start download!
         $downloader = new Writings\Download($iterator, $store);
         null !== $skipto and $downloader->setSkipTo($skipto);
+        $downloader->setBookTitlesOnly($bookTitlesOnly);
         $downloader->writings();
     }
 

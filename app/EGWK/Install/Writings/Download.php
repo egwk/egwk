@@ -44,6 +44,11 @@ class Download
     protected $skipToParaID = null;
 
     /**
+     * @var boolean Book titles only
+     */
+    protected $bookTitlesOnly = false;
+
+    /**
      * Class constructor
      *
      * @access public
@@ -69,6 +74,14 @@ class Download
             $this->skipToParaID = $this->skipTo;
             $this->skipTo = preg_replace('/^([0-9]+)\.[0-9]+$/', '$1', $this->skipTo);
         }
+    }
+
+    /**
+     * Set this TRUE to get a list of books only.
+     */
+    public function setBookTitlesOnly($bookTitlesOnly = true)
+    {
+        $this->bookTitlesOnly = $bookTitlesOnly;
     }
 
     /**
@@ -108,6 +121,9 @@ class Download
     protected function toc(\stdClass $book)
     {
         $this->logProc([$book->code, $book->title], 1);
+        if ($this->bookTitlesOnly) {
+            return;
+        }
         foreach ($this->iterator->toc($book->book_id) as $tocEntry) {
             $this->chapter($tocEntry);
             if ($this->getOperationTermSignal()) {

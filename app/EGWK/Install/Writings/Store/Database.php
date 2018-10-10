@@ -79,6 +79,7 @@ class Database extends Store
     public function begin()
     {
         // $this->table->truncate();
+        // $this->tableSentences->truncate();
         \DB::beginTransaction();
     }
 
@@ -148,6 +149,8 @@ class Database extends Store
             if (!str_contains($message, 'Duplicate entry')) {
                 Log::error($message);
             }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
         }
     }
 
@@ -162,7 +165,22 @@ class Database extends Store
         $paragraphArray = (array)$paragraph;
         unset($paragraphArray['translations']);
         try {
-            $this->table->insert(array_merge($paragraphArray, ['stemmed_wordlist' => $words], array_combine(['parent_1', 'parent_2', 'parent_3', 'parent_4', 'parent_5', 'parent_6'], $parents)));
+            $this->table->insert(
+                array_merge
+                (
+                    $paragraphArray,
+                    [
+                        'stemmed_wordlist' => $words
+                    ],
+                    array_combine
+                    (
+                        [
+                            'parent_1', 'parent_2', 'parent_3', 'parent_4', 'parent_5', 'parent_6'
+                        ],
+                        $parents
+                    )
+                )
+            );
         } catch (\PDOException $e) {
             $message = $e->getMessage();
             if (!str_contains($message, 'Duplicate entry')) {
