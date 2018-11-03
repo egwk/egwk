@@ -262,14 +262,17 @@ abstract class Store
 
         $this->before();
 
-        $words = $this->words($paragraph);
-        $this->storeWords($paragraph, $words);
         $sentences = $this->sentences($paragraph);
         $sentenceWordLists = $this->sentenceWordLists($sentences);
+        $words = [];
         foreach ($sentences as $k => $sentence) {
             $sentenceWordList = array_get($sentenceWordLists, $k, "");
+            $words = array_merge($words, $sentenceWordList);
             $this->storeSentence($paragraph, $sentence, $sentenceWordList, $k + 1);
         }
+        // $words = $this->words($paragraph);
+        $words = array_unique($words);
+        $this->storeWords($paragraph, $words);
 
         $this->updateElementLevel($paragraph->element_type);
         $this->clearParents($this->parents, $this->getCurrentLevel());
