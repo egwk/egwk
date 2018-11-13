@@ -3,6 +3,7 @@
 use App\Facades\ChurchFields\HUC\Hymnal;
 use App\Facades\ChurchFields\HUC\SabbathSchool;
 use App\Facades\ZipJson;
+use Facades\App\EGWK\Synch;
 use Illuminate\Http\Request;
 
 
@@ -218,6 +219,20 @@ Route::group(['prefix' => 'hymn',], function () use ($perPage) {
 
     Route::get('/score/{type}/{slug}/{no}/{verse?}', function ($type, $slug, $no, $verse = null) {
         return Hymnal::score($type, $slug, $no, $verse);
+    });
+});
+
+//
+// Synch
+//
+Route::group(['prefix' => 'synch',], function () use ($perPage) {
+    Route::get('/{code}/{trcode}', function ($code, $trcode) use ($perPage) {
+        return Synch::synch($code, $trcode, $perPage);
+    });
+    Route::post('/{trcode}', function (Request $request, $translationCode)  use ($perPage){
+		$page = $request->get('page');
+        $translation = $request->post('translation');
+        return Synch::save($translationCode, $translation, $perPage, $page);
     });
 });
 
