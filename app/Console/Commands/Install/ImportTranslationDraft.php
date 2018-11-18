@@ -2,8 +2,11 @@
 
 namespace App\Console\Commands\Install;
 
+use Facades\ {
+    App\EGWK\Synch
+};
 use \Illuminate\Console\Command;
-use Facades\App\EGWK\Synch;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class ImportTranslationDraft extends Command
 {
@@ -33,6 +36,29 @@ class ImportTranslationDraft extends Command
     }
 
     /**
+     * Import translation text file from storage/app/synch
+     *
+     * @param $translationCode
+     * @param $translationFile
+     * @param bool $skipEmpty
+     * @throws \Throwable
+     */
+    public function import($translationCode, $translationFile, $skipEmpty = false)
+    {
+        Synch::cleanUp($translationCode);
+        $translation = Synch::getTranslation($translationFile, $skipEmpty);
+        $progress = new ProgressBar($this->output, count($translation));
+        $progress->start();
+        \DB::transaction(function () use ($progress, $translation, $translationCode) {
+            foreach (array_values($translation) as $k => $row) {
+                $progress->advance();
+                Synch::addTranslation($translationCode, $k + 1, $row);
+            }
+        });
+        $progress->finish();
+    }
+
+    /**
      * Execute the console command.
      *
      * @return mixed
@@ -41,7 +67,9 @@ class ImportTranslationDraft extends Command
     {
         $translationCode = $this->option('file');
         $skipEmpty = $this->option('skipempty');
-        Synch::import($translationCode, "$translationCode.txt", $skipEmpty);
+        $this->output->writeln($translationCode);
+        $this->import($translationCode, "$translationCode.txt", $skipEmpty);
+        $this->output->newLine();
     }
 
 }
