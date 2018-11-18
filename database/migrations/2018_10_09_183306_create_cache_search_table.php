@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3CacheSearchTable extends Migration
+class CreateCacheSearchTable extends Migration
 {
 
     /**
@@ -47,7 +47,7 @@ class CreateEgwk3CacheSearchTable extends Migration
      */
     public function down()
     {
-        Schema::drop('egwk3_cache_search');
+        Schema::drop('cache_search');
     }
 
 }

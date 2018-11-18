@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3TranslationTable extends Migration {
+class CreateTranslationWorkTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateEgwk3TranslationTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('translation', function(Blueprint $table)
+		Schema::create('translation_work', function(Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->string('para_id', 64)->index('para_id2');
@@ -25,7 +25,7 @@ class CreateEgwk3TranslationTable extends Migration {
 			$table->unique(['para_id','book_code','lang','publisher','year','no'], 'para_id');
 		});
 
-        DB::table('translation')->insert($this->getData());
+        DB::table('translation_work')->insert($this->getData());
 
 	}
 
@@ -37,7 +37,7 @@ class CreateEgwk3TranslationTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_translation');
+		Schema::drop('translation_work');
 	}
 
 	/**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3OriginalTable extends Migration {
+class CreateOriginalWorkTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateEgwk3OriginalTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('original', function(Blueprint $table)
+		Schema::create('original_work', function(Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->string('para_id', 64)->unique('para_id');
@@ -37,7 +37,7 @@ class CreateEgwk3OriginalTable extends Migration {
 			$table->text('stemmed_wordlist', 65535)->nullable();
 		});
 
-        DB::table('original')->insert($this->getData());
+        DB::table('original_work')->insert($this->getData());
 
 	}
 
@@ -49,7 +49,7 @@ class CreateEgwk3OriginalTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_original');
+		Schema::drop('original_work');
 	}
 
 	/**

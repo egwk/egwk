@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3ProjectorSlidesTable extends Migration {
+class CreateBibleVerseTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,17 @@ class CreateEgwk3ProjectorSlidesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('projector_slides', function(Blueprint $table)
+		Schema::create('bible_verse', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('channel_id');
-			$table->integer('sequence');
+			$table->boolean('translation_id')->default(0);
+			$table->boolean('book_id')->default(0);
+			$table->boolean('chapter')->default(0);
+			$table->boolean('verse')->default(0);
 			$table->text('content', 65535);
-			$table->timestamps();
+			$table->integer('id', true);
 		});
 
-        DB::table('projector_slides')->insert($this->getData());
+        DB::table('bible_verse')->insert($this->getData());
 
 	}
 
@@ -33,7 +34,7 @@ class CreateEgwk3ProjectorSlidesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_projector_slides');
+		Schema::drop('bible_verse');
 	}
 
 	/**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3ProjectorChannelsTable extends Migration {
+class CreatePublicationCollectionTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,14 @@ class CreateEgwk3ProjectorChannelsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('projector_channels', function(Blueprint $table)
+		Schema::create('publication_collection', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('name');
-			$table->string('service_id');
-			$table->integer('user_id');
-			$table->timestamps();
+			$table->integer('id', true);
+			$table->string('book_code', 64);
+			$table->string('collection_text_id', 128);
 		});
 
-        DB::table('projector_channels')->insert($this->getData());
+        DB::table('publication_collection')->insert($this->getData());
 
 	}
 
@@ -33,7 +31,7 @@ class CreateEgwk3ProjectorChannelsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_projector_channels');
+		Schema::drop('publication_collection');
 	}
 
 	/**

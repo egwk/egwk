@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3EditionTable extends Migration {
+class CreateEditionWorkTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateEgwk3EditionTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('edition', function(Blueprint $table)
+		Schema::create('edition_work', function(Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->string('book_code', 64);
@@ -40,7 +40,7 @@ class CreateEgwk3EditionTable extends Migration {
 			$table->unique(['tr_code','publisher_code','year'], 'tr_code');
 		});
 
-        DB::table('edition')->insert($this->getData());
+        DB::table('edition_work')->insert($this->getData());
 
 	}
 
@@ -52,7 +52,7 @@ class CreateEgwk3EditionTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_edition');
+		Schema::drop('edition_work');
 	}
 
 	/**

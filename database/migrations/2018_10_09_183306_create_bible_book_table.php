@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3BibleBookTable extends Migration {
+class CreateBibleBookTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -34,7 +34,7 @@ class CreateEgwk3BibleBookTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_bible_book');
+		Schema::drop('bible_book');
 	}
 
 	/**

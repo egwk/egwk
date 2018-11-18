@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3OriginalSentenceWorkTable extends Migration {
+class CreateOriginalSentenceWorkTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -34,7 +34,7 @@ class CreateEgwk3OriginalSentenceWorkTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_original_sentence_work');
+		Schema::drop('original_sentence_work');
 	}
 
 	/**

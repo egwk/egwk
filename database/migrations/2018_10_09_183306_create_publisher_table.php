@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3PublisherTable extends Migration {
+class CreatePublisherTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -33,7 +33,7 @@ class CreateEgwk3PublisherTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_publisher');
+		Schema::drop('publisher');
 	}
 
 	/**

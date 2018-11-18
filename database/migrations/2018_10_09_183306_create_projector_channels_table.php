@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3SimilarityParagraphTable extends Migration {
+class CreateProjectorChannelsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,16 @@ class CreateEgwk3SimilarityParagraphTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('similarity_paragraph', function(Blueprint $table)
+		Schema::create('projector_channels', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('para_id1', 64);
-			$table->float('w1');
-			$table->string('para_id2', 64);
-			$table->float('w2');
+			$table->string('name');
+			$table->string('service_id');
+			$table->integer('user_id');
+			$table->timestamps();
 		});
 
-        DB::table('similarity_paragraph')->insert($this->getData());
+        DB::table('projector_channels')->insert($this->getData());
 
 	}
 
@@ -33,7 +33,7 @@ class CreateEgwk3SimilarityParagraphTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_similarity_paragraph');
+		Schema::drop('projector_channels');
 	}
 
 	/**

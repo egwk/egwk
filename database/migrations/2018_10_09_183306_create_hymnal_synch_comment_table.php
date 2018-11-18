@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3TranslatorTable extends Migration {
+class CreateHymnalSynchCommentTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,15 @@ class CreateEgwk3TranslatorTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('translator', function(Blueprint $table)
+		Schema::create('hymnal_synch_comment', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('name');
-			$table->string('from_language_id', 8);
-			$table->string('to_language_id', 8);
-			$table->boolean('church_approved')->default(0);
+			$table->integer('hymnal_id');
+			$table->string('hymn_no', 8);
+			$table->text('comment', 65535)->nullable();
 		});
 
-        DB::table('translator')->insert($this->getData());
+        DB::table('hymnal_synch_comment')->insert($this->getData());
 
 	}
 
@@ -33,7 +32,7 @@ class CreateEgwk3TranslatorTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_translator');
+		Schema::drop('hymnal_synch_comment');
 	}
 
 	/**

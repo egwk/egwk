@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3CollectionTable extends Migration {
+class CreateCollectionTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -30,7 +30,7 @@ class CreateEgwk3CollectionTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_collection');
+		Schema::drop('collection');
 	}
 
 	/**

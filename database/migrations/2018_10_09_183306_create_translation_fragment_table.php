@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3TranslationFragmentTable extends Migration {
+class CreateTranslationFragmentTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -34,7 +34,7 @@ class CreateEgwk3TranslationFragmentTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_translation_fragment');
+		Schema::drop('translation_fragment');
 	}
 
 	/**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3HymnalVerseTable extends Migration {
+class CreateHymnalSynchTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,18 +12,18 @@ class CreateEgwk3HymnalVerseTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('hymnal_verse', function(Blueprint $table)
+		Schema::create('hymnal_synch', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('hymnal_id');
-			$table->string('hymn_no', 8);
-			$table->string('verse_no', 12);
-			$table->text('content', 65535)->nullable();
-			$table->text('lily_hyphenated', 65535)->nullable();
+			$table->integer('hymnal1_id');
+			$table->string('hymn1_no', 8);
+			$table->integer('hymnal2_id');
+			$table->string('hymn2_no', 8);
+			$table->string('type', 32)->nullable()->default('tune');
 			$table->text('note', 65535)->nullable();
 		});
 
-        DB::table('hymnal_verse')->insert($this->getData());
+        DB::table('hymnal_synch')->insert($this->getData());
 
 	}
 
@@ -35,7 +35,7 @@ class CreateEgwk3HymnalVerseTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_hymnal_verse');
+		Schema::drop('hymnal_synch');
 	}
 
 	/**

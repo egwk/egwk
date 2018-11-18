@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3BibleTranslationTable extends Migration {
+class CreateBibleTranslationTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -40,7 +40,7 @@ class CreateEgwk3BibleTranslationTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_bible_translation');
+		Schema::drop('bible_translation');
 	}
 
 	/**

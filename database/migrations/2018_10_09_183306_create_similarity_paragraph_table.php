@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEgwk3PublicationCollectionTable extends Migration {
+class CreateSimilarityParagraphTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,16 @@ class CreateEgwk3PublicationCollectionTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('publication_collection', function(Blueprint $table)
+		Schema::create('similarity_paragraph', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->string('book_code', 64);
-			$table->string('collection_text_id', 128);
+			$table->increments('id');
+			$table->string('para_id1', 64);
+			$table->float('w1');
+			$table->string('para_id2', 64);
+			$table->float('w2');
 		});
 
-        DB::table('publication_collection')->insert($this->getData());
+        DB::table('similarity_paragraph')->insert($this->getData());
 
 	}
 
@@ -31,7 +33,7 @@ class CreateEgwk3PublicationCollectionTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('egwk3_publication_collection');
+		Schema::drop('similarity_paragraph');
 	}
 
 	/**
