@@ -3,6 +3,10 @@
 use App\Facades\ChurchFields\HUC\Hymnal;
 use App\Facades\ChurchFields\HUC\SabbathSchool;
 use App\Facades\ZipJson;
+use Facades\
+{
+    App\EGWK\Hymnal\Lily
+};
 use Illuminate\Http\Request;
 
 
@@ -186,23 +190,30 @@ Route::group(['prefix' => 'hymnals',], function () use ($perPage) {
             ->distinct()->pluck('lang');
     });
 
-    Route::get('/{lang?}', function ($lang = null) use ($perPage) {
+    Route::get('/{lang?}', function ($lang = null) {
         $table = DB::table('api_hymnal_book');
         if (null !== $lang) {
             $table
                 ->where('lang', $lang);
         }
         return $table
-            ->paginate($perPage);
+            ->get();
     });
 });
 
-Route::get('/hymnal/{slug}', function ($slug) use ($perPage) {
-    return DB::table('api_hymnal_song')
-        ->where('slug', $slug)
-//                ->get()
-//                ->keyBy('hymn_no')
-        ->paginate($perPage);
+Route::group(['prefix' => 'hymnal',], function () use ($perPage) {
+    Route::get('/{slug}', function ($slug) use ($perPage) {
+        return DB::table('api_hymnal_song')
+            ->where('slug', $slug)
+            ->paginate($perPage);
+    });
+
+    Route::get('/{slug}/{no}', function ($slug, $no) use ($perPage) {
+        return DB::table('api_hymnal_song')
+            ->where('slug', $slug)
+            ->where('hymn_no', $no)
+            ->get();
+    });
 });
 
 Route::group(['prefix' => 'hymn',], function () use ($perPage) {
@@ -210,14 +221,14 @@ Route::group(['prefix' => 'hymn',], function () use ($perPage) {
         return Hymnal::verse($slug, $no, $verse);
     });
 
-
     Route::get('/translate/{lang}/{slug}/{no}/{verse?}', function ($lang, $slug, $no, $verse = null) {
         return Hymnal::translate($lang, $slug, $no, $verse);
     });
 
-
     Route::get('/score/{type}/{slug}/{no}/{verse?}', function ($type, $slug, $no, $verse = null) {
-        return Hymnal::score($type, $slug, $no, $verse);
+        return Response::stream(function () use ($type, $slug, $no, $verse) {
+            echo Lily::getImage($type, $slug, $no, $verse);
+        }, 200, ['content-type' => 'image/png']);
     });
 });
 
