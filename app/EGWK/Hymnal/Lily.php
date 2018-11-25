@@ -1,18 +1,43 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: peter_erdodi
- * Date: 18/11/2018
- * Time: 18:57
- */
 
 namespace App\EGWK\Hymnal;
 
 use GuzzleHttp\Client;
-use function GuzzleHttp\Psr7\str;
+
 
 class Lily
 {
+    /**
+     * @var array English language numbers used for verse names
+     */
+    protected $englishNumbers = [
+        0 => 'zero',
+        1 => 'one',
+        2 => 'two',
+        3 => 'three',
+        4 => 'four',
+        5 => 'five',
+        6 => 'six',
+        7 => 'seven',
+        8 => 'eight',
+        9 => 'nine',
+        10 => 'ten',
+        11 => 'eleven',
+        12 => 'twelve',
+        13 => 'thirteen',
+        14 => 'fourteen',
+        15 => 'fifteen',
+        16 => 'sixteen',
+        17 => 'seventeen',
+        18 => 'eighteen',
+        19 => 'nineteen',
+        20 => 'twenty',
+    ];
+
+    /**
+     * @var Lily\Config Lily configuration
+     */
+    protected $config = null;
 
     /**
      * @var mixed|string Server address
@@ -32,11 +57,35 @@ class Lily
     /**
      * Lily constructor.
      */
-    public function __construct()
+    public function setup(Lily\Config $config)
     {
-        $this->server = env('LILY_HOST', 'lily');
-        $this->port = env('LILY_PORT', '8008');
-        $this->url = $this->server . ':' . $this->port . '/lilyserver.php';
+        $this->config = $config;
+    }
+
+    /**
+     * Copy value by key
+     * Helper function
+     *
+     * @param array $source
+     * @param array $target
+     * @param string $key
+     * @param null $default
+     */
+    protected function copyByKey(array $source, array &$target, string $key, $default = null)
+    {
+        $target[$key] = array_get($source, $key, $default);
+    }
+
+    /**
+     * Convert number to English word
+     * Helper function
+     *
+     * @param string $number
+     * @return string
+     */
+    protected function englishNumber(string $number): string
+    {
+        return ucfirst(array_get($this->englishNumbers, $number, $number));
     }
 
     /**
@@ -45,15 +94,80 @@ class Lily
      * @param string $type
      * @return string
      */
-    protected function getTemplate(string $type): string
+    protected function getTemplate(): string
     {
-
-        $path = storage_path('app/score/' . strtoupper($type) . '.template.ly');
+        $path = storage_path("data/hymnal/{$this->config->type}.template.ly");
         if (file_exists($path)) {
             return file_get_contents($path);
         }
         return '';
     }
+
+    /**
+     * Compile verse link tag
+     *
+     * @param string $number
+     * @return string
+     */
+    protected function compileVerseLink(string $number): string
+    {
+        $englishNumber = $this->englishNumber($number);
+        return
+        starts_with($this->config->type, '4') ?
+            "\\addlyrics { \\verse$englishNumber }"
+            :
+            "\\new Lyrics \\lyricsto \"soprano\" \\verse$englishNumber";
+    }
+
+    /**
+     * Compile hyphenated verse to lyric tag
+     *
+     * @param string $number
+     * @param string $text
+     * @return string
+     */
+    protected function compileVerse(string $number, string $text): string
+    {
+        $englishNumber = $this->englishNumber($number);
+        return "verse$englishNumber = \\lyricmode {\n" .
+            "  \\set stanza = \"$number.\"\n" .
+            "$text\n" .
+            "}\n";
+    }
+
+    /**
+     * Adds verses to the score, if type requires
+     *
+     * @param array $data
+     */
+    protected function addVerses(array &$data): void
+    {
+        if (strtolower($this->config->verses) !== 'none') {
+            $data['verses'] = '';
+            $data['verseLinks'] = '';
+            $query = \DB::table('api_hymnal_verse')
+                ->select()
+                ->where('slug', $this->config->slug)
+                ->where('hymn_no', $this->config->no);
+            if (str_contains(strtolower($this->config->verses), 'all')) {
+                $query->orderBy('verse_no');
+            } elseif (str_contains($this->config->verses, ',')) {
+                $verses = array_filter(explode(',', $this->config->verses),
+                    function ($item) {
+                        return is_numeric($item);
+                    });
+                $query->whereIn('verse_no', $verses);
+            } else { // (null == $this->config->verses || is_numeric($this->config->verses))
+                $this->config->verses = null == $this->config->verses ? 1 : $this->config->verses;
+                $query->where('verse_no', $this->config->verses);
+            }
+            foreach ($query->get() as $verse) {
+                $data['verses'] .= $this->compileVerse($verse->verse_no, $verse->lily_hyphenated);
+                $data['verseLinks'] .= $this->compileVerseLink($verse->verse_no);
+            }
+        }
+    }
+
 
     /**
      * Convert template from score
@@ -64,35 +178,28 @@ class Lily
      */
     protected function templateToScore(array $data, string $template): string
     {
+
         $compiled = str_replace([
             '$title',
-            '$poet',
-            '$composer',
-            '$arranger',
-            '$tagline',
             '$key',
-            '$time',
-            '$partial',
-            '$soprano',
-            '$alto',
-            '$tenor',
-            '$bass',
             '$pianoReduction',
+            '$minifySoprano',
+            '$header',
         ], [
             array_get($data, 'hymn_no', 0) . '. ' . array_get($data, 'title', ''),
-            array_get($data, 'poet', ''),
-            array_get($data, 'composer', ''),
-            array_get($data, 'arranger', ''),
-            array_get($data, 'tagline', ''),
             array_get($data, 'key', 'c \\major'),
-            array_get($data, 'time', ''),
-            array_get($data, 'partial', ''),
-            array_get($data, 'soprano', ''),
-            array_get($data, 'alto', ''),
-            array_get($data, 'tenor', ''),
-            array_get($data, 'bass', ''),
-            array_get($data, 'pianoReduction', false) ? '' : '%',
+            $this->config->pianoReduction ? '' : '%',
+            $this->config->minifySoprano ? '' : '%',
+            $this->config->header ? '' : '%',
         ], $template);
+        foreach (['poet', 'composer', 'arranger', 'tagline', 'key', 'time',
+                     'partial', 'soprano', 'alto', 'tenor', 'bass', 'pianoReduction',
+                     'verses', 'verseLinks', 'header']
+                 as $key) {
+            $compiled = str_replace('$' . $key,
+                array_get($data, $key, ''), // all empty by default
+                $compiled);
+        }
         return $compiled;
     }
 
@@ -105,26 +212,31 @@ class Lily
      * @param string|null $verse
      * @return string
      */
-    protected function compile(string $type, string $slug, string $no, string $verse = null): string
+    protected function compile(): string
     {
-        $template = $this->getTemplate($type);
+        $template = $this->getTemplate($this->config->type);
         $result = \DB::table('api_hymnal_song')
             ->select()
-            ->where('slug', $slug)
-            ->where('hymn_no', $no)
+            ->where('slug', $this->config->slug)
+            ->where('hymn_no', $this->config->no)
             ->get()
             ->toArray();
         $data = (array)array_shift($result);
         $lilyScore = json_decode(array_get($data, 'lily_score', ''), true);
         unset($data['lily_score']);
-        $data['soprano'] = array_get($lilyScore, 'soprano', '');
-        $data['alto'] = array_get($lilyScore, 'alto', '');
-        $data['tenor'] = array_get($lilyScore, 'tenor', '');
-        $data['bass'] = array_get($lilyScore, 'bass', '');
+
+        foreach (['key', 'time', 'partial',
+                     'soprano', 'alto', 'tenor', 'bass',]
+                 as $key) {
+            $this->copyByKey($lilyScore, $data, $key, '');
+        }
 
         if (empty($data['soprano'])) {
             return '';
         }
+
+        $this->addVerses($data);
+
         return $this->templateToScore($data, $template);
     }
 
@@ -135,7 +247,7 @@ class Lily
      */
     protected function fallbackImage(): string
     {
-        return file_get_contents(storage_path('app/score/score_fallback.png'));
+        return file_get_contents(storage_path('data/hymnal/score_fallback.png'));
     }
 
     /**
@@ -148,7 +260,7 @@ class Lily
     {
         $client = new Client();
         try {
-            $response = $client->post($this->url, [
+            $response = $client->post($this->config->url, [
                 'form_params' => [
                     'png' => 'true',
                     'autotrim' => 'true',
@@ -164,26 +276,45 @@ class Lily
     }
 
     /**
-     * Get (cached) image
+     * Get cache key
      *
-     * @param string $type
-     * @param string $slug
-     * @param string $no
-     * @param string|null $verse
      * @return string
      */
-    public function getImage(string $type, string $slug, string $no, string $verse = null): string
+    protected function getKey(): string
     {
-        $key = "hymnal.$type.$slug.$no.$verse";
-//        \Cache::forget($key);
-        $image = \Cache::get($key, null);
+        return "hymnal.{$this->config->type}.{$this->config->slug}.{$this->config->no}.{$this->config->verses}";
+    }
+
+    public function contentType(): string
+    {
+        switch (strtolower($this->config->format)) {
+            case 'png':
+                return 'image/png';
+        }
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function get(): string
+    {
+        $image = null;
+        if ($this->config->cache) {
+//            \Cache::flush(); // for testing only
+//            \Cache::forget($this->getKey()); // for testing only
+            $image = \Cache::get($this->getKey(), null);
+        }
         if (null == $image) {
-            $lilyCode = $this->compile($type, $slug, $no, $verse);
+            $lilyCode = $this->compile();
             if (empty($lilyCode)) {
                 return $this->fallbackImage();
             }
             $image = $this->downloadImage($lilyCode);
-            \Cache::forever($key, $image);
+            if ($this->config->cache) {
+                \Cache::forever($this->getKey(), $image);
+            }
         }
         return $image;
     }

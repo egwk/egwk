@@ -185,51 +185,19 @@ Route::prefix('sabbathschool')
 // Hymnal
 //
 Route::group(['prefix' => 'hymnals',], function () use ($perPage) {
-    Route::get('/languages', function () use ($perPage) {
-        return DB::table('hymnal_book')
-            ->distinct()->pluck('lang');
-    });
-
-    Route::get('/{lang?}', function ($lang = null) {
-        $table = DB::table('api_hymnal_book');
-        if (null !== $lang) {
-            $table
-                ->where('lang', $lang);
-        }
-        return $table
-            ->get();
-    });
+    Route::get('/languages', 'HymnalController@languages');
+    Route::get('/{lang?}', 'HymnalController@hymnals');
 });
 
 Route::group(['prefix' => 'hymnal',], function () use ($perPage) {
-    Route::get('/{slug}', function ($slug) use ($perPage) {
-        return DB::table('api_hymnal_song')
-            ->where('slug', $slug)
-            ->paginate($perPage);
-    });
-
-    Route::get('/{slug}/{no}', function ($slug, $no) use ($perPage) {
-        return DB::table('api_hymnal_song')
-            ->where('slug', $slug)
-            ->where('hymn_no', $no)
-            ->get();
-    });
+    Route::get('/{slug}', 'HymnalController@hymnalToc')->defaults('limit', $perPage);
+    Route::get('/{slug}/{no}', 'HymnalController@hymnalEntry');
 });
 
 Route::group(['prefix' => 'hymn',], function () use ($perPage) {
-    Route::get('/{slug}/{no}/{verse?}', function ($slug, $no, $verse = null) {
-        return Hymnal::verse($slug, $no, $verse);
-    });
-
-    Route::get('/translate/{lang}/{slug}/{no}/{verse?}', function ($lang, $slug, $no, $verse = null) {
-        return Hymnal::translate($lang, $slug, $no, $verse);
-    });
-
-    Route::get('/score/{type}/{slug}/{no}/{verse?}', function ($type, $slug, $no, $verse = null) {
-        return Response::stream(function () use ($type, $slug, $no, $verse) {
-            echo Lily::getImage($type, $slug, $no, $verse);
-        }, 200, ['content-type' => 'image/png']);
-    });
+    Route::get('/{slug}/{no}/{verse?}', 'HymnalController@hymnVerses');
+    Route::get('/translate/{lang}/{slug}/{no}/{verses?}', 'HymnalController@translate');
+    Route::get('/score/{slug}/{no}/{verses?}', 'HymnalController@score');
 });
 
 //

@@ -7,15 +7,16 @@ use Illuminate\Support\Facades\DB;
 class Hymnal
 {
 
-    /**
-     * Get hymnals table
-     *
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function hymnals(): \Illuminate\Database\Query\Builder
+    protected function whereValueOrList(&$query, $field, $value)
     {
-        $hymnals = DB::table('hymnal_book');
-        return $hymnals;
+        if (str_contains($value, ',')) {
+            $values = explode(',', $value);
+            $query->whereIn($field, $values);
+        } elseif (strtolower($value) !== 'all') {
+            $query->where($field, $value);
+        } else {
+            // 'all' => do nothing
+        }
     }
 
     /**
@@ -24,36 +25,39 @@ class Hymnal
      * @param string $lang
      * @param string $slug
      * @param string $no
-     * @param string|null $verse
+     * @param string|null $verses
      * @return array
      */
-    public function translate(string $lang, string $slug, string $no, string $verse = null): array
+    public function translate(string $lang, string $slug, string $no, string $verses = null): array
     {
         $table = DB::table('api_hymnal_synch')
             ->where('source_slug', $slug)
             ->where('source_hymn_no', $no)
             ->select(['slug', 'hymn_no', 'lang', 'title', 'hymn_uri']);
-        if ('all' !== $lang) {
-            $table->where('lang', $lang);
-        }
+        $this->whereValueOrList($table, 'lang', $lang);
         $data = $table
             ->get()
             ->toArray();
         foreach ($data as $key => $record) {
-            $data[$key]->verses = $this->verse($record->slug, $record->hymn_no, $verse);
+            $data[$key]->verses = $this->hymnVerses($record->slug, $record->hymn_no, $verses);
         }
-        return $data;
+        return [
+            'original' => [
+                'verses' => $this->hymnVerses($slug, $no, $verses),
+            ],
+            'translations' => $data
+        ];
     }
 
     /**
-     * Get verse
+     * Get hymn verses
      *
      * @param string $slug
      * @param string $no
      * @param string|null $verse
-     * @return object
+     * @return object|array
      */
-    public function verse(string $slug, string $no, string $verse = null): object
+    public function hymnVerses(string $slug, string $no, string $verse = null)
     {
         $table = DB::table('api_hymnal_verse')
             ->select(['verse_no', 'content', 'lily_hyphenated', 'note', 'verse_uri'])
