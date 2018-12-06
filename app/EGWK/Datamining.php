@@ -9,14 +9,14 @@
 namespace App\EGWK;
 
 
+use App\EGWK\Datamining\StorageDriver;
 use Foolz\SphinxQL\Drivers\Pdo\Connection;
 use App\EGWK\Tools\Bench;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 abstract class Datamining
 {
-
-    const OUTPUT_PATH = 'datamine/csv/';
 
     /**
      * Table name.
@@ -49,16 +49,6 @@ abstract class Datamining
     /**
      * @var string
      */
-    protected $filePath = '';
-
-    /**
-     * @var string
-     */
-    protected $exceptionFilePath = '';
-
-    /**
-     * @var string
-     */
     protected $glue = ',';
 
     /**
@@ -67,28 +57,17 @@ abstract class Datamining
      *
      * @var string
      */
-    protected $ranker = "expr('sum(hit_count)*10000/query_word_count')";
+    protected $ranker = '';
 
-   public function __construct()
-   {
-       $this->index = env('SCOUT_PREFIX', '') . $this->index;
-   }
+    /**
+     * @var StorageDriver
+     */
+    protected $storage = null;
 
-    protected function saveToFile($data, $filePath = null)
+    public function __construct(StorageDriver $storage)
     {
-        $filePath = $filePath ?: $this->filePath;
-        if (!empty(trim($data))) {
-            file_put_contents(Storage::path($filePath), $data, FILE_APPEND);
-            // Storage::append($filePath, $data); // Note: Storage::append resets the file in vain
-        }
-    }
-
-    protected function prepareFiles($outputFileName)
-    {
-        $this->filePath = self::OUTPUT_PATH . $outputFileName;
-        $this->exceptionFilePath = self::OUTPUT_PATH . str_replace('.csv', '.exceptions.csv', $outputFileName);
-        Storage::makeDirectory(self::OUTPUT_PATH);
-        Storage::delete([$this->filePath, $this->exceptionFilePath]);
+        $this->storage = $storage;
+        $this->index = env('SCOUT_PREFIX', '') . $this->index;
     }
 
     protected function connect()
@@ -132,7 +111,7 @@ abstract class Datamining
         foreach ($items as $item) {
             Bench::step(true);
             if ($this->specCondition($item)) {
-                $this->saveToFile($this->toString($item), $this->exceptionFilePath);
+                $this->storage->storeException($this->toString($item));
                 continue;
             }
             if ($this->skipCondition($item)) {
@@ -153,14 +132,16 @@ abstract class Datamining
      *
      * @return void
      */
-    public function mine($start, $limit, $offset, $outputFileName)
+    public function mine($start, $limit, $offset)
     {
         Bench::start(true);
-        $this->prepareFiles($outputFileName);
+        $this->storage->init();
 
         foreach ($this->loop($start, $limit, $offset) as $data) {
-            $this->saveToFile($data);
+            $this->storage->store($data);
         }
+
+        $this->storage->done();
         Bench::stop(true);
     }
 

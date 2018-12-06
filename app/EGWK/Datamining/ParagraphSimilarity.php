@@ -15,10 +15,16 @@ use App\EGWK\Tools\Bench;
 
 class ParagraphSimilarity extends Datamining
 {
+    /**
+     * @inheritdoc
+     */
+    protected $ranker = "expr('sum(hit_count)*10000/query_word_count')";
+
     protected function query($start = 0, $limit = 0, $offset = 0)
     {
         $paragraphsQuery = DB::table($this->table)
             ->select('id', 'para_id', 'stemmed_wordlist');
+        $paragraphsQuery->whereIn('year', ['1958', '1892'])->whereIn('refcode_1', ['FLB', 'RH']); // todo: for testing
         if (0 != $start) {
             if ($this->isParaId($start)) {
                 $startParagraph = $this->getParagraph($start);
@@ -48,7 +54,7 @@ class ParagraphSimilarity extends Datamining
     {
         $stemmedWordlist = '"' . $paragraph->stemmed_wordlist . '"/' . $this->quorumPercentage;
         $queryResult = SphinxQL::create($connection)
-            ->select('id', 'para_id AS para_id1', 'stemmed_wordlist', SphinxQL::expr('WEIGHT()/100 AS w1'))
+            ->select('id', 'para_id', 'stemmed_wordlist', SphinxQL::expr('WEIGHT()/100 AS w'))
             ->from($this->index)
             ->option('ranker', SphinxQL::expr($this->ranker))
             ->match('search_subject', SphinxQL::expr($stemmedWordlist))
@@ -81,27 +87,30 @@ class ParagraphSimilarity extends Datamining
     protected function processResult($results, $paragraph)
     {
         $return = collect([]);
-        foreach ($results->fetchAllAssoc() as $result) {
-            $resultObject = (object)$result;
-            if ($this->skipCondition($resultObject)) {
+        foreach ($results->fetchAllAssoc() as $resultArray) {
+            $result = (object)$resultArray;
+            if ($this->skipCondition($result)) {
                 continue;
             }
-            $weight2 = $this->weightBackward($paragraph->stemmed_wordlist, $resultObject->stemmed_wordlist);
-            if ($paragraph->id > $resultObject->id && $weight2 >= $this->quorumPercentage * 100) {
+            if ($result->w < $this->quorumPercentage * 100) {
                 continue;
             }
-            $result = collect($result);
-//	    $processed = collect(['para_id1' => $paragraph->para_id, 'content1' => $paragraph->stemmed_wordlist, 'w2' => $weight2])
-//		    ->merge($result->except(['id']));
-            $processed = collect(['para_id2' => $paragraph->para_id, 'w2' => sprintf("%.2f", $weight2),])//'id1' => $paragraph->id,
-            ->merge($result->except(['id', 'stemmed_wordlist']))
-                ->toArray();
-            $processed['w1'] = sprintf("%.2f", $processed['w1']);
-            $return->push(collect($processed)->implode(','));
+            $w2 = $this->weightBackward($paragraph->stemmed_wordlist, $result->stemmed_wordlist);
+            $return->push(collect([
+                'para_id1' => $result->para_id,
+                'para_id2' => $paragraph->para_id,
+                'w1' => sprintf("%.2f", $result->w),
+                'w2' => sprintf("%.2f", $w2),
+            ]));
+//            if ($w2 < $this->quorumPercentage * 100) {
+                $return->push(collect([
+                    'para_id1' => $paragraph->para_id,
+                    'para_id2' => $result->para_id,
+                    'w1' => sprintf("%.2f", $w2),
+                    'w2' => sprintf("%.2f", $result->w),
+                ]));
+//            }
         }
-        return $return->implode("\n");
+        return $return;
     }
-
-
-
 }

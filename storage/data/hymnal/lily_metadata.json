@@ -1,0 +1,3942 @@
+{
+    "0": {
+        "hymn_no": 1,
+        "title": "Felséges Úr Isten",
+        "poet": "ISMERETLEN SZERZŐ (1757)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "GIARDINI, Felice de (1716-1796)"
+    },
+    "1": {
+        "hymn_no": 2,
+        "title": "Az Úré minden tisztelet",
+        "poet": "DECIUS, Nikolaus (1485-1546)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "DECIUS, Nikolaus (1485-1546)"
+    },
+    "2": {
+        "hymn_no": 3,
+        "title": "Adj, Úr Isten, nékünk Szentlelket",
+        "poet": "BÁRTFA (1593)",
+        "arranger": "P.Á.",
+        "key": "es \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "3": {
+        "hymn_no": 4,
+        "title": "Dicséret a Szentháromságnak",
+        "poet": "RÁDAY Pál (1677-1733)",
+        "arranger": "Cs.T.K.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "4": {
+        "hymn_no": 5,
+        "title": "Téged, Isten, dicsérünk",
+        "poet": "FRANZ, Ignaz (1719-1790); NICETAS (335-414)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "BÉCS (1774)"
+    },
+    "5": {
+        "hymn_no": 6,
+        "title": "Vezess minket, égi Atyánk",
+        "poet": "EDMESTON, James (1791-1867)",
+        "arranger": "M.R.",
+        "key": "d \\mixolydian",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ISMERETLEN SZERZŐ (1782)"
+    },
+    "6": {
+        "hymn_no": 7,
+        "title": "Téged, Isten, dicsérünk",
+        "poet": "BAKER, Hénry (1821-1877)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WILKES, John B. (1861)"
+    },
+    "7": {
+        "hymn_no": 8,
+        "title": "Dicsérjed Istened, lelkem, szívem!",
+        "poet": "HERRNSCHMIDT, Johann Daniel (1675-1723)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "ANSBACH (1665)"
+    },
+    "8": {
+        "hymn_no": 9,
+        "title": "Az egek beszélik",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "G.Z.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "9": {
+        "hymn_no": 10,
+        "title": "Szent vagy, szent vagy, szent vagy",
+        "poet": "HEBER, Reginald (1783-1826)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "DYKES, John B. (1823-1876)"
+    },
+    "10": {
+        "hymn_no": 11,
+        "title": "Azért, hogy oly szép a föld",
+        "poet": "PIERPOINT, Folliott S. (1864)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ISMERETLEN SZERZŐ (1838)"
+    },
+    "11": {
+        "hymn_no": 12,
+        "title": "Drága dolog az Úr Istent dicsérni,",
+        "poet": "SKARICZA Máté (1544-1591)",
+        "arranger": "Gy.B.",
+        "key": "c \\mixolydian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1778)"
+    },
+    "12": {
+        "hymn_no": 13,
+        "title": "Úrnak szolgái mindnyájan",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "P.Á.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "13": {
+        "hymn_no": 14,
+        "title": "Dicsérjétek az Urat!",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "P.Á.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GENF (1562)"
+    },
+    "14": {
+        "hymn_no": 15,
+        "title": "A jóság Urát áldom én",
+        "poet": "SCHÜTZ, Johann Jakob (1640-1690)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "SOHREN, Peter (1630-1692)"
+    },
+    "15": {
+        "hymn_no": 16,
+        "title": "Dicsérjük Istent, a jóság Istenét",
+        "poet": "APELLES von Löwenstern, Matthäus (1594-1648)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 6\/4",
+        "partial": "",
+        "composer": "APELLES von Löwenstem, Matthäus (1594-1648)"
+    },
+    "16": {
+        "hymn_no": 17,
+        "title": "Ím áldunk, nagy Úr",
+        "poet": "MACKAY, William Paton (1886)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "HUSBAND, J. J. (1760-1885)"
+    },
+    "17": {
+        "hymn_no": 18,
+        "title": "Áldja Isten szentségét mind",
+        "poet": "LYTE, Henry F. (1793-1847)",
+        "arranger": "M.R.",
+        "key": "a \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "GILBERT, Walter Bond (1822-1905)"
+    },
+    "18": {
+        "hymn_no": 19,
+        "title": "Úr Isten, néked zeng az ének",
+        "poet": "CRASSELIUS, Bartholomäus (1677-1724)",
+        "arranger": "Gy.B.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HAMBURG (1690)"
+    },
+    "19": {
+        "hymn_no": 20,
+        "title": "Imádjuk Őt",
+        "poet": "MONSELL, John S. B. (1811-1875)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "BARNES, Edwin (1886)"
+    },
+    "20": {
+        "hymn_no": 21,
+        "title": "Miért ne zengném én az Istent",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "c \\minor",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "SCHOP, Johann (1600 előtt-1665)"
+    },
+    "21": {
+        "hymn_no": 22,
+        "title": "Ó! mely boldog ember az",
+        "poet": "LENGYEL József (1770-1822)",
+        "arranger": "Cs.T.K.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BATTHYÁNY-KÓDEX (1550 körül); DEBRECEN (1774)"
+    },
+    "22": {
+        "hymn_no": 23,
+        "title": "Az Úr Sionban trónol",
+        "poet": "CROSBY, Fanny Jane (1823-1915)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "DANKS, H. P. (1886)"
+    },
+    "23": {
+        "hymn_no": 24,
+        "title": "Mondjatok dicséretet",
+        "poet": "BÁRTFA (1593)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "24": {
+        "hymn_no": 25,
+        "title": "Az Isten fényes trónjánál",
+        "poet": "WATTS, Isaac (1674-1748)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HATTON, John (mh. 1793)"
+    },
+    "25": {
+        "hymn_no": 26,
+        "title": "Úr Isten, mily nagy szent neved",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "MILLER, Harold A."
+    },
+    "26": {
+        "hymn_no": 27,
+        "title": "Ó! bárcsak ezer ajkam volna",
+        "poet": "MENTZER, Johann (1658-1734)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "KÖNIG, Johann (1691-1758)"
+    },
+    "27": {
+        "hymn_no": 28,
+        "title": "Jöjj, mondjunk hálaszót",
+        "poet": "RINCKART, Martin (1586-1649)",
+        "arranger": "G.Z.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "CRÜGER, Johann (1598-1662)"
+    },
+    "28": {
+        "hymn_no": 29,
+        "title": "Ha áldott kezed műveit",
+        "poet": "GELLERT, Christian Fürchtegott (1715-1769)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "SOHREN, Peter (1630-1692)"
+    },
+    "29": {
+        "hymn_no": 30,
+        "title": "Itt van Isten köztünk",
+        "poet": "TERSTEEGEN, Gerhard (1697-1769)",
+        "arranger": "G.Z.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "NEANDER, Joachim (1650-1680)"
+    },
+    "30": {
+        "hymn_no": 31,
+        "title": "Dicsér Téged teljes szívem",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Cs.T.K.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "31": {
+        "hymn_no": 32,
+        "title": "Egek nagy Királya",
+        "poet": "NEANDER, Joachim (1650-1680)",
+        "arranger": "G.Z.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "NEANDER, Joachim (1650-1680)"
+    },
+    "32": {
+        "hymn_no": 33,
+        "title": "Áldjad én lelkem, a dicsőség erős királyát",
+        "poet": "NEANDER, Joachim (1650-1680)",
+        "arranger": "",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "STRALSUND (1665)"
+    },
+    "33": {
+        "hymn_no": 34,
+        "title": "Ó! felséges Úr, mi kegyes Istenünk",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "34": {
+        "hymn_no": 35,
+        "title": "Én Uram, Teremtőm, a Tied vagyok én",
+        "poet": "STEELE, Anne (1716-1778)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "ISMERETLEN SZERZŐ (évszám nélkül)"
+    },
+    "35": {
+        "hymn_no": 36,
+        "title": "Ó! áldjuk most Őt, az égi Királyt",
+        "poet": "GRANT Róbert (1779-1838)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "CROFT, William (1678-1727)"
+    },
+    "36": {
+        "hymn_no": 37,
+        "title": "Adjatok hálákat az Úrnak",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Cs.T.K.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "37": {
+        "hymn_no": 38,
+        "title": "Ó! Ábrahám Ura",
+        "poet": "OLIVERS, Thomas (1725-1799)",
+        "arranger": "Gy.B.",
+        "key": "e \\minor",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "LEONI, Michael (mh. 1797)"
+    },
+    "38": {
+        "hymn_no": 39,
+        "title": "Perelj, Uram, perlőimmel",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Cs.T.K.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "39": {
+        "hymn_no": 40,
+        "title": "Én életemnek Istene",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "40": {
+        "hymn_no": 41,
+        "title": "Irgalmazz, Úr Isten",
+        "poet": "ISTVÁN deák (1566 előtt)",
+        "arranger": "P.Á.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1778)"
+    },
+    "41": {
+        "hymn_no": 42,
+        "title": "Szívemet hozzád emelem",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "G.Z.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "42": {
+        "hymn_no": 43,
+        "title": "Mindenkoron áldom az én Uramat",
+        "poet": "SZTÁRAI Mihály (mh. 1575)",
+        "arranger": "P.Á.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1778)"
+    },
+    "43": {
+        "hymn_no": 44,
+        "title": "Mely igen jó az Úr Istent dicsérni",
+        "poet": "SZTÁRAI Mihály (mh. 1575)",
+        "arranger": "G.Z.",
+        "key": "g \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1778)"
+    },
+    "44": {
+        "hymn_no": 45,
+        "title": "Csak Téged dicsér mindenkor az ajkam",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "CRÜGER, Johann (1598-1662)"
+    },
+    "45": {
+        "hymn_no": 46,
+        "title": "Tebenned bíztunk eleitől fogva",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "P.Á.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "46": {
+        "hymn_no": 47,
+        "title": "Én lelkem áldjad Istent",
+        "poet": "GRAMANN, Johann (1487-1541)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "KUGELMANN, Hans (1519-1542)"
+    },
+    "47": {
+        "hymn_no": 48,
+        "title": "Soha el nem hagylak téged",
+        "poet": "ISMERETLEN SZERZŐ (1908)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ISMERETLEN SZERZŐ (1893)"
+    },
+    "48": {
+        "hymn_no": 49,
+        "title": "A Sionnak hegyén",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "P.Á.",
+        "key": "e \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "49": {
+        "hymn_no": 50,
+        "title": "Nagy hálát adjunk az Atya Istennek",
+        "poet": "DEBRECEN (1590)",
+        "arranger": "Gy.B.",
+        "key": "g \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOROSZLÓI KÉZIRAT (XVI. század)"
+    },
+    "50": {
+        "hymn_no": 51,
+        "title": "Hű karod véd és oltalmaz",
+        "poet": "WARING, Anna L. (1820-1910)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "AITKEN, Hay"
+    },
+    "51": {
+        "hymn_no": 52,
+        "title": "Csak Te voltál oltalmunk",
+        "poet": "WATTS, Isaac (1674-1748)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "CROFT, William (1678-1727)"
+    },
+    "52": {
+        "hymn_no": 53,
+        "title": "Gondviselő jó Atyám vagy",
+        "poet": "LÉVAY József (1825-1918)",
+        "arranger": "P.Á.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "CRÜGER, Johann (1598-1662)"
+    },
+    "53": {
+        "hymn_no": 54,
+        "title": "Nagy kegyelmed és jóságod",
+        "poet": "FABER, Frederick W. (1854)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "TOURJEE, Lizzie L. (1858-1913)"
+    },
+    "54": {
+        "hymn_no": 55,
+        "title": "Száma nincsen, Uram, jótéteményidnek",
+        "poet": "SZEGEDI Gergely (mh. l566)",
+        "arranger": "P.Á.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1778)"
+    },
+    "55": {
+        "hymn_no": 56,
+        "title": "Az Úr csodásan működik",
+        "poet": "COWPER, William (1731-1800)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "SKÓT ZSOLTÁR (1615)"
+    },
+    "56": {
+        "hymn_no": 57,
+        "title": "Nagy kegyelmed árad, Istenünk, felénk",
+        "poet": "HOW, William Walsham (1823-1897)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "SMITH, Samuel (1865)"
+    },
+    "57": {
+        "hymn_no": 58,
+        "title": "Isten, csodás nagy szerelmed",
+        "poet": "HILLER, Philipp Friedrich (1699-1769)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HALLE (1704)"
+    },
+    "58": {
+        "hymn_no": 59,
+        "title": "Én lelkem, zengjél szépen",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time d\/4",
+        "partial": "\\partial d",
+        "composer": "EBE LING, Georg Johann (1637-1676)"
+    },
+    "59": {
+        "hymn_no": 60,
+        "title": "Az Úr énnékem őriző pásztorom",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "G.Z.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "60": {
+        "hymn_no": 61,
+        "title": "Mily hatalmas vagy, égi Atyám!",
+        "poet": "GELLERT, Christian Fürchtegott (1715-1769)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HALLE (1704)"
+    },
+    "61": {
+        "hymn_no": 62,
+        "title": "Szeret az Isten",
+        "poet": "RISCHE, August (1819-1906)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "THÜRINGIA (1840)"
+    },
+    "62": {
+        "hymn_no": 63,
+        "title": "Jöjjetek, az Ige kér",
+        "poet": "LORENZ, E. S. (1890-?)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "BÁZEL (1745)"
+    },
+    "63": {
+        "hymn_no": 64,
+        "title": "Az oly emberek nyilván boldogok",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "64": {
+        "hymn_no": 65,
+        "title": "Beszéld meg, mit tégyenek az ifjak",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "65": {
+        "hymn_no": 66,
+        "title": "Én Istenem, taníts utaidra",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "66": {
+        "hymn_no": 67,
+        "title": "Teljes szívből hozzád esedezem",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "67": {
+        "hymn_no": 68,
+        "title": "Nagy békességük vagyon azoknak",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "68": {
+        "hymn_no": 69,
+        "title": "Ó! ne vedd el szent igédet",
+        "poet": "ZINZENDORF, Nikolaus Ludwig (1700-1760)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HALLE (1704)"
+    },
+    "69": {
+        "hymn_no": 70,
+        "title": "Emeld fel szíved",
+        "poet": "SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "P.Á.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "LYON (1549)"
+    },
+    "70": {
+        "hymn_no": 71,
+        "title": "Te égből származó",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "NÄGELI, Johann Georg (1773-1836)"
+    },
+    "71": {
+        "hymn_no": 72,
+        "title": "Hálaadásunkban rólad emlékezünk",
+        "poet": "SZTÁRAI Mihály (mh. 1575)",
+        "arranger": "P.Á.",
+        "key": "a \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "SZÉKEL Balázs (1546)"
+    },
+    "72": {
+        "hymn_no": 73,
+        "title": "Szent Bibliámat szeretem",
+        "poet": "KELLY, Thomas (1769-1854)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "73": {
+        "hymn_no": 74,
+        "title": "Isten küldte drága szózat",
+        "poet": "SCHMOLCK, Benjamin (1672-1737)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "MEININGEN (1693)"
+    },
+    "74": {
+        "hymn_no": 75,
+        "title": "Szép tündöklő hajnalcsillag",
+        "poet": "NICOLAI, Philipp (1556-1608)",
+        "arranger": "G.Z.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "NICOLAI, Philipp (1556-1608)"
+    },
+    "75": {
+        "hymn_no": 76,
+        "title": "Csak néked él a szívem, lelkem",
+        "poet": "TERSTEEGEN, Gerhard (1697-1769)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "BORTNYANSZKIJ, Dmitrij (1751-1825)"
+    },
+    "76": {
+        "hymn_no": 77,
+        "title": "Zengd Jézus nevét, zengd világ",
+        "poet": "PERRONET, Edward (1726-1792)",
+        "arranger": "Gy.B.",
+        "key": "a \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "SHRUBSOLE, William (1760-1806)"
+    },
+    "77": {
+        "hymn_no": 78,
+        "title": "Szépséges Jézus",
+        "poet": "HOFFMANN, Heinrich August von Fallersleben (1798-1874); MÜNSTER (1677)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "SZILÉZIAI ÉNEKEK (1842)"
+    },
+    "78": {
+        "hymn_no": 79,
+        "title": "Uram Jézusom, örök vigaszom",
+        "poet": "FREYLINGHAUSEN, Johann Anastasius (1670-1739)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "DRESE, Adam (1620-1701)"
+    },
+    "79": {
+        "hymn_no": 80,
+        "title": "Az én napom Jézus sötét éjszakán",
+        "poet": "RHIEM Caroline (1857-?)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ISMERETLEN SZERZŐ (XIX. század)"
+    },
+    "80": {
+        "hymn_no": 81,
+        "title": "Dicsőségnek szent királya",
+        "poet": "TERSTEEGEN, Gerhard (1697-1769)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HINTZE, Jakob (1622-1702)"
+    },
+    "81": {
+        "hymn_no": 82,
+        "title": "Üdvözöllek, Üdvözítőm, égő szívvel",
+        "poet": "KEY, Francis Scott",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MILLER, Harold A."
+    },
+    "82": {
+        "hymn_no": 83,
+        "title": "Krisztusról zeng dalunk",
+        "poet": "WOLCOTT, Samuel (1869)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "GIARDINI, Felice de (1716-1796)"
+    },
+    "83": {
+        "hymn_no": 84,
+        "title": "Ó! halljad te föld és halljad te ég",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "CROFT, William (1678-1727)"
+    },
+    "84": {
+        "hymn_no": 85,
+        "title": "Ó! üdvözítő Krisztus, Te égi pártfogónk",
+        "poet": "HAVERGAL, Frances Ridley (1836-1879)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HAYDN, Johann Michael (1737-1806)"
+    },
+    "85": {
+        "hymn_no": 86,
+        "title": "Légy mindörökre áldott",
+        "poet": "NEALE, John M (1818-1866)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "LIPCSE (1615)"
+    },
+    "86": {
+        "hymn_no": 87,
+        "title": "Áldott az egek Ura",
+        "poet": "HELD, Heinrich (1620-1659)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LUTHER, Márton (1483-1546)"
+    },
+    "87": {
+        "hymn_no": 88,
+        "title": "Szép rózsabimbó nyílt ki",
+        "poet": "BERLIN (1853); KÖLN (1599)",
+        "arranger": "",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "KÖLN (1599)"
+    },
+    "88": {
+        "hymn_no": 89,
+        "title": "Úr Jézus Krisztus dicsérünk",
+        "poet": "LUTHER, Márton (1483-1546); REFORMÁCIÓ ELŐTT (1370)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 3",
+        "composer": "WITTENBERG (1524)"
+    },
+    "89": {
+        "hymn_no": 90,
+        "title": "Egy drága Gyermek született",
+        "poet": "MORRISON, John",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HANDEL, Georg F. (1685-1759)"
+    },
+    "90": {
+        "hymn_no": 91,
+        "title": "Jer, Isten népe, áldjuk Őt",
+        "poet": "HERMAN, Nikolaus (1480 ?-1561)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HERMAN, Nikolaus (1480 ?-1561)"
+    },
+    "91": {
+        "hymn_no": 92,
+        "title": "A mennyből jövök hozzátok",
+        "poet": "LUTHER, Márton (1483-1546)",
+        "arranger": "",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2..",
+        "composer": "LUTHER, Márton (1483-1546)"
+    },
+    "92": {
+        "hymn_no": 93,
+        "title": "Az öröm napja ez a nap",
+        "poet": "GELLERT, Christian Fürchtegott (1715-1769)",
+        "arranger": "",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2..",
+        "composer": "LUTHER, Márton (1483-1546)"
+    },
+    "93": {
+        "hymn_no": 94,
+        "title": "Ó! Betlehem kis városa",
+        "poet": "BROOKS, Phillips (1868)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "REDNER, L. H. (1831-1908)"
+    },
+    "94": {
+        "hymn_no": 95,
+        "title": "Ó! nyíljatok meg szívkapuk",
+        "poet": "WEISSEL, Georg (1590-1635)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "HALLE (1704)"
+    },
+    "95": {
+        "hymn_no": 96,
+        "title": "Én lelkem, készülj s örvend ma",
+        "poet": "RIST, Johann (1607-1667)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 6\/4",
+        "partial": "",
+        "composer": "SCHOP, Johann (1600 előtt-1665)"
+    },
+    "96": {
+        "hymn_no": 97,
+        "title": "Szeretet, ki teremtettél",
+        "poet": "SCHEFFLER, Johann (1624-1677)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "MEININGEN (1693)"
+    },
+    "97": {
+        "hymn_no": 98,
+        "title": "E világot, bár ez bűnt tett",
+        "poet": "LENGYEL József (1770-1822)",
+        "arranger": "P.Á.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "98": {
+        "hymn_no": 99,
+        "title": "Szívünk vígsággal ma betelt",
+        "poet": "ÚJ ZENGEDEZŐ MENNYEI KAR (1743)",
+        "arranger": "G.Z.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "NICOLAI, Philipp (1556-1608)"
+    },
+    "99": {
+        "hymn_no": 100,
+        "title": "Új világosság jelenék",
+        "poet": "BATTHYÁNY-KÓDEX (1550 körül)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "100": {
+        "hymn_no": 101,
+        "title": "Légy hálás Jézus Krisztusnak",
+        "poet": "GÜNTHER, Cyriakus (1650-1705)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 8",
+        "composer": "NÜRNBERG (1523)"
+    },
+    "101": {
+        "hymn_no": 102,
+        "title": "Az Isten annyira szerette a bűnös világot",
+        "poet": "DEBRECEN (1806)",
+        "arranger": "Gy.B.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "102": {
+        "hymn_no": 103,
+        "title": "Ki mindeneknek Atyja vagy",
+        "poet": "WHITTIER, John G. (1807-1892)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "MAKER, Frederick C. (1844-1927)"
+    },
+    "103": {
+        "hymn_no": 104,
+        "title": "Elrejt az Úr",
+        "poet": "ALLEN, Freda Hanbury",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ISMERETLEN SZERZŐ (évszám nélkül)"
+    },
+    "104": {
+        "hymn_no": 105,
+        "title": "Az áldott orvos már közel",
+        "poet": "HUNTER, William (1811-1877)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "SONGS OF DEVOTION (1851)"
+    },
+    "105": {
+        "hymn_no": 106,
+        "title": "Jer, mindnyájan örüljünk",
+        "poet": "NAGYVÁRAD (1566)",
+        "arranger": "P.Á.",
+        "key": "e \\minor",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "106": {
+        "hymn_no": 107,
+        "title": "Mily édes vagy te szeretet",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "FOSTER, J."
+    },
+    "107": {
+        "hymn_no": 108,
+        "title": "Isten drága, szent szerelme",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "a \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ZUNDEL, John (1816-1882)"
+    },
+    "108": {
+        "hymn_no": 109,
+        "title": "Mennyei Ige",
+        "poet": "ÖREG GRADUÁL (1636)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "109": {
+        "hymn_no": 110,
+        "title": "Kezdetben volt az Ige",
+        "poet": "DEBRECEN (1569)",
+        "arranger": "P.Á.",
+        "key": "e \\minor",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "110": {
+        "hymn_no": 111,
+        "title": "A jóság az én pásztorom",
+        "poet": "BAKER, H. W. (1868)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "DYKES, John B. (1823-1876)"
+    },
+    "111": {
+        "hymn_no": 112,
+        "title": "Krisztus, ártatlan Bárány",
+        "poet": "ROSTOCK (1531)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "ERFURT (1543)"
+    },
+    "112": {
+        "hymn_no": 113,
+        "title": "A keresztfát ha nézem én",
+        "poet": "WATTS, Isaac (1674-1748)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "MILLER, Edward (1731-1807)"
+    },
+    "113": {
+        "hymn_no": 114,
+        "title": "Ó! véráztatta szent fej",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "Gy.B.",
+        "key": "a \\minor",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HASSLER, Hans Leo (1564-1612)"
+    },
+    "114": {
+        "hymn_no": 115,
+        "title": "Isten örök szeretete",
+        "poet": "SENITZ, Elisabeth (1629-1679)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "NÜRNBERG (1688)"
+    },
+    "115": {
+        "hymn_no": 116,
+        "title": "Áll szomorún a kopár hegy",
+        "poet": "ALEXANDER, Cecil Frances (1823-1895)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HORSLEY, Wiliam (1774-1858)"
+    },
+    "116": {
+        "hymn_no": 117,
+        "title": "Ha mardos bűnöm, vétkem",
+        "poet": "GESENIUS, Justus (1601-1671)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "LIPCSE (1545)"
+    },
+    "117": {
+        "hymn_no": 118,
+        "title": "Jézus, élte életemnek",
+        "poet": "HOMBURG, Ernst Christian (1605-1681)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WESSNITZER, Wolfgang (1620-1693)"
+    },
+    "118": {
+        "hymn_no": 119,
+        "title": "Ó! ártatlanság Báránya",
+        "poet": "ISMERETLEN SZERZŐ (XVII. század)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "119": {
+        "hymn_no": 120,
+        "title": "Ó! Te nagy szenvedő",
+        "poet": "THEBESIUS, Adam (1596-1652)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "MEININGEN (1693)"
+    },
+    "120": {
+        "hymn_no": 121,
+        "title": "A Bárány Jézus hordozta",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "DACHSTEIN, Wolfgang (mh. 1530)"
+    },
+    "121": {
+        "hymn_no": 122,
+        "title": "Ó! világ, nézd",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "\\partial 8",
+        "composer": "GESIUS, Bartholomäus (1555-1613)"
+    },
+    "122": {
+        "hymn_no": 123,
+        "title": "Jézus Istennek Báránya",
+        "poet": "LENGYEL ÉNEK",
+        "arranger": "Gy.B.",
+        "key": "e \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "SEKLUCYAN, S. énekeskdnyve (1559)"
+    },
+    "123": {
+        "hymn_no": 124,
+        "title": "Áll a Krisztus szent keresztje",
+        "poet": "BOWRING, John (1792-1872)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "CONKEY, Ithamar (1815-1867)"
+    },
+    "124": {
+        "hymn_no": 125,
+        "title": "Alleluja! Ím feltámadt",
+        "poet": "BLISS, Philip P. (1838-1876)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WADE, John F. Cantus Diversi (1751)"
+    },
+    "125": {
+        "hymn_no": 126,
+        "title": "Jézus Krisztus feltámadt! Alleluja!",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LYRA DAVIDICA (1708)"
+    },
+    "126": {
+        "hymn_no": 127,
+        "title": "Hívő lelkek, zengjetek",
+        "poet": "NEALE, John M (1818-1866)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "SULLIVAN, Arthur S. (1842-1900)"
+    },
+    "127": {
+        "hymn_no": 128,
+        "title": "Jézus meghalt bűneinkért",
+        "poet": "SZÖNYI Benjámin (1717-1794)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "128": {
+        "hymn_no": 129,
+        "title": "A csillagos nagy ég",
+        "poet": "TURNER, Daniel",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "MILLER, Harold A."
+    },
+    "129": {
+        "hymn_no": 130,
+        "title": "Drága égi kegyelem",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "BRADBURY, William B. (1816-1868)"
+    },
+    "130": {
+        "hymn_no": 131,
+        "title": "Ó! Úr Jézus! Egeknek nagy Királya!",
+        "poet": "DEBRECEN (1815)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "131": {
+        "hymn_no": 132,
+        "title": "Egy drága forrást ismerek",
+        "poet": "COWPER, William (1731-1800)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "132": {
+        "hymn_no": 133,
+        "title": "Áldott légy Krisztus",
+        "poet": "DEBRECEN (1815)",
+        "arranger": "G.Z.",
+        "key": "es \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "133": {
+        "hymn_no": 134,
+        "title": "Napban, holdban, mindenütt jelek",
+        "poet": "HEBER, Reginald (1783-1826)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HALLE (1704)"
+    },
+    "134": {
+        "hymn_no": 135,
+        "title": "Jézus Krisztus jön a felhőn",
+        "poet": "CENNICK, John (1718-1755); WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WADE, John F. Cantus Diversi (1751)"
+    },
+    "135": {
+        "hymn_no": 136,
+        "title": "Ó! Jézus a szívem úgy vár!",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 6\/8",
+        "partial": "\\partial 4",
+        "composer": "ISMERETLEN SZERZŐ (évszám nélkül)"
+    },
+    "136": {
+        "hymn_no": 137,
+        "title": "Néped oly várva vár!",
+        "poet": "KOSZTA János",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "GIARDINI, Felice de (1716-1796)"
+    },
+    "137": {
+        "hymn_no": 138,
+        "title": "Mondd, miért szunnyadsz",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "138": {
+        "hymn_no": 139,
+        "title": "Ó! jöjj, ó! jöjj, Immánuel",
+        "poet": "ISMERETLEN SZERZŐ (XVIII. század)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "FRANCIA MISEKÖNYV (XIII. század)"
+    },
+    "139": {
+        "hymn_no": 140,
+        "title": "Úgy várjuk visszajöttödet",
+        "poet": "HILLER, Philipp Friedrich (1699-1769)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "GASTORIUS, Severus (1681)"
+    },
+    "140": {
+        "hymn_no": 141,
+        "title": "Halld, ó! halld, mily hangos szó",
+        "poet": "KELLY, Thomas (1769-1854)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MALAN, César (1787-1864)"
+    },
+    "141": {
+        "hymn_no": 142,
+        "title": "Bizony meglészen az idő",
+        "poet": "RINGWALDT, Bartholomäus (1530-1599)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WITTENBERG (1529)"
+    },
+    "142": {
+        "hymn_no": 143,
+        "title": "A jöttöd miként várjam",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "LIPCSE (1615)"
+    },
+    "143": {
+        "hymn_no": 144,
+        "title": "Ébredj ember, hangzik folyton",
+        "poet": "NICOLAI, Philipp (1556-1608)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "NICOLAI, Philipp (1556-1608)"
+    },
+    "144": {
+        "hymn_no": 145,
+        "title": "Az erős Isten, uraknak Ura",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "P.Á.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "145": {
+        "hymn_no": 146,
+        "title": "Ó! Jeruzsálem, szép honom",
+        "poet": "BROMEHEAD, Joseph",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "REINAGLE, Alexander R. (1799-1877)"
+    },
+    "146": {
+        "hymn_no": 147,
+        "title": "A bánat éje nem örök",
+        "poet": "SMITH, Annié R.",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WEBBE, Samuel (1740-1816)"
+    },
+    "147": {
+        "hymn_no": 148,
+        "title": "Nincs maradandó városunk",
+        "poet": "KELLY, Thomas (1769-1854)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "ISMERETLEN SZERZŐ (évszám nélkül)"
+    },
+    "148": {
+        "hymn_no": 149,
+        "title": "Az Úrnak áldott nagy kegyelme üdvöz",
+        "poet": "SCHEIDT, Christian Ludwig (1709-1761)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "KÖNIG, Johann (1691-1758)"
+    },
+    "149": {
+        "hymn_no": 150,
+        "title": "Mennyei otthonom: Éden",
+        "poet": "CUSHING, William O. (1823-1902)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 6\/8",
+        "partial": "",
+        "composer": "SHERWIN, William F. (1826-1888)"
+    },
+    "150": {
+        "hymn_no": 151,
+        "title": "Jézus Krisztus bennem él!",
+        "poet": "GELLERT, Christian Fürchtegott (1715-1769)",
+        "arranger": "P.Á. után",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BERLIN (1653)"
+    },
+    "151": {
+        "hymn_no": 152,
+        "title": "Jézus, én bizodalmam és megváltóm",
+        "poet": "BERLIN (1653)",
+        "arranger": "P.Á. után",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BERLIN (1653)"
+    },
+    "152": {
+        "hymn_no": 153,
+        "title": "Drága hon, ragyogóbb, mint a nap",
+        "poet": "BENNETT, S. F. (1908)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WEBSTER, J. P."
+    },
+    "153": {
+        "hymn_no": 154,
+        "title": "Jövel, Szentlélek Isten",
+        "poet": "SZEGEDÍ KIS István (1505-1572)",
+        "arranger": "M.R.",
+        "key": "a \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "154": {
+        "hymn_no": 155,
+        "title": "Erőnek és hitnek Lelke",
+        "poet": "SPITTA, Karl Johann Philipp (1801-1859)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HALLE (1704)"
+    },
+    "155": {
+        "hymn_no": 156,
+        "title": "Jövel, Szentlélek Úr Isten, töltsd be szíveinket",
+        "poet": "LUTHER, Márton (1483-1546)",
+        "arranger": "G.Z.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "156": {
+        "hymn_no": 157,
+        "title": "Isten Lelke: égi fény",
+        "poet": "REED, Andrew (1787-1862)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "GOTTSCHALK, Louis M. (1829-1869)"
+    },
+    "157": {
+        "hymn_no": 158,
+        "title": "Jövel Szentlélek Úr Isten, Ki Atyával vagy egy Isten",
+        "poet": "DEBRECEN (1778)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "158": {
+        "hymn_no": 159,
+        "title": "Ó! Jöjj el, Isten Lelke",
+        "poet": "SPITTA, Karl Johann Philipp (1801-1859)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WEBB, George James (1803-1887)"
+    },
+    "159": {
+        "hymn_no": 160,
+        "title": "Úr Jézus Krisztus, légy velünk",
+        "poet": "ALTENBURG (1648)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "GÖRLITZ (1648)"
+    },
+    "160": {
+        "hymn_no": 161,
+        "title": "Szentlélek, végy körül bennünket",
+        "poet": "SZŰCS Gergely (mh. 1809)",
+        "arranger": "P.Á.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "161": {
+        "hymn_no": 162,
+        "title": "Isten Lelke, légy velem",
+        "poet": "WELLS, Marcus M. (1815-1895)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "WELLS, Marcus M. (1815-1895)"
+    },
+    "162": {
+        "hymn_no": 163,
+        "title": "Jövel, élet Lelke",
+        "poet": "HELD, Heinrich (1620-1659)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "MEININGEN (1693)"
+    },
+    "163": {
+        "hymn_no": 164,
+        "title": "Isten Lelke, béke Lelke",
+        "poet": "STOKES, Ellwood H.",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 6\/4",
+        "partial": "",
+        "composer": "SWENEY, R. ifj. (1837-1899)"
+    },
+    "164": {
+        "hymn_no": 165,
+        "title": "Égi áldás szent esője",
+        "poet": "CODNER, Elizabeth (1860)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 6\/4",
+        "partial": "",
+        "composer": "BRADBURY, William B. (1816-1868)"
+    },
+    "165": {
+        "hymn_no": 166,
+        "title": "Ne szállj perbe énvelem",
+        "poet": "PECSELYI KIRÁLY Imre (mh. 1641)",
+        "arranger": "Cs.T.K.",
+        "key": "c \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "166": {
+        "hymn_no": 167,
+        "title": "Ím megtört szívvel állunk trónodnál",
+        "poet": "PALMER, Ray (1808-1887)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WHITE, James Edson (1878)"
+    },
+    "167": {
+        "hymn_no": 168,
+        "title": "Légy irgalmas, Úr Isten",
+        "poet": "SZEGEDI Lajos (mh. l588)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "168": {
+        "hymn_no": 169,
+        "title": "A töredelmes szívet, Te, Uram, szereted",
+        "poet": "LENGYEL József (1770-1822)",
+        "arranger": "Gy.B.",
+        "key": "a \\minor",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HASSLER, Hans Leo (1564-1612)"
+    },
+    "169": {
+        "hymn_no": 170,
+        "title": "Eltévedtem, mint juh",
+        "poet": "ZENGEDEZŐ MENNYEI KAR (1696)",
+        "arranger": "Gy.B.",
+        "key": "g \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "POZSONY (XVIII. század vége)"
+    },
+    "170": {
+        "hymn_no": 171,
+        "title": "Bocsásd meg, Úr Isten, ifjúságomnak vétkét",
+        "poet": "BALASSA Bálint (1554-1594)",
+        "arranger": "G.Z.",
+        "key": "a \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KAJONI KÓDEX (XVII. század közepe)"
+    },
+    "171": {
+        "hymn_no": 172,
+        "title": "Dicsőséges égi Felség!",
+        "poet": "NEANDER, Joachim (1650-1680)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DARMSTADT (1698)"
+    },
+    "172": {
+        "hymn_no": 173,
+        "title": "Istenem, én nagy bűnös ember",
+        "poet": "TIETZE V. TITIUS Christoph (1641-1703)",
+        "arranger": "P.Á.",
+        "key": "g \\minor",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "NEUMARK, Georg (1621-1681)"
+    },
+    "173": {
+        "hymn_no": 174,
+        "title": "Atya Úr Isten könyörülj rajtam",
+        "poet": "HARTYANI Imre (1566 előtt)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "174": {
+        "hymn_no": 175,
+        "title": "Minden népek hirdessétek",
+        "poet": "SZILÁGYI Mihály (mh. 1817)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "175": {
+        "hymn_no": 176,
+        "title": "Felséges Isten, hozzád kiáltunk",
+        "poet": "DEBRECEN (1569)",
+        "arranger": "G.Z.",
+        "key": "a \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "176": {
+        "hymn_no": 177,
+        "title": "Mint látod, hűtlen szolgaként",
+        "poet": "ELLIOTT, Charlotte (1789-1871)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "BRADBURY, William B. (1816-1868)"
+    },
+    "177": {
+        "hymn_no": 178,
+        "title": "Hallgass meg minket, Úr Isten",
+        "poet": "ÚJ ZENGEDEZŐ MENNYEI KAR (1743)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "178": {
+        "hymn_no": 179,
+        "title": "Ím, nagy Isten, most előtted",
+        "poet": "SZÁSZ Béla (1840-1898)",
+        "arranger": "Cs.T.K.",
+        "key": "g \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "KALMAN Farkas (1838-1906)"
+    },
+    "179": {
+        "hymn_no": 180,
+        "title": "Bús lelkem bántja bánat",
+        "poet": "STONE, Samuel J. (1839-1900)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LANGRAN, James (1862)"
+    },
+    "180": {
+        "hymn_no": 181,
+        "title": "\"Jézus téged visszavár!\"",
+        "poet": "NEUMEISTER, Erdmann (1670-1756)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "UHLICH, Johann (1634-1692)"
+    },
+    "181": {
+        "hymn_no": 182,
+        "title": "Már majdnem teljes benned a hit",
+        "poet": "BLISS, Philip P. (1838-1876)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 6\/8",
+        "partial": "",
+        "composer": "BLISS, Philip P. (1838-1876)"
+    },
+    "182": {
+        "hymn_no": 183,
+        "title": "Tiéd e szív!",
+        "poet": "LIEBICH, Ehrenfried (1713-1780)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "RAPPARD, Dora (1842-1923)"
+    },
+    "183": {
+        "hymn_no": 184,
+        "title": "Most fény tör át a tárt kapun",
+        "poet": "BAXTER, Lillian (1809-1874)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "VAIL, S. J. (1818-1884)"
+    },
+    "184": {
+        "hymn_no": 185,
+        "title": "Te fáradt vándor, merre mégy?",
+        "poet": "ARNDT, Julius Karl (1820-1888)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "HASTINGS, Thomas (1784-1872)"
+    },
+    "185": {
+        "hymn_no": 186,
+        "title": "Én élek! mondja Istened",
+        "poet": "HEERMANN, Johann (1585-1647)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "LIPCSE (1539)"
+    },
+    "186": {
+        "hymn_no": 187,
+        "title": "Tudom és érzem, Jézus enyém",
+        "poet": "CROSBY, Fanny Jane (1823-1915)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 9\/8",
+        "partial": "\\partial 4.",
+        "composer": "KNAPP, Joseph F. (1839-1908)"
+    },
+    "187": {
+        "hymn_no": 188,
+        "title": "Tökéletes volt minden tekintetben",
+        "poet": "LENGYEL József (1770-1822)",
+        "arranger": "G.Z.",
+        "key": "es \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "188": {
+        "hymn_no": 189,
+        "title": "Ó! Jézus, árva csendben",
+        "poet": "HOW, William Walsham (1823-1897)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HUSBAND, Edward (1871); KNECHT, Heinrich Justin (1752-1817)"
+    },
+    "189": {
+        "hymn_no": 190,
+        "title": "Én érted haltam meg",
+        "poet": "HAVERGAL, Frances Ridley (1836-1879)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 6\/8",
+        "partial": "\\partial 8",
+        "composer": "WHITE, James Edson (1878)"
+    },
+    "190": {
+        "hymn_no": 191,
+        "title": "Rád tekint már hitem",
+        "poet": "PALMER, Ray (1808-1887)",
+        "arranger": "P.Á.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "191": {
+        "hymn_no": 192,
+        "title": "Tégy foglyoddá, Uram",
+        "poet": "MATHESON, George (1842-1906)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "MARTIN, George William (1828-1881)"
+    },
+    "192": {
+        "hymn_no": 193,
+        "title": "Várj, ember szíve, készen!",
+        "poet": "THILO, Valentin (1607-1662)",
+        "arranger": "Gy.B.",
+        "key": "g \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "\\partial 8",
+        "composer": "MAGDEBURG, Joachim (1525-1587)"
+    },
+    "193": {
+        "hymn_no": 194,
+        "title": "Jöjj be, ó! jöjj be, szívem nyitva áll",
+        "poet": "MOULE, H. C. G.",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ATKINSON, Frederick C. (1841-1897)"
+    },
+    "194": {
+        "hymn_no": 195,
+        "title": "Már hallom, Jézusom",
+        "poet": "HARTSOUGH, Lewis (1828-1919)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "HARTSOUGH, Lewis (1828-1919)"
+    },
+    "195": {
+        "hymn_no": 196,
+        "title": "Kegyes Jézus, én imádságomra",
+        "poet": "REGIUSZ KIRÁLY Jakab (1823-1690)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "196": {
+        "hymn_no": 197,
+        "title": "Hozzád kiáltok, én Istenem",
+        "poet": "LOSONTZI István (1709-1780)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GENF (1562)"
+    },
+    "197": {
+        "hymn_no": 198,
+        "title": "Kész szívvel követünk most Téged",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "NÄGELI, Johann Georg (1773-1836)"
+    },
+    "198": {
+        "hymn_no": 199,
+        "title": "Krisztusom, kívüled nincs kihez járulnom",
+        "poet": "PECSELYI KIRÁLY Imre (mh. 1641)",
+        "arranger": "Gy.B.",
+        "key": "c \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KURUCKORI DALLAM"
+    },
+    "199": {
+        "hymn_no": 200,
+        "title": "Vonj engem Jézus mind közelebb",
+        "poet": "MORRIS, Leila (1862-1929)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MORRIS, Leila (1862-1929)"
+    },
+    "200": {
+        "hymn_no": 201,
+        "title": "Úgy jó, amint Isten vezet",
+        "poet": "HERRNSCHMIDT, Johann Daniel (1675-1723)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "TESTVÉRGYÜLEKEZET (1740)"
+    },
+    "201": {
+        "hymn_no": 202,
+        "title": "Veled járok, Üdvözítőm",
+        "poet": "LAWSON, James (1886)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "LAWSON, James (1886)"
+    },
+    "202": {
+        "hymn_no": 203,
+        "title": "Jóságod, Isten, végtelen",
+        "poet": "GELLERT, Christian Fürchtegott (1715-1769)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "SOHREN, Peter (1630-1692)"
+    },
+    "203": {
+        "hymn_no": 204,
+        "title": "Elmegyek szívesen, Jézus, veled",
+        "poet": "OGDEN, W. A.",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "SULLIVAN, Arthur S. (1842-1900)"
+    },
+    "204": {
+        "hymn_no": 205,
+        "title": "Én csak Jézus lábnyomában járok",
+        "poet": "SCHOCK, Johann Peter (1811-1892)",
+        "arranger": "M.R.",
+        "key": "a \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "SCHUCK, Johann Peter (1811-1892)"
+    },
+    "205": {
+        "hymn_no": 206,
+        "title": "A lábnyomomban járjatok",
+        "poet": "SCHEFFLER, Johann (1624-1677)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "SCHEIN, Johann Hermann (1586-1630)"
+    },
+    "206": {
+        "hymn_no": 207,
+        "title": "Hordozd híven Jézus nevét",
+        "poet": "BAXTER, Lillian (1809-1874)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DOANE, William H. (1832-1916)"
+    },
+    "207": {
+        "hymn_no": 208,
+        "title": "Ó! vezess kézenfogva",
+        "poet": "HAUSMANN, Julie Katharine (1826-1901)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "SILCHER, Friedrich (1789-1880)"
+    },
+    "208": {
+        "hymn_no": 209,
+        "title": "Járuljunk mi az Istennek szent Fiához",
+        "poet": "ISMERETLEN SZERZŐ (1593 előtt)",
+        "arranger": "G.Z.",
+        "key": "f \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "209": {
+        "hymn_no": 210,
+        "title": "Uram, taníts engem arra",
+        "poet": "SCHRÖDER, Johann Heinrich (1667-1699)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "KRIEGER, Adam (1634-1666)"
+    },
+    "210": {
+        "hymn_no": 211,
+        "title": "Csak vándorút az életem",
+        "poet": "LAMPE, Friedrich Adolf (1683-1729)",
+        "arranger": "G.Z.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GENF (1562)"
+    },
+    "211": {
+        "hymn_no": 212,
+        "title": "Élj bennem drága Jézus",
+        "poet": "HAVERGAL, Frances Ridley (1836-1879)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WESLEY, Samuel S. (1810-1876)"
+    },
+    "212": {
+        "hymn_no": 213,
+        "title": "Én Jézusom, téged a szívem szeret",
+        "poet": "FEATHERSTONE, William Ralf",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 8",
+        "composer": "GORDON, Adoniram J. (1836-1895)"
+    },
+    "213": {
+        "hymn_no": 214,
+        "title": "Az Üdvözítő szól",
+        "poet": "HALL, Elvina M.",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "GRAPE, John T. (1833-1906)"
+    },
+    "214": {
+        "hymn_no": 215,
+        "title": "Ne én, de Krisztus éljen bennem mindig",
+        "poet": "BOLTON, Fannie E.",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\override Staff.TimeSignature.stencil = #(time-double-time \"3\" \"4\" \"4\" \"4\")",
+        "partial": "\\partial 4",
+        "composer": "BOLTON, Fannie E. (1900)"
+    },
+    "215": {
+        "hymn_no": 216,
+        "title": "Hadd menjek, Istenem, mindig feléd",
+        "poet": "ADAMS, Sarah Flower (1805-1843)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "216": {
+        "hymn_no": 217,
+        "title": "Az áldott égi szó vezet",
+        "poet": "GILMORE, J. H. (1862)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "BRADBURY, William B. (1816-1868)"
+    },
+    "217": {
+        "hymn_no": 218,
+        "title": "Itt a szívem, égi Atyám",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "218": {
+        "hymn_no": 219,
+        "title": "Jézus karja átölel",
+        "poet": "GARVE, Karl Bernhard (1763-1841)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "UHLICH, Johann (1634-1692)"
+    },
+    "219": {
+        "hymn_no": 220,
+        "title": "Szeretni vágylak, Jézus, Téged",
+        "poet": "SCHEFFLER, Johann (1624-1677)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "KÖNIG, Johann (1691-1758)"
+    },
+    "220": {
+        "hymn_no": 221,
+        "title": "Rejts magadba sziklaszál",
+        "poet": "TOPLADY, Augustus Montague (1740-1778)",
+        "arranger": "P.Á.",
+        "key": "bes \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "HASTINGS, Thomas (1784-1872)"
+    },
+    "221": {
+        "hymn_no": 222,
+        "title": "Legyen szívünk mindig vidám",
+        "poet": "CROSBY, Fanny Jane (1823-1915)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LOWRY, Robert (1826-1899)"
+    },
+    "222": {
+        "hymn_no": 223,
+        "title": "Adj nékem, Jézus, új szívet",
+        "poet": "NEUSS, Heinrich Georg (1654-1716)",
+        "arranger": "P.Á.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "GÖRLITZ (1648)"
+    },
+    "223": {
+        "hymn_no": 224,
+        "title": "Most búcsút mondok néked",
+        "poet": "HERBERGER, Valerius (1562-1627)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "LIPCSE (1615)"
+    },
+    "224": {
+        "hymn_no": 225,
+        "title": "El nem hagylak Jézusom",
+        "poet": "KEIMANN, Christian (1607-1662)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "UHLICH, Johann (1634-1692)"
+    },
+    "225": {
+        "hymn_no": 226,
+        "title": "Jézus, életemnek, öröme szívemnek",
+        "poet": "FRANCK, Johann (1618-1677)",
+        "arranger": "Gy.B.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "CRÜGER, Johann (1598-1662)"
+    },
+    "226": {
+        "hymn_no": 227,
+        "title": "Az Úrnak hangja szólt hozzám",
+        "poet": "BONAR, Horatius (1808-1889)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 4",
+        "composer": "SPOHR, Ludwig (1784-1859)"
+    },
+    "227": {
+        "hymn_no": 228,
+        "title": "Tebenned bízva megyek én az úton",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "PARKER, Horatio W. (1863-1919)"
+    },
+    "228": {
+        "hymn_no": 229,
+        "title": "Azt az éltet kell elérnem",
+        "poet": "HILLER, Philipp Friedrich (1699-1769)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ISMERETLEN SZERZŐ (1853)"
+    },
+    "229": {
+        "hymn_no": 230,
+        "title": "Csak haladj, csak haladj",
+        "poet": "SCHMIDT, Johann Eusebius (1669-1745)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "HALLE (1704)"
+    },
+    "230": {
+        "hymn_no": 231,
+        "title": "Egy drága kincset keresek",
+        "poet": "FITCH, Charles",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 2\/4",
+        "partial": "\\partial 4",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "231": {
+        "hymn_no": 232,
+        "title": "Én áldott Istenem",
+        "poet": "HEERMANN, Johann (1585-1647)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "MEININGEN (1693)"
+    },
+    "232": {
+        "hymn_no": 233,
+        "title": "Én minden dolgaimban és minden utaimban",
+        "poet": "FLEMMING, Paul (1609-1640)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "\\partial 8",
+        "composer": "GESIUS, Bartholomäus (1555-1613)"
+    },
+    "233": {
+        "hymn_no": 234,
+        "title": "Itt az éltem, Jézusom",
+        "poet": "HAVERGAL, Frances Ridley (1836-1879)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MALAN, César (1787-1864)"
+    },
+    "234": {
+        "hymn_no": 235,
+        "title": "Ki Istenének átad mindent",
+        "poet": "NEUMARK, Georg (1621-1681)",
+        "arranger": "P.Á.",
+        "key": "g \\minor",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "NEUMARK, Georg (1621-1681)"
+    },
+    "235": {
+        "hymn_no": 236,
+        "title": "Én minden vétkem, bűnöm",
+        "poet": "BONAR, Horatius (1808-1889)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HUSBAND, Edward (1871); KNECHT, Heinrich Justin (1752-1817)"
+    },
+    "236": {
+        "hymn_no": 237,
+        "title": "Mikor leszek olyan már",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HEWS, George (1806-1873)"
+    },
+    "237": {
+        "hymn_no": 238,
+        "title": "Emlékezzél, mi történék, Uram",
+        "poet": "KOLOZSVÁR (1553)",
+        "arranger": "Gy.B.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1553)"
+    },
+    "238": {
+        "hymn_no": 239,
+        "title": "Istenben bízom én az ínség idején",
+        "poet": "LUBECK (1603 előtt)",
+        "arranger": "M.R.",
+        "key": "e \\minor",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "REGNART, Jakob (1540-1599)"
+    },
+    "239": {
+        "hymn_no": 240,
+        "title": "Bízzál Isten kegyelmében",
+        "poet": "WINCKLER, Johann Joseph (1670-1722)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "TESTVÉRGYÜLEKEZET (1740)"
+    },
+    "240": {
+        "hymn_no": 241,
+        "title": "Szent karod, Jézus, oly erős",
+        "poet": "OSER, Friedrich Heinrich (1820-1891)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "VULPIUS, Melchior (1560-1615)"
+    },
+    "241": {
+        "hymn_no": 242,
+        "title": "Vezess Jézusunk, s véled indulunk!",
+        "poet": "ZINZENDORF, Nikolaus Ludwig (1700-1760)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "DRESE, Adam (1620-1701)"
+    },
+    "242": {
+        "hymn_no": 243,
+        "title": "Próbáimban, Jézus, kérlek, légy velem",
+        "poet": "MONTGOMERY, James (1771-1854)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LANE, Spencer (1843-1903)"
+    },
+    "243": {
+        "hymn_no": 244,
+        "title": "Ki tudja napjaimnak számát",
+        "poet": "ÄMILIE Juliane schwarzburg-rudolfstadti grófnő (1637-1706)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BÜTTSTEDT, Franz (1735-1814)"
+    },
+    "244": {
+        "hymn_no": 245,
+        "title": "Akik bíznak az Úr Istenben",
+        "poet": "NAGYVÁRAD (1566)",
+        "arranger": "P.Á.",
+        "key": "e \\phrygian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "245": {
+        "hymn_no": 246,
+        "title": "Nálad nélkül, Jézusom",
+        "poet": "COWPER, William (1731-1800)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "CHOPE, R. R."
+    },
+    "246": {
+        "hymn_no": 247,
+        "title": "Ne hagyj elesnem, felséges Isten",
+        "poet": "NAGYBÁNKAI Mátyás (1570 előtt)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "247": {
+        "hymn_no": 248,
+        "title": "Az Úr segíti harcom",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "LIPCSE (1615)"
+    },
+    "248": {
+        "hymn_no": 249,
+        "title": "Már keresztem vállra vettem",
+        "poet": "LYTE, Henry F. (1793-1847)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MAIN, Hubert P. (1839-1926)"
+    },
+    "249": {
+        "hymn_no": 250,
+        "title": "Vihar zúg és tenger zajlik",
+        "poet": "ALEXANDER, Cecil Frances (1823-1895)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "JUDE, William H. (1851-1892)"
+    },
+    "250": {
+        "hymn_no": 251,
+        "title": "Térj magadhoz, drága Sion",
+        "poet": "JESZENSZKY Károly (1890); PAULI, Joachim (1636-1708)",
+        "arranger": "Gy.B.",
+        "key": "fis \\minor",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LUTTENBERGER TIHANYI Ágost (1846-1899)"
+    },
+    "251": {
+        "hymn_no": 252,
+        "title": "Világosságom vagy, Uram",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "VULPIUS, Melchior (1560-1615)"
+    },
+    "252": {
+        "hymn_no": 253,
+        "title": "Velünk Immánuel, ég és föld Ura",
+        "poet": "ALLENDORF, Johann Ludwig (1693-1773)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "KÖTHEN (1733)"
+    },
+    "253": {
+        "hymn_no": 254,
+        "title": "Add nékem szent erőd",
+        "poet": "SCHRÖDER, Johann Heinrich (1667-1699)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "KÖTHEN (1733)"
+    },
+    "254": {
+        "hymn_no": 255,
+        "title": "Légy velem, áldott Úr Isten",
+        "poet": "MOLIER, Martin (1547-1606)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 2.",
+        "composer": "KÖNIGSBERG (1602)"
+    },
+    "255": {
+        "hymn_no": 256,
+        "title": "Lelkem drága Jézusa",
+        "poet": "WESLEY, Charles (1707-1788)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DYKES, John B. (1823-1876)"
+    },
+    "256": {
+        "hymn_no": 257,
+        "title": "A sziklára bátran építünk",
+        "poet": "BELDEN, Franklin E. (1858-1945)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "BELDEN, Franklin E. (1886)"
+    },
+    "257": {
+        "hymn_no": 258,
+        "title": "Vezess engem, ó! nagy Isten",
+        "poet": "WILLIAMS, william (1717-1796)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "EDWARDS, Robert (1796-1862)"
+    },
+    "258": {
+        "hymn_no": 259,
+        "title": "Az Úrért ki kész küzdeni",
+        "poet": "ANNON1, Hieronymus (1697-1770)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "ISMERETLEN SZERZŐ (1676)"
+    },
+    "259": {
+        "hymn_no": 260,
+        "title": "Halld csak, mindenütt zeng a harci kürt",
+        "poet": "SHERWIN, William F. (1826-1888)",
+        "arranger": "M.R.",
+        "key": "as \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "SHERWIN, William F. (1826-1888)"
+    },
+    "260": {
+        "hymn_no": 261,
+        "title": "Állj ellent a bűnnek",
+        "poet": "PALMER, Horatio R. (1834-1917)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 6\/8",
+        "partial": "",
+        "composer": "PALMER, Horatio R. (1834-1917)"
+    },
+    "261": {
+        "hymn_no": 262,
+        "title": "Adj békességet, Úr Isten",
+        "poet": "LUTHER, Márton (1483-1546)",
+        "arranger": "M.R.",
+        "key": "e \\minor",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 8",
+        "composer": "WITTENBERG (1529)"
+    },
+    "262": {
+        "hymn_no": 263,
+        "title": "Kegyelmes Isten! Kinek kezében életemet adtam",
+        "poet": "BALASSA Bálint (1554-1594)",
+        "arranger": "Gy.B.",
+        "key": "e \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "263": {
+        "hymn_no": 264,
+        "title": "Az utat nem tudom, Te tudod jól",
+        "poet": "REDERN, Hedwig (1886-1035)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DYKES, John B. (1823-1876)"
+    },
+    "264": {
+        "hymn_no": 265,
+        "title": "Teremtő Istenünk, Édes Atyánk",
+        "poet": "ÚJ ZENGEDEZŐ MENNYEI KAR (1743)",
+        "arranger": "Gy.B.",
+        "key": "g \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BRNO (1796)"
+    },
+    "265": {
+        "hymn_no": 266,
+        "title": "Kegyelmet, irgalmat találtam",
+        "poet": "HILLER, Philipp Friedrich (1699-1769)",
+        "arranger": "P.Á.",
+        "key": "g \\minor",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "NEUMARK, Georg (1621-1681)"
+    },
+    "266": {
+        "hymn_no": 267,
+        "title": "Ha szívemben Istennek békéje él",
+        "poet": "SPAFFORD, Horatio G. (1828-1888)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 2\/4",
+        "partial": "\\partial 8",
+        "composer": "BLISS, Philip P. (1838-1876)"
+    },
+    "267": {
+        "hymn_no": 268,
+        "title": "Béke nagy fejedelme",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "FILLMORE, James H. (1849-1936)"
+    },
+    "268": {
+        "hymn_no": 269,
+        "title": "El ne távozz tőlem, Jézus",
+        "poet": "CROSBY, Fanny Jane (1823-1915)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DOANE, William H. (1832-1916)"
+    },
+    "269": {
+        "hymn_no": 270,
+        "title": "Mily szépen cseng egy drága név",
+        "poet": "NEWTON, John (1725-1807)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "REINAGLE, Alexander R. (1799-1877)"
+    },
+    "270": {
+        "hymn_no": 271,
+        "title": "Áldásodat érzi minden",
+        "poet": "NÜRNBERG (1676)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LÖHNER, Johann (1645-1705)"
+    },
+    "271": {
+        "hymn_no": 272,
+        "title": "Mint a szép híves patakra",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "272": {
+        "hymn_no": 273,
+        "title": "Hogyha néha úgy is érzed",
+        "poet": "TIETZE V. TITIUS Christoph (1641-1703)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "ANSBACH (1731)"
+    },
+    "273": {
+        "hymn_no": 274,
+        "title": "Én nem hagyom el Istent",
+        "poet": "HELMBOLD, Ludwig (1532-1598)",
+        "arranger": "Gy.B.",
+        "key": "g \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "\\partial 8",
+        "composer": "MAGDEBURG, Joachim (1525-1587)"
+    },
+    "274": {
+        "hymn_no": 275,
+        "title": "Várjad békén, lelkem",
+        "poet": "RAEDER, Johann Friedrich (1815-1872)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MALAN, César (1787-1864)"
+    },
+    "275": {
+        "hymn_no": 276,
+        "title": "Ó! Jézus, Tégedet szívem szeret",
+        "poet": "PRENTISS, E. (1818-1878)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DOANE, William H. (1832-1916)"
+    },
+    "276": {
+        "hymn_no": 277,
+        "title": "Győzhetetlen én kőszálom",
+        "poet": "KURUCKORI ÉNEK",
+        "arranger": "Cs.T.K.",
+        "key": "b \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "ISMERETLEN SZERZŐ (XIX. század)"
+    },
+    "277": {
+        "hymn_no": 278,
+        "title": "Úgy legyen minden, Istenem",
+        "poet": "BIENEMANN, Kaspar (1540-1591)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "DACHSTEIN, Wolfgang (mh. 1530)"
+    },
+    "278": {
+        "hymn_no": 279,
+        "title": "Mint Isten akarja, legyen",
+        "poet": "ALBRECHT, porosz herceg (1490-1568)",
+        "arranger": "M.R.",
+        "key": "g \\dorian",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "ANTWERPEN (1540)"
+    },
+    "279": {
+        "hymn_no": 280,
+        "title": "Hagyd minden utad arra",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "Gy.B.",
+        "key": "d \\dorian",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 8",
+        "composer": "GESIUS, Bartholomäus (1555-1613)"
+    },
+    "280": {
+        "hymn_no": 281,
+        "title": "Higgy és bízzál mindenkor",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "WELLS, Marcus M. (1815-1895)"
+    },
+    "281": {
+        "hymn_no": 282,
+        "title": "Az Úrra bízom sorsomat",
+        "poet": "GELLERT, Christian Fürchtegott (1715-1769)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "GASTORIUS, Severus (1681)"
+    },
+    "282": {
+        "hymn_no": 283,
+        "title": "A könyörgésem Hozzád száll",
+        "poet": "LUTHER, Márton (1483-1546)",
+        "arranger": "G.Z.",
+        "key": "g \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "LUTHER, Márton (1483-1546)"
+    },
+    "283": {
+        "hymn_no": 284,
+        "title": "Jézus, add, hogy véled járjam",
+        "poet": "SPITTA, Karl Johann Philipp (1801-1859)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "NÜRNBERG (1688)"
+    },
+    "284": {
+        "hymn_no": 285,
+        "title": "Erős vár a mi Istenünk",
+        "poet": "LUTHER, Márton (1483-1546)",
+        "arranger": "Gy.B.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2.",
+        "composer": "LUTHER, Márton (1483-1546)"
+    },
+    "285": {
+        "hymn_no": 286,
+        "title": "Hallgass meg minket, nagy Úr Isten",
+        "poet": "NAGYVÁRAD (1566)",
+        "arranger": "P.Á.",
+        "key": "es \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "286": {
+        "hymn_no": 287,
+        "title": "Hadd bízzak benned, élő örök Isten",
+        "poet": "WALTER, Howard Arnold (1883-1918)",
+        "arranger": "M.R.",
+        "key": "e \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "PEEK, Joseph Yates (1843-1911)"
+    },
+    "287": {
+        "hymn_no": 288,
+        "title": "A mi szívünk csak Tehozzád",
+        "poet": "ÁCS Ferenc (1680-1747)",
+        "arranger": "P.Á.",
+        "key": "e \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "FRANKFURT (1663)"
+    },
+    "288": {
+        "hymn_no": 289,
+        "title": "Tehozzád teljes szívből kiáltok",
+        "poet": "MARÓT, Clément (1496-1544); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "Gy.B.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "289": {
+        "hymn_no": 290,
+        "title": "Mind jó, amit az Úr teszen",
+        "poet": "RODIGAST, Samuel (1649-1708)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "GASTORIUS, Severus (1681)"
+    },
+    "290": {
+        "hymn_no": 291,
+        "title": "Ébredj, bizonyságtévő lélek",
+        "poet": "BOGATZKY, Karl Heinrich (1690-1774)",
+        "arranger": "Gy.B.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "HAMBURG (1690)"
+    },
+    "291": {
+        "hymn_no": 292,
+        "title": "Fel, mert eljő az éjjel",
+        "poet": "COGHILL, Anna L. (1861)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "292": {
+        "hymn_no": 293,
+        "title": "Már jő az áldott hajnal",
+        "poet": "SMITH, Samuel F. (1832)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WEBB, George James (1803-1887)"
+    },
+    "293": {
+        "hymn_no": 294,
+        "title": "Ó! Sion, ébredj",
+        "poet": "THOMSON, Mary A. (1834-1923)",
+        "arranger": "Gy.B.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WALCH, James (1837-1901)"
+    },
+    "294": {
+        "hymn_no": 295,
+        "title": "Halld az Úrnak hívó hangját",
+        "poet": "MARCH, Daniel (1816-1909)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "BELDEN, Franklin E. (1886)"
+    },
+    "295": {
+        "hymn_no": 296,
+        "title": "Ó! Jézusunk, az ügy tied",
+        "poet": "PREISWERK, Samuel (1799-1871); ZAREMBA, Felician Martin (1794-1874)",
+        "arranger": "M.R.",
+        "key": "as \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "KAISERSWERTH (1866)"
+    },
+    "296": {
+        "hymn_no": 297,
+        "title": "Ó! áldott óra, meghitt perc",
+        "poet": "WALFORD, William W.",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 6\/8",
+        "partial": "\\partial 8",
+        "composer": "BRADBURY, William B. (1816-1868)"
+    },
+    "297": {
+        "hymn_no": 298,
+        "title": "Jézus nyája, szentülj meg",
+        "poet": "PFEIL, Christoph Karl Ludwig (1712-1784)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DREZDA (1694)"
+    },
+    "298": {
+        "hymn_no": 299,
+        "title": "Lelkem, készülj serényen",
+        "poet": "FREYSTEIN, Johann Burchard (1671-1718)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "DREZDA (1694)"
+    },
+    "299": {
+        "hymn_no": 300,
+        "title": "Ó! mily hű barátunk Jézus",
+        "poet": "SCRIVEN, John M. (1820-1886)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "CONVERSE, Charles C. (1834-1918)"
+    },
+    "300": {
+        "hymn_no": 301,
+        "title": "Adj, Úr Isten, nékem",
+        "poet": "BLISS, Philip P. (1838-1876)",
+        "arranger": "M.R.",
+        "key": "c \\minor",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "WILSON, Hans"
+    },
+    "301": {
+        "hymn_no": 302,
+        "title": "Fohászkodom hozzád, Uram, Istenem!",
+        "poet": "DEBRECEN (1569)",
+        "arranger": "Gy.B.",
+        "key": "e \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "302": {
+        "hymn_no": 303,
+        "title": "Mi Atyánk, ki vagy mennyekben",
+        "poet": "LUTHER, Márton (1483-1546); SZEGEDI Gergely (mh. l566)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "LIPCSE (1539)"
+    },
+    "303": {
+        "hymn_no": 304,
+        "title": "Ó! boldog ház, mely befogadott Téged",
+        "poet": "SPITTA, Karl Johann Philipp (1801-1859)",
+        "arranger": "Cs.T.K. után",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GENF (1562)"
+    },
+    "304": {
+        "hymn_no": 305,
+        "title": "Úr Isten, kérünk őrizzed",
+        "poet": "LUTHER, Márton (1483-1546)",
+        "arranger": "Cs.T.K.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "WITTENBERG (1543)"
+    },
+    "305": {
+        "hymn_no": 306,
+        "title": "Az egyháznak csak Jézus a fundámentuma",
+        "poet": "STONE, Samuel J. (1839-1900)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WESLEY, Samuel S. (1810-1876)"
+    },
+    "306": {
+        "hymn_no": 307,
+        "title": "Ó! seregeknek Istene",
+        "poet": "BÉZA, Theodore (1519-1605); SZENCZI MOLNÁR Albert (1574-1634)",
+        "arranger": "G.Z.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GENF (1562)"
+    },
+    "307": {
+        "hymn_no": 308,
+        "title": "Az Úrban nincsen észak s dél",
+        "poet": "OXENHAM, John (1908)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "REINAGLE, Alexander R. (1799-1877)"
+    },
+    "308": {
+        "hymn_no": 309,
+        "title": "Semmit ne bánkódjál",
+        "poet": "SZKHÁROSI HORVÁT András (mh. 1549 után)",
+        "arranger": "P.Á.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "SZÉKEL Balázs (1546)"
+    },
+    "309": {
+        "hymn_no": 310,
+        "title": "Isten szívén megpihenve",
+        "poet": "ZINZENDORF, Nikolaus Ludwig (1700-1760)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "NÜRNBERG (1688)"
+    },
+    "310": {
+        "hymn_no": 311,
+        "title": "Oly szent a szeretet",
+        "poet": "FAWCETT, John (1782); NÁGEU, Johann Georg (1773-1836)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "NÄGELI, Johann Georg (1773-1836)"
+    },
+    "311": {
+        "hymn_no": 312,
+        "title": "Jó Urunk, nézd",
+        "poet": "MÜNTER, Balthasar (1735-1793)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 8",
+        "composer": "NÜRNBERG (1523)"
+    },
+    "312": {
+        "hymn_no": 313,
+        "title": "Jézus, vezessél, mint pásztor",
+        "poet": "ISMERETLEN SZERZŐ (1832)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "BRADBURY, William B. (1816-1868)"
+    },
+    "313": {
+        "hymn_no": 314,
+        "title": "Atyánk, a Te gyermekeid",
+        "poet": "APPEL, W. (1893)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MELCHIOR, Johann Abraham (1813-1873)"
+    },
+    "314": {
+        "hymn_no": 315,
+        "title": "Drága Jézus, trónodnál",
+        "poet": "HAMMOND, William (1719-1783)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MALAN, César (1787-1864)"
+    },
+    "315": {
+        "hymn_no": 316,
+        "title": "Kegyes Jézus, itt vagyunk",
+        "poet": "CLAUSNITZER Tobias (1618-1684)",
+        "arranger": "P.Á.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "AHLE, Johann Rudolph (1623-1673)"
+    },
+    "316": {
+        "hymn_no": 317,
+        "title": "Nyíljatok meg égi ajtók",
+        "poet": "SCHMOLCK, Benjamin (1672-1737)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "NEANDER, Joachim (1650-1680)"
+    },
+    "317": {
+        "hymn_no": 318,
+        "title": "Ó! Atya Isten, nagy irgalmú Úr",
+        "poet": "WHITMORE, Lucy Elizabeth (1792-1840)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DYKES, John B. (1823-1876)"
+    },
+    "318": {
+        "hymn_no": 319,
+        "title": "Úr Isten, mi sok szükséget",
+        "poet": "LENGYEL József (1770-1822)",
+        "arranger": "G.Z.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "319": {
+        "hymn_no": 320,
+        "title": "Hadd lássuk Jézust!",
+        "poet": "WARNER, Anna B. (1852)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 2\/4",
+        "partial": "",
+        "composer": "BELDEN, Franklin E. (1886)"
+    },
+    "320": {
+        "hymn_no": 321,
+        "title": "Adjunk hálát mindnyájan",
+        "poet": "DAVID (Hertel) Ferenc (1520 ?-1579)",
+        "arranger": "P.Á.",
+        "key": "g \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "321": {
+        "hymn_no": 322,
+        "title": "Szűkölködünk nagy mértékben",
+        "poet": "NAGYENYED (1785)",
+        "arranger": "Gy.B.",
+        "key": "as \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1811)"
+    },
+    "322": {
+        "hymn_no": 323,
+        "title": "Szent Isten, noha néked",
+        "poet": "FÖLDVÁRI József (1766-1830)",
+        "arranger": "Cs.T.K.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BATTHYÁNY-KÓDEX (1550 körül)"
+    },
+    "323": {
+        "hymn_no": 324,
+        "title": "Megáll az Istennek igéje",
+        "poet": "SKARICZA Máté (1544-1591)",
+        "arranger": "P.Á.",
+        "key": "bes \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1907)"
+    },
+    "324": {
+        "hymn_no": 325,
+        "title": "Úr Jézus, mely igen drága",
+        "poet": "LENGYEL József (1770-1822)",
+        "arranger": "G.Z.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "325": {
+        "hymn_no": 326,
+        "title": "Uram Isten, siess minket megsegíteni",
+        "poet": "HUSZÁR Gál (mh. l575)",
+        "arranger": "P.Á.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "326": {
+        "hymn_no": 327,
+        "title": "Jézus legyen a mi oltalmunk!",
+        "poet": "RANKIN, Jeremiah E. (1828-1904)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "TOMER, William G. (1833-1896)"
+    },
+    "327": {
+        "hymn_no": 328,
+        "title": "Adjunk hálákat az Atya Istennek",
+        "poet": "ISMERETLEN SZERZŐ (XVII. század)",
+        "arranger": "G.Z.",
+        "key": "es \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "328": {
+        "hymn_no": 329,
+        "title": "Áldja Isten éltünket",
+        "poet": "SCHENCK, Hartmann (1634-1681)",
+        "arranger": "P.Á.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "AHLE, Johann Rudolph (1623-1673)"
+    },
+    "329": {
+        "hymn_no": 330,
+        "title": "Ó! maradj kegyelmeddel mivelünk",
+        "poet": "STEGMANN, Josua (1588-1632)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "VULPIUS, Melchior (1560-1615)"
+    },
+    "330": {
+        "hymn_no": 331,
+        "title": "Hadd legyek mindig híved",
+        "poet": "SELNECKER, Nikolaus (1530-1592)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "LIPCSE (1615)"
+    },
+    "331": {
+        "hymn_no": 332,
+        "title": "A Jézus Krisztusnak szent kegyelme",
+        "poet": "GREGOR, Christian (1723-1801)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GREGOR, Christian (1723-1801)"
+    },
+    "332": {
+        "hymn_no": 333,
+        "title": "Áldjuk Őt, áldjuk Őt!",
+        "poet": "GEBHARDT, Heinrich Ernst (1832-1899)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2",
+        "composer": "GEBHARDT, Heinrich Emst (1832-1899)"
+    },
+    "333": {
+        "hymn_no": 334,
+        "title": "Ó! égi jó Atyánk, az áldást add reánk",
+        "poet": "FITCH, E. T.",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "NARES, James (1715-1783)"
+    },
+    "334": {
+        "hymn_no": 335,
+        "title": "Maradjon vélünk most az Úr",
+        "poet": "ELLERTON, John (1870)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "WALCH, James (1837-1901)"
+    },
+    "335": {
+        "hymn_no": 336,
+        "title": "Mily boldog érzés, jó Atyám",
+        "poet": "WATTS, Isaac (1674-1748)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "LEDINGTON, Stanley (1938)"
+    },
+    "336": {
+        "hymn_no": 337,
+        "title": "Mindenható, örök Isten",
+        "poet": "NEUMANN, Kaspar (1648-1715)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "ALBERT, Heinrich (1604-1651)"
+    },
+    "337": {
+        "hymn_no": 338,
+        "title": "Ó! boldog béke napja",
+        "poet": "WORDSWORTH, Christopher (1807-1885)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "338": {
+        "hymn_no": 339,
+        "title": "Úr Isten, vonjad szívemet",
+        "poet": "PERLAKY Dávid (1754-1802)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WITTENBERG (1529)"
+    },
+    "339": {
+        "hymn_no": 340,
+        "title": "Felséges Isten, mennynek földnek Ura",
+        "poet": "PÉCHI Simon (kb. 1570-1642)",
+        "arranger": "Gy.B.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOROSZLÓI KÉZIRAT (XVI. század)"
+    },
+    "340": {
+        "hymn_no": 341,
+        "title": "Jézus Krisztus, szép fényes hajnal",
+        "poet": "DEBRECEN (1600 előtt)",
+        "arranger": "P.Á.",
+        "key": "a \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "341": {
+        "hymn_no": 342,
+        "title": "Áldjátok Istent, megköszönve mindent",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "P.Á.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "CRÜGER, Johann (1598-1662)"
+    },
+    "342": {
+        "hymn_no": 343,
+        "title": "Jövel, drága szombatnap",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "PLEYEL, Ignaz (1757-1831)"
+    },
+    "343": {
+        "hymn_no": 344,
+        "title": "Ó! áldott, szent szombat",
+        "poet": "AHRENS, Wilhelm (1893)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "WILSON, Hans"
+    },
+    "344": {
+        "hymn_no": 345,
+        "title": "Szent szombat napja üdvözlégy!",
+        "poet": "EDMESTON, James (1791-1867)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "MATTHEWS, Timothy Richard (1826-1910)"
+    },
+    "345": {
+        "hymn_no": 346,
+        "title": "Mi szent Atyánk, ki lakozol",
+        "poet": "LŐCSE (1699)",
+        "arranger": "Gy.B.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1778)"
+    },
+    "346": {
+        "hymn_no": 347,
+        "title": "Örök élet reggele",
+        "poet": "KNORR von Rosenroth, Christian (1636-1689)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "AHLE, Johann Rudolph (1623-1673)"
+    },
+    "347": {
+        "hymn_no": 348,
+        "title": "Alleluja, legszebb hajnal",
+        "poet": "KRAUSE Jonathan (1701-1762)",
+        "arranger": "",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "ALBERT, Heinrich (1604-1651)"
+    },
+    "348": {
+        "hymn_no": 349,
+        "title": "Én bensőm, csendesedj",
+        "poet": "LÖSCHER, Valentin Ernst (1673-1749)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DARMSTADT (1698)"
+    },
+    "349": {
+        "hymn_no": 350,
+        "title": "Mennynek, földnek teremtője",
+        "poet": "ALBERT, Heinrich (1604-1651)",
+        "arranger": "",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "ALBERT, Heinrich (1604-1651)"
+    },
+    "350": {
+        "hymn_no": 351,
+        "title": "Néked, mennyei Atyánk, hálát adunk",
+        "poet": "LŐCSE (1720)",
+        "arranger": "Cs.T.K.",
+        "key": "e \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "TRITONIUS (1507)"
+    },
+    "351": {
+        "hymn_no": 352,
+        "title": "Már újra száll az esthomály",
+        "poet": "LONGFELLOW, Samuel (1859)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "OAKBLEY, Herbert S. (1830-1903)"
+    },
+    "352": {
+        "hymn_no": 353,
+        "title": "Tekints szombatiskolánkra",
+        "poet": "ISMERETLEN SZERZŐ (1893)",
+        "arranger": "M.R.",
+        "key": "as \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "VINER, W. L. (1845)"
+    },
+    "353": {
+        "hymn_no": 354,
+        "title": "Úr Isten, kérünk Tégedet",
+        "poet": "OPPENHEIM (1812)",
+        "arranger": "P.Á.",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GREITER, Matthias (1525)"
+    },
+    "354": {
+        "hymn_no": 355,
+        "title": "Áldjad, én lelkem, felséges Uradat",
+        "poet": "LOSONTZI István (1709-1780)",
+        "arranger": "Cs.T.K.",
+        "key": "g \\mixolydian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "STRASBOURG (1539)"
+    },
+    "355": {
+        "hymn_no": 356,
+        "title": "Mily boldog nap",
+        "poet": "DODDRIDGE, Philip (1702-1751)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "RIMBAULT, Edward F. (1816-1876)"
+    },
+    "356": {
+        "hymn_no": 357,
+        "title": "Úr Jézus, üdvösség fejedelme",
+        "poet": "LOSONTZI István (1709-1780)",
+        "arranger": "P.Á.",
+        "key": "d \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BOURGEOIS, Louis (1510-1569)"
+    },
+    "357": {
+        "hymn_no": 358,
+        "title": "Nevedre vettem keresztséget",
+        "poet": "RAMBACH, Johann Jakob (1693-1735)",
+        "arranger": "M.R.",
+        "key": "es \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "KÖNIG, Johann (1691-1758)"
+    },
+    "358": {
+        "hymn_no": 359,
+        "title": "Jézus, általad lettem",
+        "poet": "KŐSZEG (1839)",
+        "arranger": "Cs.T.K.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "CRÜGER, Johann (1598-1662)"
+    },
+    "359": {
+        "hymn_no": 360,
+        "title": "Az Üdvözítő hív a közös asztalhoz",
+        "poet": "WATTS, Isaac (1674-1748)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "BOSTON (1850)"
+    },
+    "360": {
+        "hymn_no": 361,
+        "title": "Jézusom, megtört testednek jelképe",
+        "poet": "ISMERETLEN SZERZŐ (évszám nélkül)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MASON, Lowell (1792-1872)"
+    },
+    "361": {
+        "hymn_no": 362,
+        "title": "Készítsd magad, kedves lélek",
+        "poet": "FRANCK, Johann (1618-1677)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "CRÜGER, Johann (1598-1662)"
+    },
+    "362": {
+        "hymn_no": 363,
+        "title": "Örülj szívem, vígadj lelkem",
+        "poet": "ÚJ ZENGEDEZŐ MENNYEI KAR (1743)",
+        "arranger": "M.R.",
+        "key": "e \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1837)"
+    },
+    "363": {
+        "hymn_no": 364,
+        "title": "Lelkem siet hozzád menni",
+        "poet": "LOSONTZI István (1709-1780)",
+        "arranger": "Cs.T.K.",
+        "key": "a \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GENF (1562)"
+    },
+    "364": {
+        "hymn_no": 365,
+        "title": "A nap immár felvirradván",
+        "poet": "ÖREG GRADUÁL (1636)",
+        "arranger": "Gy.B.",
+        "key": "d \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "365": {
+        "hymn_no": 366,
+        "title": "Minden munkám, hitharcom",
+        "poet": "WALDENBURG (Szilézia) (1734)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "EBE LING, Georg Johann (1637-1676)"
+    },
+    "366": {
+        "hymn_no": 367,
+        "title": "Drága hajnal, üdvözöllek!",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "WEINGAND W. (1893)"
+    },
+    "367": {
+        "hymn_no": 368,
+        "title": "Ó! ébredj s mondjad, szívem",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 2",
+        "composer": "SELNECKER, Nikolaus (1530-1592)"
+    },
+    "368": {
+        "hymn_no": 369,
+        "title": "Csöndesen száll feléd",
+        "poet": "SPURGEON, Charles H. (1834-1892)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 3\/4",
+        "partial": "",
+        "composer": "SWEETSER, Joseph E. (1849)"
+    },
+    "369": {
+        "hymn_no": 370,
+        "title": "Adjunk hálát a nagy Úr Istennek",
+        "poet": "PÉCHI Simon (kb. 1570-1642)",
+        "arranger": "P.Á.",
+        "key": "c \\dorian",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "370": {
+        "hymn_no": 371,
+        "title": "Új mindennap a szeretet",
+        "poet": "KEBLE, John (1792-1866)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "WEBBE, Samuel (1740-1816)"
+    },
+    "371": {
+        "hymn_no": 372,
+        "title": "Lelked mélyén Jézus hangja",
+        "poet": "CORELLI, Marie",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "LLOYD, Frands R."
+    },
+    "372": {
+        "hymn_no": 373,
+        "title": "Jézus Krisztus, szentek reménye",
+        "poet": "LŐCSE (1720)",
+        "arranger": "P.Á.",
+        "key": "a \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "KOLOZSVÁR (1744)"
+    },
+    "373": {
+        "hymn_no": 374,
+        "title": "Mily szép az alkonyi óra",
+        "poet": "SPITTA, Karl Johann Philipp (1801-1859)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 6\/8",
+        "partial": "\\partial 8",
+        "composer": "GEBHARDT, Heinrich Emst (1832-1899)"
+    },
+    "374": {
+        "hymn_no": 375,
+        "title": "Krisztus, ki vagy nap és világ",
+        "poet": "DEBRECEN (1597)",
+        "arranger": "Cs.T.K.",
+        "key": "d \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "DEBRECEN (1774)"
+    },
+    "375": {
+        "hymn_no": 376,
+        "title": "Fölkelt immár a szép hold",
+        "poet": "CLAUDIUS, Matthias (1740-1815)",
+        "arranger": "Gy.B.",
+        "key": "es \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "\\partial 8",
+        "composer": "SCHULZ, Johann Abraham (1747-1800)"
+    },
+    "376": {
+        "hymn_no": 377,
+        "title": "Már nyugosznak a völgyek",
+        "poet": "GERHARDT, Paul (1607-1676)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "\\partial 8",
+        "composer": "GESIUS, Bartholomäus (1555-1613)"
+    },
+    "377": {
+        "hymn_no": 378,
+        "title": "Fáradt vagyok, lenyugszom",
+        "poet": "HENSEL, Luise (1798-1876)",
+        "arranger": "M.R.",
+        "key": "f \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "NÜRNBERG (1544)"
+    },
+    "378": {
+        "hymn_no": 379,
+        "title": "E nap is immár véget ért",
+        "poet": "HERZOG, Johann Friedrich (1647-1699)",
+        "arranger": "M.R.",
+        "key": "g \\minor",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 4",
+        "composer": "KRIEGER, Adam (1634-1666)"
+    },
+    "379": {
+        "hymn_no": 380,
+        "title": "Elpihent már a napsugár",
+        "poet": "HERMAN, Nikolaus (1480 ?-1561)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 6\/4",
+        "partial": "\\partial 2.",
+        "composer": "KÖNIGSBERG (1602)"
+    },
+    "380": {
+        "hymn_no": 381,
+        "title": "Légy velem, Jézus, alkony idején",
+        "poet": "LYTE, Henry F. (1793-1847)",
+        "arranger": "M.R.",
+        "key": "d \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "MONK, William H. (1823-1889)"
+    },
+    "381": {
+        "hymn_no": 382,
+        "title": "Ím vége már az évnek",
+        "poet": "ELEONORE reuszi hercegnő (1835-1903)",
+        "arranger": "Gy.B.",
+        "key": "d \\dorian",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 8",
+        "composer": "GESIUS, Bartholomäus (1555-1613)"
+    },
+    "382": {
+        "hymn_no": 383,
+        "title": "Lelkünk, testünk teremtője",
+        "poet": "BÁTORI István (1749-1833)",
+        "arranger": "Cs.T.K.",
+        "key": "a \\minor",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "GENF (1562)"
+    },
+    "383": {
+        "hymn_no": 384,
+        "title": "Ez esztendőt áldással",
+        "poet": "BUDAI Ézsaiás (1766-1841)",
+        "arranger": "Cs.T.K.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "BATTHYÁNY-KÓDEX (1550 körül)"
+    },
+    "384": {
+        "hymn_no": 385,
+        "title": "Elmúlt mér az óesztendő",
+        "poet": "STEURLEIN, Johann (1546-1613); ERFURT (1568)",
+        "arranger": "",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "\\partial 2..",
+        "composer": "LUTHER, Márton (1483-1546)"
+    },
+    "385": {
+        "hymn_no": 386,
+        "title": "Vajon fenn a fény honában",
+        "poet": "HASTINGS, Horace L. (1873)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4",
+        "composer": "RICE, Elihu S. (1886)"
+    },
+    "386": {
+        "hymn_no": 387,
+        "title": "Áldás kísérjen az úton",
+        "poet": "KNAK, Gustav Friedrich (1806-1878)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "NICOLAI, Philipp (1556-1608)"
+    },
+    "387": {
+        "hymn_no": 388,
+        "title": "Istene földnek, égnek",
+        "poet": "KNAPP, Albert (1798-1864)",
+        "arranger": "Gy.B.",
+        "key": "f \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "\\partial 8",
+        "composer": "GESIUS, Bartholomäus (1555-1613)"
+    },
+    "388": {
+        "hymn_no": 389,
+        "title": "Áldás szálljon most e frigyre",
+        "poet": "KNAPP, Albert (1798-1864)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "NICOLAI, Philipp (1556-1608)"
+    },
+    "389": {
+        "hymn_no": 390,
+        "title": "Jer temessük el a testet",
+        "poet": "WEISSE, Michael (mh. 1534)",
+        "arranger": "Cs.T.K.",
+        "key": "g \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "WITTENBERG (1544)"
+    },
+    "390": {
+        "hymn_no": 391,
+        "title": "Minden ember csak halandó",
+        "poet": "ROSENMÜLLER, Johann (1620-1684)",
+        "arranger": "M.R.",
+        "key": "g \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "WEIMAR (1681)"
+    },
+    "391": {
+        "hymn_no": 392,
+        "title": "Béke veled! Most aludj csak csendben",
+        "poet": "BELDEN, Franklin E. (1858-1945)",
+        "arranger": "M.R.",
+        "key": "c \\major",
+        "time": "\\time 4\/4",
+        "partial": "",
+        "composer": "HAKES, D. S."
+    },
+    "392": {
+        "hymn_no": 393,
+        "title": "Nyugodjál békén, fáradt szív",
+        "poet": "MACKAY, Margaret (1832)",
+        "arranger": "M.R.",
+        "key": "bes \\major",
+        "time": "\\time 3\/4",
+        "partial": "\\partial 4.",
+        "composer": "BRADBURY, William B. (1816-1868)"
+    },
+    "999": {
+        "hymn_no": 1000,
+        "title": "Áldott reménység",
+        "poet": "HOOPER, Wayne (1962-2007)",
+        "arranger": "",
+        "key": "c \\major",
+        "time": "\\set Timing.defaultBarType = \"\"\n\\override Staff.TimeSignature #'stencil = ##f",
+        "partial": "",
+        "composer": "HOOPER, Wayne (1962-2007)"
+    }
+}
