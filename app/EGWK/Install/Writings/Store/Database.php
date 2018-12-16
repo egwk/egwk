@@ -34,8 +34,6 @@ class Database extends Store
     /**
      * @var string Table name
      *
-     * env('DB_TABLE_PREFIX', '') . self::WORK_TABLE;
-     *
      * Used for plan SQL queries only
      */
     protected $tableName = '';

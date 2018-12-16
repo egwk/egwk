@@ -27,7 +27,7 @@ class SimilarParagraph2 extends SimilarParagraph
 
     public function searchableAs()
     {
-        return env('SCOUT_PREFIX', 'e3si_') . 'similarity2';
+        return config('scout.prefix', 'e3si_') . 'similarity2';
     }
 
 }

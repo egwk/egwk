@@ -130,7 +130,7 @@ class SabbathSchool
         $client = new Client();
         try
             {
-            $response = $client->get(env('SSQ_API', '/ssq-api'), [
+            $response = $client->get(config('services.ssq.url', '/ssq-api'), [
                 'connect_timeout' => 10,
                 'query' => ['q' => $quarterCode],
             ]);

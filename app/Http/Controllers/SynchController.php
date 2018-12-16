@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\EGWK\Install\Writings\Store;
 use App\Models\Tables\Original;
 use App\Models\Tables\TranslationDraft;
 use Illuminate\Http\Request;
 use Facades\App\EGWK\Synch;
+use Illuminate\Support\Facades\Storage;
 
 class SynchController extends Controller
 {
@@ -22,7 +24,7 @@ class SynchController extends Controller
                 function ($item) {
                     return basename($item, '.txt');
                 },
-                glob(storage_path('app/synch/') . '*.txt')
+                glob(Storage::path('synch/') . '*.txt')
             ),
         ];
     }
@@ -36,6 +38,9 @@ class SynchController extends Controller
     public function synch(string $translationCode, int $limit): array
     {
         $bookCode = str_before($translationCode, '.');
+//        $translation = Synch::getTranslationCache($translationCode);
+//        $paginatedTranslation = collect($translation)
+//            ->paginate($limit);
         return [
             'original' => Original::where('refcode_1', $bookCode)
                 ->orderBy('puborder', 'asc')

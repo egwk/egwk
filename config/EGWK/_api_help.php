@@ -10,9 +10,13 @@
 
 return [
     'name' => 'EGWK API',
-    'version' => '1.5',
+    'version' => '1.6',
     'notes' => 'Always use the first translation (translations[0]) for the official / most important translation.',
     'changelog' => [
+        '1.6' => [
+            'date' => '2018-12-13',
+            'note' => 'Added Synch API (todo doc)',
+        ],
         '1.5' => [
             'date' => '2018-08-09',
             'note' => 'Added search result clustering, routes updated',

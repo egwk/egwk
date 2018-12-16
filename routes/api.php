@@ -184,9 +184,11 @@ Route::prefix('sabbathschool')
 //
 // Hymnal
 //
-Route::group(['prefix' => 'hymnals',], function () use ($perPage) {
-    Route::get('/languages', 'HymnalController@languages');
-    Route::get('/{lang?}', 'HymnalController@hymnals');
+Route::middleware('auth:api')->group(function () use ($perPage) { // todo: test
+    Route::group(['prefix' => 'hymnals',], function () use ($perPage) {
+        Route::get('/languages', 'HymnalController@languages');
+        Route::get('/{lang?}', 'HymnalController@hymnals');
+    });
 });
 
 Route::group(['prefix' => 'hymnal',], function () use ($perPage) {

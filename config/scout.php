@@ -64,7 +64,7 @@ return [
             env('ELASTICSEARCH_HOST', 'localhost'),
         ],
     ],
-    'sphinx' => [
+    'sphinxsearch' => [
         'host' => env('SCOUT_HOST', 'sphinx'),
         'port' => env('SCOUT_PORT', '9306'),
 //        'charset' => env('SCOUT_CHARSET', ''),

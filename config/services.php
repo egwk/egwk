@@ -53,4 +53,40 @@ return [
         'redirect' => env('TWITTER_REDIRECT_URI'),
     ],
 
+    /*
+   |--------------------------------------------------------------------------
+   | Lilypond score server
+   |--------------------------------------------------------------------------
+   */
+    'lily' => [
+        'server' => env('LILY_HOST', 'lily'),
+        'port' => env('LILY_PORT', '8008'),
+        'script' => env('LILY_SCRIPT', 'lilyserver.php'),
+    ],
+
+    /*
+   |--------------------------------------------------------------------------
+   | EGWWritings API
+   |--------------------------------------------------------------------------
+   */
+    'egwwritings' => [
+
+        'client_id' => env('EGWWRITINGS_KEY'),
+        'client_secret' => env('EGWWRITINGS_SECRET'),
+        'redirect_uri' => env('EGWWRITINGS_REDIRECT_URI'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sabbath School API
+    |--------------------------------------------------------------------------
+    |
+    | NOTE: It depends on the church field
+    |
+    */
+    'ssq' => [
+        'url' => env('SSQ_API', '/ssq-api'),
+    ],
+
+
 ];

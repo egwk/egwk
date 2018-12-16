@@ -48,7 +48,7 @@ class CacheSearch extends Model
      */
     public function searchableAs()
         {
-        return env('SCOUT_PREFIX', 'e3si_') . 'search';
+        return config('scout.prefix', 'e3si_') . 'search';
         }
 
     }

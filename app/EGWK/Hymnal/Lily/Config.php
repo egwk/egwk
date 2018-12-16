@@ -81,9 +81,9 @@ class Config
 
     public function __construct(array $config = [])
     {
-        $this->server = env('LILY_HOST', 'lily');
-        $this->port = env('LILY_PORT', '8008');
-        $this->url = $this->server . ':' . $this->port . '/lilyserver.php';
+        $this->server = config('services.lily.server', 'lily');
+        $this->port = config('services.lily.port', '8008');
+        $this->url = $this->server . ':' . $this->port . '/' . config('services.lily.script', 'lilyserver.php');
         foreach ($config as $key => $value) {
             if (in_array($key, $this->allowedKeys)) {
                 $this->{$key} = $value;

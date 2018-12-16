@@ -12,7 +12,6 @@ namespace App\EGWK;
 use App\EGWK\Datamining\StorageDriver;
 use Foolz\SphinxQL\Drivers\Pdo\Connection;
 use App\EGWK\Tools\Bench;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 abstract class Datamining
@@ -67,13 +66,14 @@ abstract class Datamining
     public function __construct(StorageDriver $storage)
     {
         $this->storage = $storage;
-        $this->index = env('SCOUT_PREFIX', '') . $this->index;
+        $this->index = config('scout.prefix', '') . $this->index;
     }
 
     protected function connect()
     {
         $connection = new Connection();
-        $connection->setParams(['host' => env('SCOUT_HOST', 'sphinx'), 'port' => env('SCOUT_PORT', 9306)]);
+        $driver = config('scout.driver', 'sphinxsearch');
+        $connection->setParams(['host' => config('scout.' . $driver . '.host', 'sphinx'), 'port' => config('scout.' . $driver . '.port', 9306)]);
         return $connection;
     }
 

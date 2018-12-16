@@ -35,8 +35,8 @@ class SimilarParagraph extends Model
 
     public function searchableAs()
     {
-        return env('SCOUT_PREFIX', 'e3si_') . 'similarity';
-//        return env('SCOUT_PREFIX', 'e3si_') . 'similarity1, ' . env('SCOUT_PREFIX', 'e3si_') . 'similarity2 ';
+        return config('scout.prefix', 'e3si_') . 'similarity';
+//        return config('scout.prefix', 'e3si_') . 'similarity1, ' . config('scout.prefix', 'e3si_') . 'similarity2 ';
     }
 
 }

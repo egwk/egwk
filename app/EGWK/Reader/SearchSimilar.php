@@ -63,7 +63,7 @@ class SearchSimilar
     protected function getSearchResult(string $query)
     {
         return collect(CacheSearch::search(\Reader::quotedPhraseQuery($query))
-            ->take(env('API_QUERY_LIMIT', 1000))
+            ->take(config('egwk.api.query_limit', 1000))
             ->orderBy('year', 'asc')
             ->get())
             ->map(function ($item) {

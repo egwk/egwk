@@ -94,9 +94,9 @@ class Token
     {
         return $this->getAPIConsumer()->request('POST', config('install.token_url', self::TOKEN_URL), [
                     'form_params' => [
-                        'client_id' => env('EGWWRITINGS_KEY'),
-                        'client_secret' => env('EGWWRITINGS_SECRET'),
-                        'redirect_uri' => env('EGWWRITINGS_REDIRECT_URI'),
+                        'client_id' => config('services.egwwritings.client_id'),
+                        'client_secret' => config('services.egwwritings.client_secret'),
+                        'redirect_uri' => config('services.egwwritings.redirect_uri'),
                         'grant_type' => 'client_credentials',
                         'response_type' => 'id_token',
                     ],
