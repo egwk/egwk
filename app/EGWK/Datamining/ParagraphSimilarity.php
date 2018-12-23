@@ -9,6 +9,7 @@
 namespace App\EGWK\Datamining;
 
 use App\EGWK\Datamining;
+use App\EGWK\Reader\SearchSimilar;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Support\Facades\DB;
 use App\EGWK\Tools\Bench;
@@ -20,11 +21,21 @@ class ParagraphSimilarity extends Datamining
      */
     protected $ranker = "expr('sum(hit_count)*10000/query_word_count')";
 
+    protected $searchSimilar;
+
+    protected $similarsAlready;
+
+    public function __construct(StorageDriver $storage)
+    {
+        parent::__construct($storage);
+        $this->searchSimilar = new SearchSimilar();
+    }
+
     protected function query($start = 0, $limit = 0, $offset = 0)
     {
         $paragraphsQuery = DB::table($this->table)
             ->select('id', 'para_id', 'stemmed_wordlist');
-        $paragraphsQuery->whereIn('year', ['1958', '1892'])->whereIn('refcode_1', ['FLB', 'RH']); // todo: for testing
+        // $paragraphsQuery->whereIn('year', ['1952', '1892'])->whereIn('refcode_1', ['ML', 'RH']); // todo: for testing
         if (0 != $start) {
             if ($this->isParaId($start)) {
                 $startParagraph = $this->getParagraph($start);
@@ -50,10 +61,10 @@ class ParagraphSimilarity extends Datamining
         return $paragraphsQuery->get();
     }
 
-    protected function search($connection, $paragraph)
+    protected function search($sphinx, $paragraph)
     {
         $stemmedWordlist = '"' . $paragraph->stemmed_wordlist . '"/' . $this->quorumPercentage;
-        $queryResult = SphinxQL::create($connection)
+        $queryResult = $sphinx
             ->select('id', 'para_id', 'stemmed_wordlist', SphinxQL::expr('WEIGHT()/100 AS w'))
             ->from($this->index)
             ->option('ranker', SphinxQL::expr($this->ranker))
@@ -87,9 +98,14 @@ class ParagraphSimilarity extends Datamining
     protected function processResult($results, $paragraph)
     {
         $return = collect([]);
+        $this->similarsAlready = $this->searchSimilar
+            ->similarParagraph($paragraph->para_id)
+            ->pluck('para_id2')
+            ->flatten();
         foreach ($results->fetchAllAssoc() as $resultArray) {
             $result = (object)$resultArray;
-            if ($this->skipCondition($result)) {
+            if ($this->skipCondition($result) ||
+                $this->similarsAlready->contains($result->para_id)) {
                 continue;
             }
             if ($result->w < $this->quorumPercentage * 100) {
@@ -102,14 +118,6 @@ class ParagraphSimilarity extends Datamining
                 'w1' => sprintf("%.2f", $result->w),
                 'w2' => sprintf("%.2f", $w2),
             ]));
-//            if ($w2 < $this->quorumPercentage * 100) {
-                $return->push(collect([
-                    'para_id1' => $paragraph->para_id,
-                    'para_id2' => $result->para_id,
-                    'w1' => sprintf("%.2f", $w2),
-                    'w2' => sprintf("%.2f", $result->w),
-                ]));
-//            }
         }
         return $return;
     }

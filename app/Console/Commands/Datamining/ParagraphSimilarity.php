@@ -35,6 +35,6 @@ class ParagraphSimilarity extends Command
         $offset = $this->option('offset');
         $outputId = $this->option('output', 'ParagraphSimilarity');
 
-        (new ParagraphSimilarityClass(new StorageDriver\File($outputId)))->mine($start, $limit, $offset);
+        (new ParagraphSimilarityClass(new StorageDriver\Database($outputId)))->mine($start, $limit, $offset);
     }
 }

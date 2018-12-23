@@ -8,9 +8,13 @@ use Illuminate\Support\Collection;
 class Database implements StorageDriver
 {
 
-    const TRANSACTION_LIMIT = 100;
+    const TRANSACTION_LIMIT = 1000;
 
     protected $table = 'similarity_paragraph_work';
+
+    protected $transactionCounter = 0;
+
+    protected $inserts = [];
 
     public function __construct($id)
     {
@@ -29,13 +33,17 @@ class Database implements StorageDriver
 
     public function store(Collection $data)
     {
-        foreach ($data as $item) {
-            try {
-                \DB::table($this->table)
-                    ->insert($item->toArray());
-            } catch (\Illuminate\Database\QueryException $e) {
-                // reverse para_id combination is considered duplicate, should be ignored.
-            }
+        $this->transactionCounter++;
+        $this->inserts[] = $data;
+        if ($this->transactionCounter >= self::TRANSACTION_LIMIT) {
+            \DB::transaction(function () {
+                foreach ($this->inserts as $data) {
+                    \DB::table($this->table)
+                        ->insert($data->toArray());
+                }
+            });
+            $this->transactionCounter = 0;
+            $this->inserts = [];
         }
     }
 

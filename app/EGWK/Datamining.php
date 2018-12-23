@@ -12,6 +12,7 @@ namespace App\EGWK;
 use App\EGWK\Datamining\StorageDriver;
 use Foolz\SphinxQL\Drivers\Pdo\Connection;
 use App\EGWK\Tools\Bench;
+use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Support\Facades\DB;
 
 abstract class Datamining
@@ -74,7 +75,7 @@ abstract class Datamining
         $connection = new Connection();
         $driver = config('scout.driver', 'sphinxsearch');
         $connection->setParams(['host' => config('scout.' . $driver . '.host', 'sphinx'), 'port' => config('scout.' . $driver . '.port', 9306)]);
-        return $connection;
+        return new SphinxQL($connection);
     }
 
     protected function toString($item)
@@ -96,7 +97,7 @@ abstract class Datamining
 
     abstract protected function query($start = 0, $limit = 0, $offset = 0);
 
-    abstract protected function search($connection, $items);
+    abstract protected function search($sphinx, $items);
 
     abstract protected function skipCondition($items);
 
@@ -106,7 +107,7 @@ abstract class Datamining
 
     protected function loop($start = 0, $limit = 0, $offset = 0)
     {
-        $connection = $this->connect();
+        $sphinx = $this->connect();
         $items = $this->query($start, $limit, $offset);
         foreach ($items as $item) {
             Bench::step(true);
@@ -119,7 +120,7 @@ abstract class Datamining
             }
             yield $this->processResult(
                 $this->search(
-                    $connection,
+                    $sphinx,
                     $item
                 ),
                 $item
