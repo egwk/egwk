@@ -27,6 +27,10 @@ Route::get('/', function (Request $request) {
     return config('egwk.api_help');
 });
 
+Route::fallback(function () {
+    return response()->json(['message' => 'Not Found.'], 404);
+})->name('api.fallback.404');
+
 /*
 |--------------------------------------------------------------------------
 | Routes for EGWK modules
@@ -41,15 +45,15 @@ Route::group(['prefix' => 'reader',], function () use ($perPage) {
         return config('egwk.api_help.entries.reader');
     });
 
-    Route::get('/books/{lang?}', function ($lang = null) use ($perPage) {
-        $table = DB::table('api_book');
-        if (null !== $lang) {
-            $table->where('lang', $lang);
-        }
+        Route::get('/books/{lang?}', function ($lang = null) use ($perPage) {
+            $table = DB::table('api_book');
+            if (null !== $lang) {
+                $table->where('lang', $lang);
+            }
 //         ->orderBy('primary_collection_text_id')
 //         ->orderBy('church_approved', 'desc')
-        return $table->paginate($perPage);
-    });
+            return $table->paginate($perPage);
+        });
 
     Route::get('/book/{code}', function ($code) use ($perPage) {
         return Reader::original($code)
