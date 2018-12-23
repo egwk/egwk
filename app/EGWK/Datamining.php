@@ -44,7 +44,7 @@ abstract class Datamining
      *
      * @var float
      */
-    protected $quorumPercentage = '0.40';
+    protected $quorumPercentage = '0.50';
 
     /**
      * @var string
