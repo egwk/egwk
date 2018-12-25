@@ -5,6 +5,7 @@ namespace App\EGWK;
 
 use App\Models\Tables\Original;
 use App\Models\Tables\TranslationDraft;
+use Illuminate\Support\Facades\Storage;
 
 class Synch
 {
@@ -19,7 +20,7 @@ class Synch
      */
     public function __construct()
     {
-        $this->fullTableName = env('DB_TABLE_PREFIX', 'db_') . (new TranslationDraft())->getTable();
+        $this->fullTableName = config('database.connections.' . config('database.default') . '.prefix') . (new TranslationDraft())->getTable();
     }
 
     /**
@@ -40,40 +41,39 @@ class Synch
     /**
      * Update translation draft segment sequence numbers
      *
-     * @param int $windowEnd
+     * @param int $windowStart
+     * @param int $limit
+     * @param int $length
      * @param int $nextWindowDefaultStart
      * @param string $translationCode
      */
-    protected function updateWindow(int $windowEnd, int $nextWindowDefaultStart, string $translationCode): void
+    protected function updateWindow(int $windowStart, int $limit, int $length, string $translationCode)
     {
-
-        $query = "UPDATE " . $this->fullTableName . " JOIN " .
-            "(SELECT @seq := $windowEnd) r " .
-            "SET seq=@seq:=@seq+1 " .
-            "WHERE seq >= $nextWindowDefaultStart AND code='$translationCode';";
-        \DB::statement($query);
+        TranslationDraft::where('seq', '>=', $windowStart + $limit)
+            ->where('code', $translationCode)
+            ->update(['seq' => \DB::raw('`seq` + ' . ($length - $limit))]);
     }
 
     /**
      * Insert draft segment rows into DB
      *
-     * @param array $translation
+     * @param array $translations
      * @param int $windowStart
      * @param string $translationCode
      * @return array
      */
-    protected function insertRows(array $translation, int $windowStart, string $translationCode): array
+    protected function insertRows(array $translations, int $windowStart, string $translationCode): array
     {
-        $rows = [];
-        foreach ($translation as $k => $row) {
-            $rows[] = [
+        $records = [];
+        foreach (array_values($translations) as $k => $translation) {
+            $records[] = [
                 'code' => $translationCode,
                 'seq' => ($k + $windowStart),
-                'content' => $row ?: '',
+                'content' => $translation ?: '',
             ];
         }
-        TranslationDraft::insert($rows);
-        return $rows;
+        TranslationDraft::insert($records);
+        return $records;
     }
 
     /**
@@ -96,11 +96,13 @@ class Synch
 
         $this->cleanUpWindow($windowStart, $limit, $translationCode);
 
+        $updateWindow = "";
+
         if ($length != $limit) {
-            $this->updateWindow($windowEnd, $nextWindowDefaultStart, $translationCode);
+            $updateWindow = $this->updateWindow($windowStart, $limit, $length, $translationCode);
         }
 
-        $rows = $this->insertRows($translation, $windowStart, $translationCode);
+        $records = $this->insertRows($translation, $windowStart, $translationCode);
 
         return [
             'result' => 'success',
@@ -112,8 +114,9 @@ class Synch
             'windowEnd' => $windowEnd,
             'nextWindowDefaultStart' => $nextWindowDefaultStart,
             'nextWindowActualStart' => $windowEnd + 1,
-            'insertions' => $rows,
+            'insertions' => $records,
             'deletions' => [$windowStart, $windowStart + $limit - 1],
+            'updateWindow' => $updateWindow,
         ];
     }
 
@@ -140,7 +143,7 @@ class Synch
         $translation = array_map(
             'trim',
             file(
-                storage_path('app/synch/' . $translationFile)
+                Storage::path('synch/' . $translationFile)
             )
         );
         if ($skipEmpty) {
@@ -166,7 +169,5 @@ class Synch
             ]
         );
     }
-
-
 
 }
