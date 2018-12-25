@@ -37,7 +37,7 @@ abstract class Datamining
      *
      * @var integer
      */
-    protected $minWordCount = 2;
+    protected $minWordCount = 5;
 
     /**
      * Quorum Percentage
