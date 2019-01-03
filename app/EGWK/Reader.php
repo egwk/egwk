@@ -24,38 +24,40 @@ class Reader
 
     public function chapterMetadata($code, $lang = null, $publisher = null, $year = null, $no = null)
     {
-        $sectionObject = null;
-        $bookObject = null;
-        $prevChapterObject = null;
-        $nextChapterObject = null;
+        $sectionObjects = [];
+        $bookObjects = [];
+        $prevChapterObjects = [];
+        $nextChapterObjects = [];
 
-        $chapterObject = $this->commonFilter(DB::table('api_toc'), $lang, $publisher, $year, $no)
+        $chapters = $this->commonFilter(DB::table('api_toc'), $lang, $publisher, $year, $no)
             ->where('para_id', $code)
-            ->first();
-        if (null !== $chapterObject && isset($chapterObject->parent_1) && isset($chapterObject->parent_2)) {
-            $sectionObject = $this->commonFilter(DB::table('api_toc'), $lang, $publisher, $year, $no)
-                ->where('para_id', $chapterObject->parent_2)
-                ->first();
-            $bookObject = $this->commonFilter(DB::table('api_book'), $lang, $publisher, $year, $no)
-                ->where('book_code', $chapterObject->refcode_1)
-                ->first();
-            $prevChapterObject = $this->commonFilter(DB::table('api_toc'), $lang, $publisher, $year, $no)
-                ->where('refcode_1', $chapterObject->refcode_1)
-                ->where('puborder', '<', $chapterObject->puborder)
-                ->orderBy('puborder', 'desc')
-                ->first();
-            $nextChapterObject = $this->toc($chapterObject->refcode_1, $lang, $publisher, $year, $no)
-                ->where('puborder', '>', $chapterObject->puborder)
-                ->first();
+            ->get();
+        foreach ($chapters as $chapterObject) {
+            if (null !== $chapterObject && isset($chapterObject->parent_1) && isset($chapterObject->parent_2)) {
+                $sectionObjects[] = $this->commonFilter(DB::table('api_toc'), $chapterObject->lang, $chapterObject->publisher, $chapterObject->year, $chapterObject->no)
+                    ->where('para_id', $chapterObject->parent_2)
+                    ->first();
+                $bookObjects[] = $this->commonFilter(DB::table('api_book'), $chapterObject->lang, $chapterObject->publisher, $chapterObject->year, $chapterObject->no)
+                    ->where('book_code', $chapterObject->refcode_1)
+                    ->first();
+                $prevChapterObjects[] = $this->commonFilter(DB::table('api_toc'), $chapterObject->lang, $chapterObject->publisher, $chapterObject->year, $chapterObject->no)
+                    ->where('refcode_1', $chapterObject->refcode_1)
+                    ->where('puborder', '<', $chapterObject->puborder)
+                    ->orderBy('puborder', 'desc')
+                    ->first();
+                $nextChapterObjects[] = $this->toc($chapterObject->refcode_1, $chapterObject->lang, $chapterObject->publisher, $chapterObject->year, $chapterObject->no)
+                    ->where('puborder', '>', $chapterObject->puborder)
+                    ->first();
+            }
         }
         return (object)[
-            'chapter' => $chapterObject,
+            'chapter' => $chapters,
             'nav' => (object)[
-                'prev' => $prevChapterObject,
-                'next' => $nextChapterObject,
+                'prev' => $prevChapterObjects,
+                'next' => $nextChapterObjects,
             ],
-            'section' => $sectionObject,
-            'book' => $bookObject
+            'section' => $sectionObjects,
+            'book' => $bookObjects
         ];
     }
 

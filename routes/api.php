@@ -21,11 +21,10 @@ use Illuminate\Http\Request;
 |
 */
 
-$perPage = \Request::get('per_page') ?: env('API_PAGINATION', 25);
+Route::get('/', 'Controller@help');
 
-Route::get('/', function (Request $request) {
-    return config('egwk.api_help');
-});
+Route::middleware('auth:api')->group(function () {
+}); // todo: test
 
 Route::fallback(function () {
     return response()->json(['message' => 'Not Found.'], 404);
@@ -40,118 +39,43 @@ Route::fallback(function () {
 //
 // Reader
 //
-Route::group(['prefix' => 'reader',], function () use ($perPage) {
-    Route::get('/', function (Request $request) {
-        return config('egwk.api_help.entries.reader');
-    });
+Route::group(['prefix' => 'reader',], function () {
 
-        Route::get('/books/{lang?}', function ($lang = null) use ($perPage) {
-            $table = DB::table('api_book');
-            if (null !== $lang) {
-                $table->where('lang', $lang);
-            }
-//         ->orderBy('primary_collection_text_id')
-//         ->orderBy('church_approved', 'desc')
-            return $table->paginate($perPage);
-        });
-
-    Route::get('/book/{code}', function ($code) use ($perPage) {
-        return Reader::original($code)
-            ->paginate($perPage);
-    });
-
-    Route::get('/toc/{code}/{lang?}/{publisher?}/{year?}/{no?}', function ($code, $lang = null, $publisher = null, $year = null, $no = null) use ($perPage) {
-        return Reader::toc($code, $lang, $publisher, $year, $no)
-            ->paginate($perPage);
-    });
-
-    Route::get('/chapter/{code}/{lang?}/{publisher?}/{year?}/{no?}', function ($code, $lang = null, $publisher = null, $year = null, $no = null) use ($perPage) {
-        return Reader::chapter($code, $lang, $publisher, $year, $no)
-            ->paginate($perPage);
-    });
+    Route::get('/', 'ReaderController@help')->defaults('module', 'reader');
+    Route::get('/books/{lang?}', 'ReaderController@books');
+    Route::get('/collections/{lang?}', 'ReaderController@collections');
+    Route::get('/book/{code}', 'ReaderController@book');
+    Route::get('/toc/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@toc');
+    Route::get('/chapter/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@chapter');
+    Route::get('/translation/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@translation');
+    Route::get('/parallel/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@parallel');
+    Route::get('/paragraph/{refcode_short}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@paragraph');
 
 //
 // Reader / Metadata
 //
-    Route::group(['prefix' => 'metadata',], function () use ($perPage) {
-        Route::get('/toc/{code}/{lang?}/{publisher?}/{year?}/{no?}', function ($code, $lang = null, $publisher = null, $year = null, $no = null) use ($perPage) {
-            return response()->json(Reader::editionMetadata($code, $lang, $publisher, $year, $no)->first(), 200);
-        });
-
-        Route::get('/chapter/{code}/{lang?}/{publisher?}/{year?}/{no?}', function ($code, $lang = null, $publisher = null, $year = null, $no = null) use ($perPage) {
-            return response()->json(Reader::chapterMetadata($code, $lang, $publisher, $year, $no), 200);
-        });
-    });
-
-    Route::get('/translation/{code}/{lang?}/{publisher?}/{year?}/{no?}', function ($code, $lang = null, $publisher = null, $year = null, $no = null) use ($perPage) {
-        return Reader::translations($code, $lang, $publisher, $year, $no)
-            ->paginate($perPage);
-    });
-
-    Route::get('/parallel/{code}/{lang?}/{publisher?}/{year?}/{no?}', function ($code, $lang = null, $publisher = null, $year = null, $no = null) use ($perPage) {
-        return Reader::parallel($code, $lang, $publisher, $year, $no)
-            ->paginate($perPage);
-    });
-
-    Route::get('/paragraph/{refcode_short}/{lang?}/{publisher?}/{year?}/{no?}', function ($refcodeShort, $lang = null, $publisher = null, $year = null, $no = null) use ($perPage) {
-        return Reader::paragraph($refcodeShort, $lang, $publisher, $year, $no)
-            ->paginate($perPage);
+    Route::group(['prefix' => 'metadata',], function () {
+        Route::get('/toc/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'Reader\\MetadataController@toc');
+        Route::get('/chapter/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'Reader\\MetadataController@chapter');
     });
 
 //
 // Reader / Search
 //
-    Route::group(['prefix' => 'search',], function () use ($perPage) {
-        Route::get('/', function (Request $request) use ($perPage) {
-            $query = $request->__get('query');
-            return Reader::searchOriginal($query)
-                ->paginate($perPage);
-        });
-
-        Route::get('/translation', function (Request $request) use ($perPage) {
-            $query = $request->__get('query');
-            return Reader::searchTranslation($query)
-                ->paginate($perPage);
-        });
-
-        Route::get('/similarity/{para_id}', function ($paraID) use ($perPage) {
-            return SearchSimilar::similarParagraph($paraID)
-                ->paginate($perPage);
-            // return SearchSimilar::similarParagraphStandard($paraID); // @todo: check which is better
-        });
-
-        Route::get('/cluster', function (Request $request) use ($perPage) {
-            $query = $request->__get('query');
-
-            $cover = $request->__get('cover');
-            $covers = null == $cover ? $request->__get('covers') : $cover;
-            $covered = null == $cover ? $request->__get('covered') : $cover;
-
-            $reference = $request->__get('reference');
-
-            return SearchSimilar::original($query, $covers, $covered, $reference)
-                ->paginate($perPage);
-        });
-
+    Route::group(['prefix' => 'search',], function () {
+        Route::get('/', 'Reader\\SearchController@search');
+        Route::get('/translation', 'Reader\\SearchController@translation');
+        Route::get('/similarity/{para_id}', 'Reader\\SearchController@similarity');
+        Route::get('/cluster', 'Reader\\SearchController@cluster');
     });
-
 
 //
 // Reader / ZIP
 //
     Route::group(['prefix' => 'zip',], function () {
-        Route::get('/book/{code}', function ($code) {
-            return response()->file(ZipJson::create($code, Reader::original($code)), ZipJson::header($code));
-        });
-
-        Route::get('/translation/{code}/{lang?}/{publisher?}/{year?}/{no?}', function ($code, $lang = null, $publisher = null, $year = null, $no = null) {
-            return response()->file(ZipJson::create($code, Reader::translations($code, $lang, $publisher, $year, $no)), ZipJson::header($code));
-        });
-
-        Route::get('/paragraph/{refcode_short}/{lang?}/{publisher?}/{year?}/{no?}', function ($refcodeShort, $lang = null, $publisher = null, $year = null, $no = null) {
-            $refcodeShort = Reader::filterCode($refcodeShort);
-            return response()->file(ZipJson::create($refcodeShort, Reader::paragraph($refcodeShort, $lang, $publisher, $year, $no)), ZipJson::header($refcodeShort));
-        });
+        Route::get('/book/{code}', 'Reader\\ZipController@book');
+        Route::get('/translation/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'Reader\\ZipController@translation');
+        Route::get('/paragraph/{refcode_short}/{lang?}/{publisher?}/{year?}/{no?}', 'Reader\\ZipController@paragraph');
     });
 });
 
@@ -159,48 +83,30 @@ Route::group(['prefix' => 'reader',], function () use ($perPage) {
 // Sabbath School
 //
 Route::prefix('sabbathschool')
-    ->group(function () use ($perPage) {
-        Route::get('/', function (Request $request) {
-            return config('egwk.api_help.entries.sabbathschool');
-        });
-
-        Route::get('/list/', function (Request $request) {
-            return SabbathSchool::getList();
-        });
-        Route::get('/date/{date}/', function ($date) {
-            return SabbathSchool::getByDate($date);
-        });
-        Route::get('/html/{date}/', function ($date) {
-            return view('sabbathschool::html', array_merge(SabbathSchool::getByDate($date), ['title' => $date]));
-        });
-        Route::get('/{year}/{quarter?}/', function ($year, $quarter = 1) {
-            return SabbathSchool::getQuarter($year, $quarter);
-        });
-        Route::get('/weeks/{year}/{quarter?}/', function ($year, $quarter = 1) {
-            return SabbathSchool::getNoWeeks($year, $quarter);
-        });
-        Route::get('/week/{year}/{quarter}/{weekNo}', function ($year, $quarter, $weekNo) {
-            /* not working */
-            return SabbathSchool::getContentByWeekNo($year, $quarter, $weekNo);
-        });
+    ->group(function () {
+        Route::get('/', 'SabbathSchoolController@help')->defaults('module', 'sabbathschool');
+        Route::get('/list/', 'SabbathSchoolController@list');
+        Route::get('/date/{date}/', 'SabbathSchoolController@date');
+        Route::get('/html/{date}/', 'SabbathSchoolController@html');
+        Route::get('/{year}/{quarter?}/', 'SabbathSchoolController@quarter');
+        Route::get('/weeks/{year}/{quarter?}/', 'SabbathSchoolController@weeks');
+        Route::get('/week/{year}/{quarter}/{weekNo}', 'SabbathSchoolController@week');
     });
 
 //
 // Hymnal
 //
-Route::middleware('auth:api')->group(function () use ($perPage) { // todo: test
-    Route::group(['prefix' => 'hymnals',], function () use ($perPage) {
-        Route::get('/languages', 'HymnalController@languages');
-        Route::get('/{lang?}', 'HymnalController@hymnals');
-    });
+Route::group(['prefix' => 'hymnals',], function () {
+    Route::get('/languages', 'HymnalController@languages');
+    Route::get('/{lang?}', 'HymnalController@hymnals');
 });
 
-Route::group(['prefix' => 'hymnal',], function () use ($perPage) {
-    Route::get('/{slug}', 'HymnalController@hymnalToc')->defaults('limit', $perPage);
+Route::group(['prefix' => 'hymnal',], function () {
+    Route::get('/{slug}', 'HymnalController@hymnalToc');
     Route::get('/{slug}/{no}', 'HymnalController@hymnalEntry');
 });
 
-Route::group(['prefix' => 'hymn',], function () use ($perPage) {
+Route::group(['prefix' => 'hymn',], function () {
     Route::get('/{slug}/{no}/{verse?}', 'HymnalController@hymnVerses');
     Route::get('/translate/{lang}/{slug}/{no}/{verses?}', 'HymnalController@translate');
     Route::get('/score/{slug}/{no}/{verses?}', 'HymnalController@score');
@@ -209,16 +115,28 @@ Route::group(['prefix' => 'hymn',], function () use ($perPage) {
 //
 // Synch tool: Translation draft synchronization
 //
-Route::group(['prefix' => 'synch',], function () use ($perPage) {
+Route::group(['prefix' => 'synch',], function () {
     Route::get('/translations', 'SynchController@translations');
-    Route::get('/{translationCode}', 'SynchController@synch')->defaults('limit', $perPage);
-    Route::post('/{translationCode}', 'SynchController@save')->defaults('limit', $perPage);
+    Route::get('/{translationCode}', 'SynchController@synch');
+    Route::post('/{translationCode}', 'SynchController@save');
+});
+
+//
+// News
+//
+Route::group(['prefix' => 'news',], function () {
+    Route::get('/', 'NewsController@all');
+    Route::get('/news', 'NewsController@news');
+    Route::get('/pinned', 'NewsController@pinned');
+    Route::get('/others', 'NewsController@others');
+    Route::get('/books', 'NewsController@books');
 });
 
 //
 // @todo further routes
 //
-Route::get('/devotionals', function () use ($perPage) {
+Route::get('/devotionals', function () {
+    $perPage = 25;
     return DB::table('api_book')
         ->where('primary_collection_text_id', 'LIKE', 'devotionals')
         ->paginate($perPage);

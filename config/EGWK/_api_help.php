@@ -10,9 +10,21 @@
 
 return [
     'name' => 'EGWK API',
-    'version' => '1.6',
+    'version' => '1.6.2',
     'notes' => 'Always use the first translation (translations[0]) for the official / most important translation.',
     'changelog' => [
+//        '2.0' => [
+//            'date' => '2019-01-01',
+//            'note' => 'Added API authentication',
+//        ],
+        '1.6.2' => [
+            'date' => '2018-12-27',
+            'note' => 'Updated reader metadata API reponse structure',
+        ],
+        '1.6.1' => [
+            'date' => '2018-12-26',
+            'note' => 'Added News API (todo doc)',
+        ],
         '1.6' => [
             'date' => '2018-12-13',
             'note' => 'Added Synch API (todo doc)',

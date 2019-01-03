@@ -47,11 +47,11 @@ class HymnalController extends Controller
      * @param int $limit
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function hymnalToc(string $slug, int $limit): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function hymnalToc(string $slug): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return DB::table('api_hymnal_song')
             ->where('slug', $slug)
-            ->paginate($limit);
+            ->paginate($this->limit);
     }
 
     /**

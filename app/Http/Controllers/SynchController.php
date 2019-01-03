@@ -35,7 +35,7 @@ class SynchController extends Controller
      * @param string $translationCode
      * @return array
      */
-    public function synch(string $translationCode, int $limit): array
+    public function synch(string $translationCode): array
     {
         $bookCode = str_before($translationCode, '.');
 //        $translation = Synch::getTranslationCache($translationCode);
@@ -44,12 +44,12 @@ class SynchController extends Controller
         return [
             'original' => Original::where('refcode_1', $bookCode)
                 ->orderBy('puborder', 'asc')
-                ->paginate($limit)
+                ->paginate($this->limit)
             ,
             'translation' => TranslationDraft::select('content', 'seq')
                 ->where('code', $translationCode)
                 ->orderBy('seq')
-                ->paginate($limit)
+                ->paginate($this->limit)
         ];
 
     }

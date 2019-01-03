@@ -30,7 +30,9 @@ return [
     'writings' => [
         'books' => [
             'description' => 'List of translated books.',
-            'uri' => '/reader/books',
+            'uri' => '/reader/books/{lang?}',
+            'uri_example' => '/reader/books/hu',
+            'uri_example_description' => 'Returns the list of Hungarian books',
         ],
         'book' => [
             'description' => 'Getting paragraphs of a book.',
@@ -41,7 +43,7 @@ return [
         'toc' => [
             'description' => 'Getting table of contents of a book.',
             'uri' => '/reader/toc/{code}/{lang?}/{publisher?}/{year?}/{no?}',
-            'uri_example' => '/reader/toc/PP',
+            'uri_example' => '/reader/toc/PP/hu',
             'uri_example_description' => 'Returns the table of contents of Patriarchs and Prophets with all Hungarian translations, chapter URIs provided.',
         ],
         'chapter' => [
