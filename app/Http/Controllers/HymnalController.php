@@ -41,6 +41,19 @@ class HymnalController extends Controller
     }
 
     /**
+     * Get Hymnal table
+     *
+     * @param string|null $lang
+     * @return \Illuminate\Support\Collection
+     */
+    public function hymnalMetadata(string $slug): \Illuminate\Support\Collection
+    {
+        return DB::table('api_hymnal_book')
+            ->where('slug', $slug)
+            ->get();
+    }
+
+    /**
      * Get Hymnal ToC
      *
      * @param string $slug
@@ -98,7 +111,7 @@ class HymnalController extends Controller
      * @param string|null $verse
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
-    public function score(Request $request, string $slug, string $no, string $verses = null): \Symfony\Component\HttpFoundation\StreamedResponse
+    public function score(Request $request, string $slug, string $no, string $verses = null) // : ?\Symfony\Component\HttpFoundation\StreamedResponse
     {
         // /hymn/score/hitunk-enekei/1/1?type=STB&format=png&size=normal&piano=0&minifySoprano=1&header=0
         // '/score/{type}/{slug}/{no}/{verse}/
@@ -120,9 +133,15 @@ class HymnalController extends Controller
             'header' => $request->get('header', true),
             'cache' => $request->get('cache', true),
         ]));
-        return \Response::stream(function () {
-            echo Lily::get();
-        }, 200, ['content-type' => Lily::contentType()]);
+        try {
+            $score = Lily::get();
+            return \Response::stream(function () use ($score) {
+                echo $score;
+            }, 200, ['content-type' => Lily::contentType()]);
+        } catch (\Exception $e) {
+            return response('', 404)
+                ->header('Content-Type', 'text/plain');
+        }
     }
 
 }

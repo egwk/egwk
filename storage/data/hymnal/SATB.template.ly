@@ -81,6 +81,14 @@ pianoReduction = \new PianoStaff \with {
   }
 >>
 
+\paper {
+  left-margin = 13
+  $mobileSize #(set! paper-alist (cons '("mobile size" . (cons (* 4 in) (* 30 in))) paper-alist))
+  $mobileSize #(set-paper-size "mobile size")
+  $tabletSize #(set! paper-alist (cons '("tablet size" . (cons (* 5.5 in) (* 30 in))) paper-alist))
+  $tabletSize #(set-paper-size "tablet size")
+}
+
 \score {
 
   <<

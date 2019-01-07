@@ -27,6 +27,12 @@ return [
         'uri_example' => '/hymnal/sda-hymnal',
         'uri_example_description' => 'Returns the complete TOC of the Seventh-Day Adventist Hymnal.',
     ],
+    'hymnal' => [
+        'description' => 'metadata',
+        'uri' => '/hymnal/{slug}/metadata',
+        'uri_example' => '/hymnal/sda-hymnal/metadata',
+        'uri_example_description' => 'Returns metadata for Seventh-Day Adventist Hymnal.',
+    ],
     'hymn' => [
         'description' => 'Hymn verses',
         'uri' => '/hymn/{slug}/{no}',

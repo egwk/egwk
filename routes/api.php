@@ -102,6 +102,7 @@ Route::group(['prefix' => 'hymnals',], function () {
 });
 
 Route::group(['prefix' => 'hymnal',], function () {
+    Route::get('/{slug}/metadata', 'HymnalController@hymnalMetadata');
     Route::get('/{slug}', 'HymnalController@hymnalToc');
     Route::get('/{slug}/{no}', 'HymnalController@hymnalEntry');
 });

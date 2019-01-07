@@ -71,9 +71,13 @@ class Lily
      * @param string $key
      * @param null $default
      */
-    protected function copyByKey(array $source, array &$target, string $key, $default = null)
+    protected function copyByKey(?array $source, array &$target, string $key, $default = null)
     {
-        $target[$key] = array_get($source, $key, $default);
+        if ($source) {
+            $target[$key] = array_get($source, $key, $default);
+        } else {
+            throw new \Exception('No score');
+        }
     }
 
     /**
@@ -113,10 +117,10 @@ class Lily
     {
         $englishNumber = $this->englishNumber($number);
         return
-        starts_with($this->config->type, '4') ?
-            "\\addlyrics { \\verse$englishNumber }"
-            :
-            "\\new Lyrics \\lyricsto \"soprano\" \\verse$englishNumber";
+            starts_with($this->config->type, '4') ?
+                "\\addlyrics { \\verse$englishNumber }"
+                :
+                "\\new Lyrics \\lyricsto \"soprano\" \\verse$englishNumber";
     }
 
     /**
@@ -185,12 +189,16 @@ class Lily
             '$pianoReduction',
             '$minifySoprano',
             '$header',
+            '$mobileSize',
+            '$tabletSize',
         ], [
             array_get($data, 'hymn_no', 0) . '. ' . array_get($data, 'title', ''),
             array_get($data, 'key', 'c \\major'),
             $this->config->pianoReduction ? '' : '%',
             $this->config->minifySoprano ? '' : '%',
-            $this->config->header ? '' : '%',
+            $this->config->header && !in_array($this->config->header, ['false', 'off', 0]) ? '' : '%',
+            $this->config->size == 'mobile' ? '' : '%',
+            $this->config->size == 'tablet' ? '' : '%',
         ], $template);
         foreach (['poet', 'composer', 'arranger', 'tagline', 'key', 'time',
                      'partial', 'soprano', 'alto', 'tenor', 'bass', 'pianoReduction',
@@ -282,11 +290,12 @@ class Lily
      */
     protected function getKey(): string
     {
-        return "hymnal.{$this->config->type}.{$this->config->slug}.{$this->config->no}.{$this->config->verses}";
+        return "hymnal.{$this->config->type}.{$this->config->slug}.{$this->config->no}.{$this->config->verses}.{$this->config->size}";
     }
 
     public function contentType(): string
     {
+//        return 'text/plain'; // for testing only
         switch (strtolower($this->config->format)) {
             case 'png':
                 return 'image/png';
@@ -309,7 +318,8 @@ class Lily
         if (null == $image) {
             $lilyCode = $this->compile();
             if (empty($lilyCode)) {
-                return $this->fallbackImage();
+                throw new \Exception('No score');
+                // return $this->fallbackImage();
             }
             $image = $this->downloadImage($lilyCode);
             if ($this->config->cache) {
