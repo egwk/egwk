@@ -64,7 +64,7 @@ class SynchController extends Controller
      * @return array
      * @throws \Throwable
      */
-    public function save(Request $request, string $translationCode, int $limit)
+    public function save(Request $request, string $translationCode, int $limit = 100)
     {
         return Synch::save(
             $translationCode,
