@@ -4,6 +4,9 @@ namespace App\Console\Commands\Install;
 
 use App\Models\Tables\Edition;
 use Illuminate\Console\Command;
+use Facades\ {
+    App\EGWK\Synch
+};
 
 class ApproveTranslationDraft extends Command
 {
@@ -12,7 +15,7 @@ class ApproveTranslationDraft extends Command
      *
      * @var string
      */
-    protected $signature = 'approve:draft {--f|file=} {--c|cleanup} {--x|noexport}';
+    protected $signature = 'approve:draft {--f|file=} {--c|cleanup} {--x|noexport} {--r|refreshcache}';
 
     /**
      * The console command description.
@@ -33,7 +36,7 @@ class ApproveTranslationDraft extends Command
      *
      * @var array
      */
-    protected $metadataFields = ['book_code', 'tr_code', 'tr_title', 'tr_title_alt', 'publisher_code', 'year', 'no', 'version', 'start_para_id', 'section_element_type', 'chapter_element_type', 'translator', 'language', 'user_level', 'source', 'added', 'summary', 'church_approved', 'status', 'text_id', 'text_id_alt', 'visible'];
+    protected $mandatoryMetadataFields = ['book_code', 'tr_code', 'tr_title', 'publisher_code', 'year', 'no', 'start_para_id', 'translator', 'language', 'text_id'];
 
     /**
      * Create a new command instance.
@@ -94,15 +97,29 @@ class ApproveTranslationDraft extends Command
     protected function getMetadata(string $translationCode): array
     {
         $this->output->writeln('Checking metadata...');
+
         $metadataFile = "synch/$translationCode.json";
+        $metadata = null;
+
         if (!\Storage::exists($metadataFile)) {
-            $this->output->error("Metadata not found. Create $metadataFile first with relevant data.");
-            exit(1);
+
+            $this->output->warning("Metadata file not found. Trying database.");
+
+            $bookCode = Synch::getBookCode($translationCode);
+            try {
+                $metadata = Edition::where('book_code', $bookCode)
+                    ->firstOrFail()
+                    ->toArray();
+            } catch (\Exception $e) {
+                $this->output->error("Metadata not found. Create $metadataFile first with relevant data.");
+                exit(1);
+            }
+        } else {
+            $metadata = json_decode(\Storage::get($metadataFile), true);
         }
 
-        $metadata = json_decode(\Storage::get($metadataFile), true);
 
-        if (!array_has($metadata, $this->metadataFields)) {
+        if (!array_has($metadata, $this->mandatoryMetadataFields)) {
             $this->output->error("Invalid Metadata, missing fields in $metadataFile.");
             exit(2);
         }
@@ -146,15 +163,13 @@ class ApproveTranslationDraft extends Command
 
         $this->output->writeln('Merging Translation with Original...');
 
-        $merged = \DB::table('original')
-            ->select('para_id', 'translation_draft.content')
-            ->join('translation_draft', 'translation_draft.seq', '=', 'original.puborder')
-            ->where('refcode_1', $bookCode)
-            ->where('translation_draft.code', $translationCode)
-            ->orderBy('puborder')
+        $merged = Synch::merge($translationCode, $bookCode)
             ->get()
             ->map(function ($item) use ($halfRecord) {
-                return array_merge($halfRecord, (array)$item);
+                return array_merge($halfRecord, [
+                    'content' => $item->tr_content,
+                    'para_id' => $item->para_id,
+                ]);
             })
             ->toArray();
         return $merged;
@@ -190,11 +205,12 @@ class ApproveTranslationDraft extends Command
         $translationCode = $this->option('file');
         $cleanup = $this->option('cleanup');
         $export = !$this->option('noexport');
+        $refreshcache = $this->option('refreshcache');
 
         $this->output->writeln('Approving: ' . $translationCode);
 
         if ($export) {
-            $this->export();
+            $this->export($translationCode);
         }
 
         [$bookCode, $metadata, $halfRecord] = $this->getMetadata($translationCode);
@@ -208,6 +224,20 @@ class ApproveTranslationDraft extends Command
         $merged = $this->merge($bookCode, $translationCode, $halfRecord);
 
         $this->saveTranslations($merged);
+
+        if ($refreshcache) {
+            $this->refreshcache();
+        }
+
     }
 
+    protected function refreshcache()
+    {
+        $this->call('migrate:rollback', [
+            '--path' => '/database/migrations/api/'
+        ]);
+        $this->call('migrate', [
+            '--path' => '/database/migrations/api/'
+        ]);
+    }
 }

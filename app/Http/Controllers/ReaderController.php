@@ -23,6 +23,7 @@ class ReaderController extends Controller
         }
         $query
             ->orderBy('seq')
+            ->orderBy('api_book.primary_collection_text_id')
             ->orderBy('church_approved', 'desc');
         return $query
             ->paginate($this->limit);

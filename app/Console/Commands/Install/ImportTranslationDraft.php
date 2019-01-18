@@ -16,7 +16,7 @@ class ImportTranslationDraft extends Command
      *
      * @var string
      */
-    protected $signature = 'import:draft {--f|file=} {--s|skipempty}';
+    protected $signature = 'import:draft {--f|file=} {--s|skipempty} {--x|noexport}';
 
     /**
      * The console command description.
@@ -33,6 +33,20 @@ class ImportTranslationDraft extends Command
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * Export draft to txt
+     *
+     * @param string $translationCode
+     * @return void
+     */
+    protected function export(string $translationCode): void
+    {
+        $this->output->writeln('Creating backup first.');
+        $this->call('export:draft', [
+            '--file' => $translationCode
+        ]);
     }
 
     /**
@@ -67,7 +81,11 @@ class ImportTranslationDraft extends Command
     {
         $translationCode = $this->option('file');
         $skipEmpty = $this->option('skipempty');
+        $export = !$this->option('noexport');
         $this->output->writeln($translationCode);
+        if ($export) {
+            $this->export($translationCode);
+        }
         $this->import($translationCode, "$translationCode.txt", $skipEmpty);
         $this->output->newLine();
     }

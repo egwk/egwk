@@ -4,6 +4,9 @@ namespace App\Console\Commands\Install;
 
 use App\Models\Tables\TranslationDraft;
 use Illuminate\Console\Command;
+use Facades\ {
+    App\EGWK\Synch
+};
 
 class ExportTranslationDraft extends Command
 {
@@ -12,7 +15,7 @@ class ExportTranslationDraft extends Command
      *
      * @var string
      */
-    protected $signature = 'export:draft {--f|file=}';
+    protected $signature = 'export:draft {--f|file=} {--p|parallel}';
 
     /**
      * The console command description.
@@ -39,20 +42,37 @@ class ExportTranslationDraft extends Command
     public function handle()
     {
         $translationCode = $this->option('file');
+        $parallel = $this->option('parallel');
         $this->output->writeln('Exporting: ' . $translationCode);
 
-        $translation = TranslationDraft::select('content')
-            ->where('code', $translationCode)
-            ->orderBy('seq')
-            ->get()
-            ->pluck('content')
-            ->map(function ($item) {
-                return str_replace("\n", '<br/>', $item);
-            })
-            ->implode("\n");
+        $translation = "";
 
-        \Storage::put("synch/$translationCode.export.txt", $translation);
-        $this->output->writeln('Exported to: ' . \Storage::path("synch/$translationCode.export.txt"));
+        if ($parallel) {
+            $translation = Synch::merge($translationCode)
+                ->get()
+                ->map(function ($item) {
+                    return
+                        $item->content
+                        //strip_tags($item->content)
+                    . "\t"
+                    . str_replace("\n", '<br/>', $item->tr_content);
+                })
+                ->implode("\n");
+        } else {
+            $translation = TranslationDraft::select('content')
+                ->where('code', $translationCode)
+                ->orderBy('seq')
+                ->get()
+                ->pluck('content')
+                ->map(function ($item) {
+                    return str_replace("\n", '<br/>', $item);
+                })
+                ->implode("\n");
+        }
+
+        $outoutFile = "synch/$translationCode.export" . ($parallel ? '.parallel' : '') . '.txt';
+        \Storage::put($outoutFile, $translation);
+        $this->output->writeln('Exported to: ' . \Storage::path($outoutFile));
         $this->output->newLine();
 
     }

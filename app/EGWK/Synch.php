@@ -170,4 +170,27 @@ class Synch
         );
     }
 
+    public function getBookCode(string $translationCode, string $bookCode = null): string
+    {
+        return $bookCode ?: str_before($translationCode, '.');
+    }
+
+    /**
+     * Merge translation draft with original
+     *
+     * @param string $translationCode
+     * @param string $bookCode
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function merge(string $translationCode, string $bookCode = null)
+    {
+        $bookCode = $this->getBookCode($translationCode, $bookCode);
+        return \DB::table('original')
+            ->select('original.puborder', 'para_id', 'original.content AS content', 'translation_draft.content AS tr_content')
+            ->join('translation_draft', 'translation_draft.seq', '=', 'original.puborder')
+            ->where('refcode_1', $bookCode)
+            ->where('translation_draft.code', $translationCode)
+            ->orderBy('puborder');
+    }
+
 }
