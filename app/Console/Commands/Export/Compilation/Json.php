@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Export\Compilation;
 
+use App\Console\Commands\Export\Compile;
 use Facades\App\EGWK\Translation\CompileBook;
 
-class ExportJson extends Export
+class Json extends Compile
 {
-    protected $signature = 'export:json' . self::SIGNATURE_SUFFFIX;
-    protected $description = 'Exports book as JSON .json';
+    protected $signature = 'compile:json' . self::SIGNATURE_SUFFFIX;
+    protected $description = 'Compiles book as JSON .json';
 
     /**
      * Export
      *
      * @return mixed
      */
-    protected function export($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
+    protected function compile($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
     {
         $folder = 'compilations' . ($collection ? "/$collection" : '');
         \Storage::put(

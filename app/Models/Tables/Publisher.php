@@ -14,7 +14,9 @@ class Publisher extends Model
 
     protected $primaryKey = 'code';
 
-	public $timestamps = false;
+    protected $keyType = 'string';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'name',
@@ -25,9 +27,9 @@ class Publisher extends Model
 
     protected $guarded = [];
 
-	public function editions()
-		{
-		return $this->hasMany('App\Models\Tables\Edition', 'publisher_code', 'code');
-		}
-   
+    public function editions()
+    {
+        return $this->hasMany('App\Models\Tables\Edition', 'publisher_code', 'code');
+    }
+
 }

@@ -60,7 +60,7 @@ return [
         ],
         'parallel' => [
             'parallel' => 'The same as /translation, but includes non-translated paragraphs',
-            'uri' => '/reader/translation/{code}/{lang?}/{publisher?}/{year?}/{no?}',
+            'uri' => '/reader/parallel/{code}/{lang?}/{publisher?}/{year?}/{no?}',
             'uri_example' => '/reader/parallel/PP/hu/advent',
             'uri_example_description' => 'Returns the paragraphs of Patriarchs and Prophets with a Hungarian translation, including empty translations.',
         ],

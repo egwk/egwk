@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Export\Compilation;
 
+use App\Console\Commands\Export\Compile;
 use Facades\App\EGWK\Translation\CompileBook;
 use Illuminate\Support\Facades\Storage;
 
-class ExportDocx extends Export
+class Docx extends Compile
 {
-    protected $signature = 'export:docx' . self::SIGNATURE_SUFFFIX;
-    protected $description = 'Exports book as Ms Word .docx';
+    protected $signature = 'compile:docx' . self::SIGNATURE_SUFFFIX;
+    protected $description = 'Compiles book as Ms Word .docx';
 
     protected function setupPhpWord($book, $collection)
     {
@@ -42,7 +43,7 @@ class ExportDocx extends Export
      *
      * @return mixed
      */
-    protected function export($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
+    protected function compile($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
     {
 
         $folder = Storage::path('compilations/docx' . ($collection ? "/$collection" : ''));
