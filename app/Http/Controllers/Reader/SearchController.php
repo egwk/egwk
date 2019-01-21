@@ -29,14 +29,14 @@ class SearchController extends Controller
             ->paginate($this->limit);
     }
 
-    public function cluster(Request $request)
+    public function cluster(Request $request, $lang = null)
     {
         $query = $request->__get('query');
         $cover = $request->__get('cover');
         $covers = null == $cover ? $request->__get('covers') : $cover;
         $covered = null == $cover ? $request->__get('covered') : $cover;
         $reference = $request->__get('reference');
-        return SearchSimilar::original($query, $covers, $covered, $reference)
+        return SearchSimilar::cluster($query, $covers, $covered, $reference, $lang)
             ->paginate($this->limit);
     }
 

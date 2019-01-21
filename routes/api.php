@@ -66,7 +66,7 @@ Route::group(['prefix' => 'reader',], function () {
         Route::get('/', 'Reader\\SearchController@search');
         Route::get('/translation', 'Reader\\SearchController@translation');
         Route::get('/similarity/{para_id}', 'Reader\\SearchController@similarity');
-        Route::get('/cluster', 'Reader\\SearchController@cluster');
+        Route::get('/cluster/{lang?}', 'Reader\\SearchController@cluster');
     });
 
 //

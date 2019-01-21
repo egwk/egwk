@@ -3,6 +3,8 @@
 namespace App\EGWK\Reader;
 
 
+use App\Models\Tables\Publisher;
+use App\Models\Tables\Translation;
 use App\Models\Tables\CacheSearch,
     App\Models\Tables\SimilarParagraph,
     App\Models\Tables\SimilarParagraph1,
@@ -14,38 +16,62 @@ class SearchSimilar
 
     const DEFAULT_THRESHOLD = 30;
 
-    public function original($query, $thresholdCovers = null, $thresholdCovered = null, $referenceParaId = null)
+    public function cluster($query, $thresholdCovers = null, $thresholdCovered = null, $referenceParaId = null, $lang = null)
     {
         $thresholdCovers = $thresholdCovers ?: static::DEFAULT_THRESHOLD;
         $thresholdCovered = $thresholdCovered ?: static::DEFAULT_THRESHOLD;
 
-        $merged = [];
+        $cluster = [];
         $index = 0;
         $result = $this->getSearchResult($query);
-
+        $translations = collect([]);
+        if ($lang !== null) {
+            $publishers = Publisher::all()->keyBy('code');
+            $translations = Translation::whereIn('para_id', $result->pluck('para_id'))
+                ->where('lang', $lang)
+                ->get()
+                ->map(function ($item) use ($publishers) {
+                    $po = $publishers->get($item->publisher);
+                    $item->publisher = $po ? $po->name : $item->publisher;
+                    // print_r($publishers->get($item->publisher, $item->publisher));
+                    return $item;
+                })
+                ->groupBy('para_id');
+            $result->map(function ($item) use ($translations) {
+                $item->translations = $translations->get($item->para_id, []);
+                return $item;
+            });
+        }
         do {
-            $merged[$index]['self'] = $this->getFirstRecord($result, $referenceParaId);
+            $cluster[$index]['self'] = $this->getFirstRecord($result, $referenceParaId);
             if ($result->count() > 0) {
-                foreach ($this->getSimilarParagraphs($result, $merged[$index]['self']) as $similarItem) {
+                foreach ($this->getSimilarParagraphs($result, $cluster[$index]['self']) as $similarItem) {
                     if ($similarItem->w2 >= $thresholdCovers && $similarItem->w1 >= $thresholdCovered) {
-                        $merged[$index]['similars'][] = $this->buildSimilarRecord($result, $similarItem);
-                        $result = $result->filter(function ($resultItem, $key) use ($similarItem) {
-                            return $resultItem->para_id != $similarItem->para_id2;
-                        });
+                        $similarRecord = $this->buildSimilarRecord($result, $similarItem);
+                        if ($similarRecord !== null) {
+                            $cluster[$index]['similars'][] = $similarRecord;
+                            $result = $result->filter(function ($resultItem, $key) use ($similarItem) {
+                                return $resultItem->para_id != $similarItem->para_id2;
+                            });
+                        }
                     }
                 }
             }
             $index++;
         } while (!$result->isEmpty());
-        return collect($merged);
+        return collect($cluster);
     }
 
     protected function buildSimilarRecord($result, $similarItem)
     {
+        $paragraph = $result->filter(function ($resultItem, $key) use ($similarItem) {
+            return $resultItem->para_id == $similarItem->para_id2;
+        })->first();
+        if ($paragraph === null) {
+            return null;
+        }
         return [
-            'paragraph' => $result->filter(function ($resultItem, $key) use ($similarItem) {
-                return $resultItem->para_id == $similarItem->para_id2;
-            })->first(),
+            'paragraph' => $paragraph,
             'similarity' => [
                 'covered' => $similarItem->w1,
                 'covers' => $similarItem->w2,
