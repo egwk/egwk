@@ -17,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Config::set('install.stopwords', config('stopwords')); // Stopwords merged into the installer config.
+
         Schema::defaultStringLength(191);
 
         Blade::directive('echoRefcodeShort', function ($refcodeShort)

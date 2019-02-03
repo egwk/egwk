@@ -25,4 +25,16 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function notFound()
+    {
+        return response()->json(['message' => 'Not Found.'], 404);
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
+
 }

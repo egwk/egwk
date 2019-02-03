@@ -27,3 +27,11 @@ function str_putcsv($data)
 
     return $csv;
 }
+
+function sphinx()
+{
+    $connection = new \Foolz\SphinxQL\Drivers\Pdo\Connection();
+    $driver = config('scout.driver', 'sphinxsearch');
+    $connection->setParams(['host' => config('scout.' . $driver . '.host', 'sphinx'), 'port' => config('scout.' . $driver . '.port', 9306)]);
+    return new \Foolz\SphinxQL\SphinxQL($connection);
+}

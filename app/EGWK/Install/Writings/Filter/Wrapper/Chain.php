@@ -72,6 +72,18 @@ class Chain
     }
 
     /**
+     * Data LENGTH
+     *
+     * @access public
+     * @return integer
+     */
+    public function length()
+    {
+        return is_array($this->data) ? count($this->data) :
+            (is_string($this->data) ? strlen($this->data) : 0);
+    }
+
+    /**
      * Filter call magic method
      *
      * @access public

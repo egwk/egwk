@@ -47,6 +47,7 @@ class Txt extends Translation
         switch ($original) {
             case 'original': // original text only
             case 'o':
+                $language = '';
                 $original = 'original';
                 $content = Reader::original($book)
                     ->get()
@@ -82,10 +83,10 @@ class Txt extends Translation
                 break;
         }
 
-        $id = implode('.', array_filter([$language, $publisher, $year, $no]));
+        $filename = implode('.', array_filter([$book, $original, $language, $publisher, $year, $no]));
 
         \Storage::put(
-            "$folder/$book.$original.$id.txt",
+            "$folder/$filename.txt",
             $content->implode("\n")
         );
     }
