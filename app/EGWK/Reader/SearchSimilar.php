@@ -15,6 +15,7 @@ class SearchSimilar
 {
 
     const DEFAULT_THRESHOLD = 30;
+    protected $publishers = null;
 
     public function cluster($query, $thresholdCovers = null, $thresholdCovered = null, $referenceParaId = null, $lang = null)
     {
@@ -23,25 +24,7 @@ class SearchSimilar
 
         $cluster = [];
         $index = 0;
-        $result = $this->getSearchResult($query);
-        $translations = collect([]);
-        if ($lang !== null) {
-            $publishers = Publisher::all()->keyBy('code');
-            $translations = Translation::whereIn('para_id', $result->pluck('para_id'))
-                ->where('lang', $lang)
-                ->get()
-                ->map(function ($item) use ($publishers) {
-                    $po = $publishers->get($item->publisher);
-                    $item->publisher = $po ? $po->name : $item->publisher;
-                    // print_r($publishers->get($item->publisher, $item->publisher));
-                    return $item;
-                })
-                ->groupBy('para_id');
-            $result->map(function ($item) use ($translations) {
-                $item->translations = $translations->get($item->para_id, []);
-                return $item;
-            });
-        }
+        $result = $this->getSearchResults($query, $lang);
         do {
             $cluster[$index]['self'] = $this->getFirstRecord($result, $referenceParaId);
             if ($result->count() > 0) {
@@ -60,6 +43,30 @@ class SearchSimilar
             $index++;
         } while (!$result->isEmpty());
         return collect($cluster);
+    }
+
+    protected function getSearchResults($query, $lang = null, $quoted = true)
+    {
+        $result = $this->getOriginalSearchResult($query, $quoted);
+        if ($result->count() > 0) {
+            if ($lang !== null) {
+
+                $translations = $this->getTranslationsByParaId($result->pluck('para_id'), $lang);
+                $result->map(function ($item) use ($translations) {
+                    $item->translations = $translations->get($item->para_id, []);
+                    return $item;
+                });
+            }
+        } else {
+            $translations = $this->getTranslationSearchResult($query, $lang, $quoted);
+            $result = $this->getOriginalsByParaId($translations->pluck('para_id'));
+            $translationsGrouped = $translations->groupBy('para_id');
+            $result->map(function ($item) use ($translationsGrouped) {
+                $item->translations = $translationsGrouped->get($item->para_id, []);
+                return $item;
+            });
+        }
+        return $result;
     }
 
     protected function buildSimilarRecord($result, $similarItem)
@@ -86,9 +93,56 @@ class SearchSimilar
             ->sortBy('year');
     }
 
-    protected function getSearchResult(string $query)
+    protected function getOriginalsByParaId($paraIdList)
     {
-        return collect(CacheSearch::search(\Reader::quotedPhraseQuery($query))
+        return collect(CacheSearch::whereIn('para_id', $paraIdList)
+            ->get())
+            ->map(function ($item) {
+                $item->content = trim(html_entity_decode(strip_tags($item->content)));
+                return $item;
+            });
+    }
+
+    protected function getTranslationsByParaId($paraIdList, $lang = null)
+    {
+        $publishers = $this->getPublishers();
+        $tr = Translation::whereIn('para_id', $paraIdList);
+        if ($lang !== null) {
+            $tr->where('lang', $lang);
+        }
+        return $tr->get()
+            ->map(function ($item) use ($publishers) {
+                $publisher = $publishers->get($item->publisher);
+                $item->publisher = $publisher ? $publisher->name : $item->publisher;
+                return $item;
+            })
+            ->groupBy('para_id');
+    }
+
+    protected function getTranslationSearchResult(string $query, $lang = null, $quoted = true)
+    {
+        $publishers = $this->getPublishers();
+        $query = $quoted ? \Reader::quotedPhraseQuery($query) : $query;
+        $q = Translation::search($query)
+            ->take(config('egwk.api.query_limit', 1000))
+            ->orderBy('year', 'asc');
+        if ($lang !== null) {
+            $q->where('lang', $lang);
+        }
+        return collect($q->get())
+            ->map(function ($item) use ($publishers) {
+                $publisher = $publishers->get($item->publisher);
+                $item->publisher = $publisher ? $publisher->name : $item->publisher;
+                $item->content = trim(html_entity_decode(strip_tags($item->content)));
+                return $item;
+            });
+       // return $c;
+    }
+
+    protected function getOriginalSearchResult(string $query, $quoted = true)
+    {
+        $query = $quoted ? \Reader::quotedPhraseQuery($query) : $query;
+        return collect(CacheSearch::search($query)
             ->take(config('egwk.api.query_limit', 1000))
             ->orderBy('year', 'asc')
             ->get())
@@ -113,9 +167,18 @@ class SearchSimilar
         return $first;
     }
 
+    protected function getPublishers()
+    {
+        if (null === $this->publishers) {
+            $this->publishers = Publisher::all()
+                ->keyBy('code');
+        }
+        return $this->publishers;
+    }
+
     public function similarParagraph($paraID)
     {
-        $paraIDexpr = \Foolz\SphinxQL\SphinxQL::expr('="' . trim($paraID) . '"'); // Also: '="^' . trim($paraID) . '$";mode=extended'
+        $paraIDexpr =  \Reader::quotedPhraseQuery(trim($paraID));// SphinxQL::expr('="' . trim($paraID) . '"') Also:  '="^' . trim($paraID) . '$";mode=extended'
         return collect(SimilarParagraph1::search($paraIDexpr)->get()->merge(SimilarParagraph2::search($paraIDexpr)->get()));
     }
 
@@ -140,7 +203,6 @@ class SearchSimilar
 
     public function similarParagraphStandard($paraID)
     {
-        $paraIDexpr = \Foolz\SphinxQL\SphinxQL::expr('="' . trim($paraID) . '"');
-        return SimilarParagraph::search($paraIDexpr);
+        return SimilarParagraph::search(\Reader::quotedPhraseQuery(trim($paraID)));
     }
 }

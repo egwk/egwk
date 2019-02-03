@@ -26,9 +26,7 @@ Route::get('/', 'Controller@help');
 Route::middleware('auth:api')->group(function () {
 }); // todo: test
 
-Route::fallback(function () {
-    return response()->json(['message' => 'Not Found.'], 404);
-})->name('api.fallback.404');
+Route::fallback('HomeController@notFound')->name('api.fallback.404');
 
 /*
 |--------------------------------------------------------------------------
@@ -136,10 +134,11 @@ Route::group(['prefix' => 'news',], function () {
 //
 // @todo further routes
 //
+/*
 Route::get('/devotionals', function () {
     $perPage = 25;
     return DB::table('api_book')
         ->where('primary_collection_text_id', 'LIKE', 'devotionals')
         ->paginate($perPage);
 });
-
+*/
