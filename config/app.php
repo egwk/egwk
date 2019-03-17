@@ -166,6 +166,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
         /*
@@ -174,6 +175,7 @@ return [
         App\Providers\EGWK\ReaderServiceProvider::class,
         App\Providers\EGWK\SabbathSchoolServiceProvider::class,
         App\Providers\EGWK\HymnalServiceProvider::class,
+        App\Providers\EGWK\DevotionalServiceProvider::class,
     ],
 
     /*

@@ -48,7 +48,7 @@ Route::group(['prefix' => 'reader',], function () {
     Route::get('/translation/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@translation');
     Route::get('/parallel/{code}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@parallel');
     Route::get('/paragraph/{refcode_short}/{lang?}/{publisher?}/{year?}/{no?}', 'ReaderController@paragraph');
-
+    Route::get('/compare/{books}', 'ReaderController@compare');
 //
 // Reader / Metadata
 //
@@ -132,13 +132,11 @@ Route::group(['prefix' => 'news',], function () {
 });
 
 //
-// @todo further routes
+// Devotional
 //
-/*
-Route::get('/devotionals', function () {
-    $perPage = 25;
-    return DB::table('api_book')
-        ->where('primary_collection_text_id', 'LIKE', 'devotionals')
-        ->paginate($perPage);
+Route::group(['prefix' => 'devotional',], function () {
+    Route::get('/{id}', 'DevotionalController@all');
+    Route::get('/{id}/year/{year}', 'DevotionalController@year');
+    Route::get('/{id}/today', 'DevotionalController@today');
+    Route::get('/{id}/{date}', 'DevotionalController@date');
 });
-*/

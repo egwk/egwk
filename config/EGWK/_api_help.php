@@ -10,16 +10,24 @@
 
 return [
     'name' => 'EGWK API',
-    'version' => '1.6.2',
+    'version' => '1.8',
     'notes' => 'Always use the first translation (translations[0]) for the official / most important translation.',
     'changelog' => [
 //        '2.0' => [
 //            'date' => '2019-01-01',
 //            'note' => 'Added API authentication',
 //        ],
+        '1.8' => [
+            'date' => '2019-02-28',
+            'note' => 'Added devotionals',
+        ],
+        '1.7' => [
+            'date' => '2019-02-17',
+            'note' => 'Added book comparison function',
+        ],
         '1.6.2' => [
             'date' => '2018-12-27',
-            'note' => 'Updated reader metadata API reponse structure',
+            'note' => 'Updated reader metadata API response structure',
         ],
         '1.6.1' => [
             'date' => '2018-12-26',

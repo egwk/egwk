@@ -1,31 +1,5 @@
 <?php
 
-/*
-  |--------------------------------------------------------------------------
-  | Reader API Endpoints help
-  |--------------------------------------------------------------------------
-  |
-  |
- */
-
-/*
-/
-/books
-/devotionals
-/book/{code}
-/toc/{code}/{lang?}/{publisher?}/{year?}/{no?}
-/chapter/{code}/{lang?}/{publisher?}/{year?}/{no?}
-/metadata/toc/{code}/{lang?}/{publisher?}/{year?}/{no?}
-/metadata/chapter/{code}/{lang?}/{publisher?}/{year?}/{no?}
-/translation/{code}/{lang?}/{publisher?}/{year?}/{no?}
-/parallel/{code}/{lang?}/{publisher?}/{year?}/{no?}
-/paragraph/{refcode_short}/{lang?}/{publisher?}/{year?}/{no?}
-/search
-/trsearch
-/similarity/{para_id}
-/merge
- */
-
 return [
     'writings' => [
         'books' => [
@@ -69,6 +43,12 @@ return [
             'uri' => '/reader/paragraph/refcode',
             'uri_example' => '/reader/paragraph/ML 5.5',
             'uri_example_description' => 'Returns the paragraphs with all translations of My Life Today, p. 5.5',
+        ],
+        'compare' => [
+            'description' => 'Compares comma separated list of documents parallelly. The first document serves as reference',
+            'uri' => '/reader/compare/{books}',
+            'uri_example' => '/reader/compare/GC,GC88,4SP',
+            'uri_example_description' => 'Returns comparison of GC (1911), GC (1888), and SP vol. 4. (1884)',
         ],
     ],
     'metadata' => [
