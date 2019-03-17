@@ -9,7 +9,10 @@
 namespace App\EGWK;
 
 use App\EGWK\Devotional\Driver;
-use mysql_xdevapi\Exception;
+
+class DevotionalException extends \Exception
+{
+}
 
 class Devotional
 {
@@ -25,7 +28,7 @@ class Devotional
         if (class_exists($class)) {
             return new $class($id, $appName);
         } else {
-            throw new \Exception('Class not found: ' . $class);
+            throw new DevotionalException('Class not found: ' . $class);
         }
     }
 }

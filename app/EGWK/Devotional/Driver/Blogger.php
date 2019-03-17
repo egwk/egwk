@@ -91,9 +91,13 @@ abstract class Blogger implements Driver
             $this->service->posts->listPosts($blogId, $optParams)
             as $post) {
             $postObj = $post->toSimpleObject();
-            $postObj->text = $this->filterText($postObj->content);
-            $postObj->author =  $postObj->author->displayName;
-            $posts[] = collect($postObj)->only(['author', 'content', 'text', 'labels', 'published', 'title', 'url']);
+            $postObj->date = substr($postObj->published, 0, 10);
+            $postObj->body = (object)[
+                'rich' => $postObj->content,
+                'plain' => $this->filterText($postObj->content),
+            ];
+            $postObj->author = $postObj->author->displayName;
+            $posts[] = collect($postObj)->only(['author', 'body', 'labels', 'date', 'title', 'url']);
         }
         return $posts;
     }
@@ -124,7 +128,7 @@ abstract class Blogger implements Driver
      */
     public function today(): array
     {
-        return $this->common([
+        return  $this->common([
             'maxResults' => 1,
             'startDate' => date('Y-m-d') . 'T00:00:00' . $this->timezone]);
     }

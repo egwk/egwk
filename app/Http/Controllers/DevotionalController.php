@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EGWK\Devotional;
-use App\EGWK\Devotional\Driver;
-use Illuminate\Http\Request;
+use App\EGWK\DevotionalException;
 
 class DevotionalController extends Controller
 {
@@ -16,25 +15,41 @@ class DevotionalController extends Controller
 
     public function all(string $id)
     {
-        return Devotional::factory($id)
-            ->all();
+        try {
+            return Devotional::factory($id)
+                ->all();
+        } catch (DevotionalException $e) {
+            return ['error' => true, 'message' => 'Unknown devotional: ' . $id];
+        }
     }
 
     public function year(string $id, string $year)
     {
-        return Devotional::factory($id)
-            ->year($year);
+        try {
+            return Devotional::factory($id)
+                ->year($year);
+        } catch (DevotionalException $e) {
+            return ['error' => true, 'message' => 'Unknown devotional: ' . $id];
+        }
     }
 
     public function today(string $id)
     {
-        return Devotional::factory($id)
-            ->today();
+        try {
+            return Devotional::factory($id)
+                ->today();
+        } catch (DevotionalException $e) {
+            return ['error' => true, 'message' => 'Unknown devotional: ' . $id];
+        }
     }
 
     public function date(string $id, string $date)
     {
-        return Devotional::factory($id)
-            ->date($date);
+        try {
+            return Devotional::factory($id)
+                ->date($date);
+        } catch (DevotionalException $e) {
+            return ['error' => true, 'message' => 'Unknown devotional: ' . $id];
+        }
     }
 }

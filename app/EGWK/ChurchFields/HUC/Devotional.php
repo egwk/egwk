@@ -6,14 +6,14 @@
  * Time: 17:40
  */
 
-namespace App\EGWK\Devotional\Driver\Blogger;
+namespace App\EGWK\ChurchFields\HUC;
 
 
 use App\EGWK\Devotional\Driver\Blogger;
 
-class HucReggeliDicseret extends Blogger
+class Devotional extends Blogger
 {
-    public function __construct(string $id = 'hu-reggelidicseret', string $appName = '')
+    public function __construct(string $id = 'huc-reggelidicseret', string $appName = '')
     {
         parent::__construct($id, $appName);
     }
