@@ -13,7 +13,7 @@ class ImportTranslations extends Command
      *
      * @var string
      */
-    protected $signature = 'import:translations {--l|language=hu}';
+    protected $signature = 'import:translations {--l|language=hu} {--f|filter=}';
 
     /**
      * The console command description.
@@ -40,11 +40,12 @@ class ImportTranslations extends Command
     public function handle()
     {
         $lang = $this->option('language');
+        $filter = $this->option('filter');
         $metadataService = new Translations\Metadata($lang);
         $insertService = new Translations\Store\Database(); // Alternatively: new Translations\Store\File();
         $dataType = Translations\DataFile\Excel\Filtered::class;
-        echo "$lang, $dataType";
-        (new Translations\Import($metadataService, $insertService, $lang, $dataType))->translations();
+        $this->info("$lang, $dataType");
+        (new Translations\Import($metadataService, $insertService, $lang, $dataType))->translations($filter);
     }
 
 }

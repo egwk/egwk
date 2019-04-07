@@ -84,9 +84,9 @@ class Import
      * @access public
      * @return void
      */
-    public function translations()
+    public function translations($filter = '')
     {
-        foreach (glob(storage_path("import/$this->lang") . '/*' . $this->extension) as $dataFilePath)
+        foreach (glob(\Storage::path("import/$this->lang") . '/' . $filter . '*' . $this->extension) as $dataFilePath)
         {
             $basename = basename($dataFilePath, $this->extension);
             $this

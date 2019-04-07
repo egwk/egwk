@@ -131,7 +131,7 @@ class Metadata
      */
     protected function getTranslationsFilePath(string $lang = 'hu'): string
     {
-        $translationsFilePath = storage_path("import/$lang/" . self::TRANSLATIONS_JSON);
+        $translationsFilePath = \Storage::path("import/$lang/" . self::TRANSLATIONS_JSON);
 
         if (!file_exists($translationsFilePath))
         {

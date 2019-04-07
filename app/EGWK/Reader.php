@@ -74,19 +74,34 @@ class Reader
         return $paragraphs;
     }
 
+    protected function bookOrArticle($code)
+    {
+        // SELECT * FROM `db_original` WHERE `refcode_short` LIKE 'ST July 17,%1901%' ORDER BY puborder
+        $column = 'refcode_1';
+        $eq = '=';
+        if (preg_match('/\s+[0-9]{4}\s*$/', $code)) {
+            $column = 'refcode_short';
+            $eq = 'like';
+            $code = preg_replace('/\s+([0-9]{4})/', '%$1%', $code);
+        }
+        return [$column, $eq, $code];
+    }
+
     public function toc($code, $lang = null, $publisher = null, $year = null, $no = null)
     {
+        [$column, $eq, $code] = $this->bookOrArticle($code);
         $chapters = $this->commonFilter(DB::table('api_toc'), $lang, $publisher, $year, $no)
             ->orderBy('puborder')
-            ->where('refcode_1', $code);
+            ->where($column, $eq, $code);
         return $chapters;
     }
 
     public function parallel($code, $lang = null, $publisher = null, $year = null, $no = null)
     {
+        [$column, $eq, $code] = $this->bookOrArticle($code);
         return $this
             ->contentQueryBase($lang, $publisher, $year, $no)
-            ->where('refcode_1', $code);
+            ->where($column, $eq, $code);
     }
 
     public function translations($code, $lang = null, $publisher = null, $year = null, $no = null)
@@ -108,7 +123,8 @@ class Reader
 
     public function original($code)
     {
-        return Original::where('refcode_1', $code)
+        [$column, $eq, $code] = $this->bookOrArticle($code);
+        return Original::where($column, $eq, $code)
             ->orderBy('puborder', 'asc');
     }
 

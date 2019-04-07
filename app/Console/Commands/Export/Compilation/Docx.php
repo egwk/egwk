@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 
 class Docx extends Compile
 {
+
+    const baseFolder = 'compilations/docx';
+
     protected $signature = 'compile:docx' . self::SIGNATURE_SUFFFIX;
     protected $description = 'Compiles book as Ms Word .docx';
 
@@ -46,7 +49,7 @@ class Docx extends Compile
     protected function compile($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
     {
 
-        $folder = Storage::path('compilations/docx' . ($collection ? "/$collection" : ''));
+        $folder = Storage::path(static::baseFolder . ($collection ? "/$collection" : ''));
         @mkdir($folder);
 
         $phpWord = $this->setupPhpWord($book, $collection);
@@ -64,7 +67,7 @@ class Docx extends Compile
                 ' ' .
                 $this->refCode($paragraph->paragraph->refcode_short);
             $cell->addText($content);
-            $cell = $table->addCell(5000);
+            $cell = $table->addCell(5000, ['lang' => 'hu-HU']); // todo: doesn't work yet.
             foreach ($paragraph->similars as $similar) {
                 foreach ($similar->translations as $translation) {
                     $content = $this->convertText($translation->content) .

@@ -7,6 +7,8 @@ use Facades\App\EGWK\Translation\CompileBook;
 
 class Json extends Compile
 {
+    const baseFolder = 'compilations';
+
     protected $signature = 'compile:json' . self::SIGNATURE_SUFFFIX;
     protected $description = 'Compiles book as JSON .json';
 
@@ -17,7 +19,7 @@ class Json extends Compile
      */
     protected function compile($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
     {
-        $folder = 'compilations' . ($collection ? "/$collection" : '');
+        $folder = static::baseFolder . ($collection ? "/$collection" : '');
         \Storage::put(
             "$folder/$book.json",
             json_encode(

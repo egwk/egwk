@@ -7,6 +7,9 @@ use App\Console\Commands\Export\Translation;
 
 class Txt extends Translation
 {
+
+    const baseFolder = 'exported';
+
     protected $signature = 'export:txt' . self::SIGNATURE_SUFFFIX;
     protected $description = 'Exports book as text .txt';
     protected $ids = false;
@@ -41,7 +44,7 @@ class Txt extends Translation
         $this->ids = $ids;
         $me = $this;
 
-        $folder = 'exported' . ($collection ? "/$collection" : '');
+        $folder = static::baseFolder . ($collection ? "/$collection" : '');
 
         $content = null;
         switch ($original) {

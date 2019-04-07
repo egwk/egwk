@@ -35,6 +35,10 @@ Export translation draft into text file.
 #### Paragraph similarity
 Signature: `similarity:paragraph {--s|startid=0} {--l|limit=0} {--o|offset=0} {--f|output=ParagraphSimilarity}`
 
+#### Bible text mining
+Signature: `mine:bible`
+
+Mining Bible quotes in writings
 
 ##`Export` commands
 
@@ -68,7 +72,7 @@ Signature: `export:bible:ngrams {translations*}`
 Exports Bible translation n-grams into `TSV` files. Translations are concatenated into a single file: `\Storage::path('bible/ngrams.txt')`
 
 Filters applied:
-- normalization (lowecase alphanumerical characters only) 
+- normalization (lowercase alphanumerical characters only) 
 - with and without stopwords
 - English lemmaziter
 - Single verse - signle n-gram occurrence

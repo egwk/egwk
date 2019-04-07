@@ -10,6 +10,7 @@ use App\Models\Tables\CacheSearch,
     App\Models\Tables\SimilarParagraph1,
     App\Models\Tables\SimilarParagraph2;
 use App\Models\Tables\Original;
+use Illuminate\Support\Collection;
 
 class SearchSimilar
 {
@@ -17,7 +18,7 @@ class SearchSimilar
     const DEFAULT_THRESHOLD = 30;
     protected $publishers = null;
 
-    public function cluster($query, $thresholdCovers = null, $thresholdCovered = null, $referenceParaId = null, $lang = null)
+    public function cluster($query, $thresholdCovers = null, $thresholdCovered = null, $referenceParaId = null, $lang = null): Collection
     {
         $thresholdCovers = $thresholdCovers ?: static::DEFAULT_THRESHOLD;
         $thresholdCovered = $thresholdCovered ?: static::DEFAULT_THRESHOLD;
@@ -176,13 +177,13 @@ class SearchSimilar
         return $this->publishers;
     }
 
-    public function similarParagraph($paraID)
+    public function similarParagraph($paraID): Collection
     {
         $paraIDexpr =  \Reader::quotedPhraseQuery(trim($paraID));// SphinxQL::expr('="' . trim($paraID) . '"') Also:  '="^' . trim($paraID) . '$";mode=extended'
         return collect(SimilarParagraph1::search($paraIDexpr)->get()->merge(SimilarParagraph2::search($paraIDexpr)->get()));
     }
 
-    public function similarParagraphWithContent($paraID, $threshold)
+    public function similarParagraphWithContent($paraID, $threshold): Collection
     {
         $tmp = [];
         foreach ($this->similarParagraph($paraID) as $paragraph) {
