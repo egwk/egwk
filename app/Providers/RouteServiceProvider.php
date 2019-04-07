@@ -53,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            //->domain(config('egwk.web.domain', 'www.white-konyvtar.hu'))
+            ->domain(config('egwk.web.domain', 'www.white-konyvtar.hu'))
             ->group(base_path('routes/web.php'));
     }
 
@@ -68,7 +68,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('api')
             ->namespace($this->namespace)
-            ->domain(config('egwk.api.domain', 'api.white-konyvtar.hu'))
+            ->domain(config('egwk.api.domain', 'api-dev.white-konyvtar.hu'))
             ->group(base_path('routes/api.php'));
     }
 }

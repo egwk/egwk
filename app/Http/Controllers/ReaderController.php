@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Reader;
+use App\Jobs\ComparePublications;
+use App\Jobs\Exception\JobInProgressException;
+use App\Jobs\Exception\QueueBusyException;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Redis as RedisFacade;
+use App\Jobs\ComparePublications as ComparePublicationsJob;
+use Facades\App\EGWK\Datamining\ComparePublications as ComparePublicationsClass;
 use Illuminate\Http\Request;
 
 class ReaderController extends Controller
 {
+
     public function books($lang = null)
     {
         $lang = $lang ?: $this->lang;
@@ -79,6 +87,59 @@ class ReaderController extends Controller
     {
         return Reader::paragraph($refcodeShort, $lang, $publisher, $year, $no)
             ->paginate($this->limit);
+    }
+
+    protected function compareCommon($books)
+    {
+        if (\Facades\App\Jobs\Job::areSameClassJobsInLimit(1, ComparePublications::class)) {
+            throw new QueueBusyException;
+        }
+
+        $bookList = explode(',', $books);
+        $path = ComparePublicationsClass::getFilePath($bookList);
+
+        if (!\Storage::exists($path)) {
+            ComparePublicationsJob::dispatch($bookList)
+                ->onConnection('redis');
+            throw new JobInProgressException;
+        }
+
+        return json_decode(\Storage::get($path), true);
+    }
+
+    public function compare($books)
+    {
+        try {
+            $comparison = $this->compareCommon($books);
+            $bookList = explode(',', $books);
+            return collect($comparison)
+                ->paginate($this->limit);
+        } catch (QueueBusyException $e) {
+            return ['error' => true, 'message' => 'QueueBusyException: Compiler is busy, please come back later.', 'books' => $bookList];
+        } catch (JobInProgressException $e) {
+            return ['error' => false, 'message' => 'JobInProgressException: Comparison process started.', 'books' => $bookList];
+        }
+    }
+
+    /**
+     * Comparison front-end action method
+     * For testing only
+     *
+     * @param $books
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function compareTest($books)
+    {
+        $comparison = [];
+        try {
+            $comparison = $this->compareCommon($books);
+        } catch (QueueBusyException $e) {
+            return view('test.compare', ['data' => false, 'error' => true, 'message' => 'QueueBusyException: Compiler is busy, please come back later.', 'books' => $bookList = explode(',', $books)]);
+        } catch (JobInProgressException $e) {
+            // do nothing, just move forward
+//            return view('test.compare', ['data' => false, 'error' => true, 'message' => 'JobInProgressException: Compiler is busy, please come back later.', 'books' => $bookList = explode(',', $books)]);
+        }
+        return view('test.compare', ['data' => $comparison, 'error' => false, 'books' => $bookList = explode(',', $books)]);
     }
 
 }
