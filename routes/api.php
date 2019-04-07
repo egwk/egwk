@@ -23,9 +23,6 @@ use Illuminate\Http\Request;
 
 Route::get('/', 'Controller@help');
 
-Route::middleware('auth:api')->group(function () {
-}); // todo: test
-
 Route::fallback('HomeController@notFound')->name('api.fallback.404');
 
 /*
@@ -115,9 +112,11 @@ Route::group(['prefix' => 'hymn',], function () {
 // Synch tool: Translation draft synchronization
 //
 Route::group(['prefix' => 'synch',], function () {
-    Route::get('/translations', 'SynchController@translations');
-    Route::get('/{translationCode}', 'SynchController@synch');
-    Route::post('/{translationCode}', 'SynchController@save');
+    Route::middleware('auth:api')->group(function () {
+        Route::get('/translations', 'SynchController@translations');
+        Route::get('/{translationCode}', 'SynchController@synch');
+        Route::post('/{translationCode}', 'SynchController@save');
+    });
 });
 
 //
