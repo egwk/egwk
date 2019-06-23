@@ -97,9 +97,14 @@ Route::group(['prefix' => 'hymnals',], function () {
 });
 
 Route::group(['prefix' => 'hymnal',], function () {
-    Route::get('/{slug}/metadata', 'HymnalController@hymnalMetadata');
+    Route::get('/{slug}/metadata', 'Hymnal\\MetadataController@show');
     Route::get('/{slug}', 'HymnalController@hymnalToc');
     Route::get('/{slug}/{no}', 'HymnalController@hymnalEntry');
+    Route::middleware('auth:api')->group(function () {
+        Route::resource('metadata', 'Hymnal\\MetadataController');
+//        Route::put('/metadata', 'HymnalController@saveHymnal');
+//        Route::post('/metadata', 'HymnalController@saveHymnal');
+    });
 });
 
 Route::group(['prefix' => 'hymn',], function () {
@@ -139,3 +144,13 @@ Route::group(['prefix' => 'devotional',], function () {
     Route::get('/{id}/today', 'DevotionalController@today');
     Route::get('/{id}/{date}', 'DevotionalController@date');
 });
+
+
+//
+// Ellen4All
+//
+Route::group(['prefix' => 'e4a',], function () {
+    Route::get('/similarity/', 'Reader\\ZipController@e4a')->defaults('file', 'similarity');
+    Route::get('/corpus/{file}', 'Reader\\ZipController@e4a');
+});
+

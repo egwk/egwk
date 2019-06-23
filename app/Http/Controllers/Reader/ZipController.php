@@ -25,4 +25,10 @@ class ZipController extends Controller
         return response()->file(ZipJson::create($refcodeShort, Reader::paragraph($refcodeShort, $lang, $publisher, $year, $no)), ZipJson::header($refcodeShort));
     }
 
+    public function e4a($file)
+    {
+        $path = \Storage::path('e4a' . DIRECTORY_SEPARATOR . "$file.json");
+        return response()->file(ZipJson::createFromFile($path), ZipJson::header($file));
+    }
+
 }
