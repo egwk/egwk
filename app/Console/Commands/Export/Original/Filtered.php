@@ -103,7 +103,7 @@ class Filtered extends Original
 
     protected function query(array $bookList)
     {
-        $query = CacheSearch::select(['para_id', 'content', 'stemmed_wordlist']);
+        $query = CacheSearch::select(['para_id', 'refcode_short', 'content', 'stemmed_wordlist']);
 
         if (strtolower(array_get($bookList, 0)) !== 'all') {
             $query->whereIn('refcode_1', $bookList);
@@ -122,20 +122,27 @@ class Filtered extends Original
         $q = $this->query($bookList);
         $progress = new ProgressBar($this->output, $q->count());
         $progress->start();
+
+        yield implode("\t", ['index', 'para_id', 'refcode_short', 'content']) . "\n";
+
         foreach ($q->get() as $original) {
-            $this->index++;
             $progress->advance();
             if ($this->index <= $startIndex) {
                 continue;
             }
             yield implode("\t",
-                    array_merge(
-                        [$this->index, $original->para_id],
-                        $this->filter($original->content),
-                        [$original->stemmed_wordlist]
+                    array_merge([
+                            $this->index,
+                            $original->para_id,
+                            $original->refcode_short,
+                            str_replace("\n", '', $original->content)
+                        ]
+                    //, $this->filter($original->content)
+                    //, [$original->stemmed_wordlist]
                     )
                 )
                 . "\n";
+            $this->index++;
         }
         $progress->finish();
     }

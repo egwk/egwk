@@ -34,6 +34,15 @@ class Txt extends Translation
 
     }
 
+
+    protected function writeFile($content, $folder, $filename, $ext = '.txt')
+    {
+        \Storage::put(
+            "$folder/$filename$ext",
+            $content->implode("\n")
+        );
+    }
+
     /**
      * Export
      *
@@ -88,9 +97,6 @@ class Txt extends Translation
 
         $filename = implode('.', array_filter([$book, $original, $language, $publisher, $year, $no]));
 
-        \Storage::put(
-            "$folder/$filename.txt",
-            $content->implode("\n")
-        );
+        $this->writeFile($content, $folder, $filename);
     }
 }
