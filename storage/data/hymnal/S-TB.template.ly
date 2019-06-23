@@ -94,7 +94,7 @@ pianoReduction = \new PianoStaff \with {
   <<
     \new ChoirStaff <<
       \new Staff = "sa" \with {
-		% \magnifyStaff #(magstep -3)
+		\magnifyStaff #(magstep -3)
 		$minifySoprano \magnifyStaff #4/7
         midiInstrument = "choir aahs"
         instrumentName = \markup \center-column { "Soprano" }

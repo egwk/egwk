@@ -9,6 +9,7 @@ use Facades\ {
 };
 use DB;
 use Illuminate\Http\Request;
+use Laravel\Passport\Passport;
 
 class HymnalController extends Controller
 {
@@ -29,29 +30,21 @@ class HymnalController extends Controller
      * @param string|null $lang
      * @return \Illuminate\Support\Collection
      */
-    public function hymnals(string $lang = null): \Illuminate\Support\Collection
+    public function hymnals(Request $request, string $lang = null): \Illuminate\Support\Collection
     {
         $table = DB::table('api_hymnal_book');
         if (null !== $lang) {
             $table
                 ->where('lang', $lang);
         }
+        if (!$this->apiAuthCheck()) {
+            $table
+                ->whereIn('permissions', [7, 3]);
+        }
         return $table
             ->get();
     }
 
-    /**
-     * Get Hymnal table
-     *
-     * @param string|null $lang
-     * @return \Illuminate\Support\Collection
-     */
-    public function hymnalMetadata(string $slug): \Illuminate\Support\Collection
-    {
-        return DB::table('api_hymnal_book')
-            ->where('slug', $slug)
-            ->get();
-    }
 
     /**
      * Get Hymnal ToC
