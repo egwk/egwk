@@ -7,7 +7,7 @@ use App\Console\Commands\Export;
 abstract class Compile extends Export
 {
 
-    const SIGNATURE_SUFFFIX = ' {books*} {--l|language=hu} {--t|threshold=70} {--m|multitranslation} {--p|publisher=}';
+    const SIGNATURE_SUFFFIX = ' {books*} {--l|language=hu} {--t|threshold=70} {--s|multisimilar} {--m|multitranslation} {--p|publisher=}';
 
     public function __construct()
     {
@@ -20,7 +20,7 @@ abstract class Compile extends Export
      *
      * @return mixed
      */
-    abstract protected function compile($book, $collection, $threshold = 70, $multiTranslation = false, $language = 'hu');
+    abstract protected function compile($book, $collection, $threshold = 70, $multiSimilar = false, $multiTranslation = false, $language = 'hu');
 
 
     /**
@@ -35,6 +35,7 @@ abstract class Compile extends Export
         $books = $this->getBookList($booksParam, $collection);
 
         $threshold = $this->option('threshold');
+        $multiSimilar = $this->option('multisimilar');
         $multiTranslation = $this->option('multitranslation');
         $language = $this->option('language');
 
@@ -47,6 +48,7 @@ abstract class Compile extends Export
                 $book,
                 $collection,
                 $threshold,
+                $multiSimilar,
                 $multiTranslation,
                 $language
             );

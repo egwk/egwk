@@ -21,6 +21,8 @@ class CompileBook extends Translation
         $translationsQuery = TranslationTable::where('para_id', $paraId);
         !empty($lang) and $translationsQuery->where('lang', $lang);
         !empty($publisher) and $translationsQuery->where('publisher', $preferredPublisher);
+        $translationsQuery->join('publisher','publisher.code','=','translation.publisher')
+            ->select(['translation.*', 'publisher.priority']);
         if ($multiTranslation) {
             return $translationsQuery->get();
         } else {
@@ -32,7 +34,7 @@ class CompileBook extends Translation
     /**
      * @inheritdoc
      */
-    public function translate($book, $threshold = 70, $multiTranslation = false, $lang = null, $preferredPublisher = null)
+    public function translate($book, $threshold = 70, $multiSimilar = false, $multiTranslation = false, $lang = null, $preferredPublisher = null)
     {
         $compilation = [];
         foreach (Reader::original($book)->get() as $paragraph) {
@@ -48,9 +50,15 @@ class CompileBook extends Translation
                     $lang,
                     $preferredPublisher
                 );
-                $similars[] = (object) $similarParagraph;
+                if (!empty($similarParagraph['translations'])) {
+                    $similars[] = (object)$similarParagraph;
+                    if (!$multiSimilar) {
+                        break;
+                    }
+                }
             }
-            $compilation[] = (object) [
+
+            $compilation[] = (object)[
                 'paragraph' => $paragraph,
                 'similars' => $similars,
             ];

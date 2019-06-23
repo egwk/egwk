@@ -22,7 +22,8 @@ class Publisher extends Model
         'name',
         'description',
         'link',
-        'church_approved'
+        'church_approved',
+        'priority'
     ];
 
     protected $guarded = [];

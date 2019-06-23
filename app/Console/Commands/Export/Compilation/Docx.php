@@ -41,12 +41,38 @@ class Docx extends Compile
         return "{{$content}}";
     }
 
+    protected function flatten($similars)
+    {
+        $s = [];
+        foreach ($similars as $similar) {
+            foreach ($similar->translations as $translation) {
+                $s[] = (object)[
+                    'para_id' => $translation->para_id,
+                    'content' => $translation->content,
+                    'refcode_short' => $similar->paragraph->refcode_short,
+                    'lang' => $translation->lang,
+                    'publisher' => $translation->publisher,
+                    'year' => $translation->year,
+                    'covers' => $similar->covers,
+                    'covered' => $similar->covered,
+                    'priority' => $translation->priority,
+               ];
+            }
+        }
+        return collect($s)
+            ->filter(function ($value, $key) {
+                return !empty(trim($value->content));
+            })
+            ->slice(0,6)
+            ->sortBy('priority');
+    }
+
     /**
      * Export
      *
      * @return mixed
      */
-    protected function compile($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
+    protected function compile($book, $collection, $threshold = 70, $multiSimilar = false, $multiTranslation = false, $language = null)
     {
 
         $folder = Storage::path(static::baseFolder . ($collection ? "/$collection" : ''));
@@ -58,6 +84,7 @@ class Docx extends Compile
         foreach (CompileBook::translate(
             $book,
             $threshold,
+            $multiSimilar,
             $multiTranslation,
             $language
         ) as $paragraph) {
@@ -68,25 +95,23 @@ class Docx extends Compile
                 $this->refCode($paragraph->paragraph->refcode_short);
             $cell->addText($content);
             $cell = $table->addCell(5000, ['lang' => 'hu-HU']); // todo: doesn't work yet.
-            foreach ($paragraph->similars as $similar) {
-                foreach ($similar->translations as $translation) {
-                    $content = $this->convertText($translation->content) .
-                        ' ' .
-                        $this->refCode($similar->paragraph->refcode_short);
-                    $cell->addText($content);
-                    $textrun = $cell->addTextRun();
-                    $textrun->addText(
-                        $similar->covers . '% ',
-                        [
-                            'bold' => true,
-                            'size' => 7.5
-                        ]);
-                    $textrun->addText('/ ' . $similar->covered . '% ', ['size' => 7.5]);
-                    $textrun->addText('(' . $translation->para_id . ') ', ['size' => 7.5]);
-                    $textrun->addText($translation->lang . '/' . $translation->publisher . '/' . $translation->year, ['size' => 7.5]);
+            foreach ($this->flatten($paragraph->similars) as $similar) {
+                $content = $this->convertText($similar->content) .
+                    ' ' .
+                    $this->refCode($similar->refcode_short);
+                $cell->addText($content);
+                $textrun = $cell->addTextRun();
+                $textrun->addText(
+                    $similar->covers . '% ',
+                    [
+                        'bold' => true,
+                        'size' => 7.5
+                    ]);
+                $textrun->addText('/ ' . $similar->covered . '% ', ['size' => 7.5]);
+                $textrun->addText('(' . $similar->para_id . ') ', ['size' => 7.5]);
+                $textrun->addText($similar->lang . '/' . $similar->publisher . '/' . $similar->year, ['size' => 7.5]);
 
-                    $cell->addTextBreak();
-                }
+                $cell->addTextBreak();
             }
         }
 

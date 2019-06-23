@@ -17,7 +17,7 @@ class Json extends Compile
      *
      * @return mixed
      */
-    protected function compile($book, $collection, $threshold = 70, $multiTranslation = false, $language = null)
+    protected function compile($book, $collection, $threshold = 70, $multiSimilar = false, $multiTranslation = false, $language = null)
     {
         $folder = static::baseFolder . ($collection ? "/$collection" : '');
         \Storage::put(
@@ -26,6 +26,7 @@ class Json extends Compile
                 CompileBook::translate(
                     $book,
                     $threshold,
+                    $multiSimilar,
                     $multiTranslation,
                     $language
                 ),
