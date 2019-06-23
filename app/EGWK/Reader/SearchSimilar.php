@@ -114,7 +114,7 @@ class SearchSimilar
         return $tr->get()
             ->map(function ($item) use ($publishers) {
                 $publisher = $publishers->get($item->publisher);
-                $item->publisher = $publisher ? $publisher->name : $item->publisher;
+                $item->publisher_name = $publisher ? $publisher->name : $item->publisher;
                 return $item;
             })
             ->groupBy('para_id');

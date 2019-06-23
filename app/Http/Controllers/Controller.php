@@ -21,6 +21,11 @@ class Controller extends BaseController
         $this->lang = \request()->get('language');
     }
 
+    public function apiAuthCheck()
+    {
+        return auth()->guard('api')->user() !== null;
+    }
+
     public function help($module = null)
     {
         if (!$module) {

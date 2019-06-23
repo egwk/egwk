@@ -22,7 +22,7 @@ class Filter
      * @param Morphy $morphy Morphy object
      * @return void
      */
-    public function __construct(Morphy $morphy)
+    public function __construct(Morphy $morphy = null)
     {
         $this->morphy = $morphy;
     }
@@ -58,9 +58,9 @@ class Filter
      * @param string $text Text
      * @return array
      */
-    public function split(string $text): array
+    public function split(string $text, $gule = ' '): array
     {
-        return array_filter(array_map('trim', explode(' ', $text)));
+        return array_values(array_filter(array_map('trim', explode($gule, $text))));
     }
 
     /**
@@ -70,9 +70,9 @@ class Filter
      * @param array $words Words
      * @return string
      */
-    public function stick(array $words): string
+    public function stick(array $words, $glue = ' '): string
     {
-        return implode(' ', $words);
+        return implode($glue, $words);
     }
 
     /**
